@@ -1,0 +1,372 @@
+:root {
+  --vp-font-family-base: 'Vazirmatn', system-ui, sans-serif;
+  --vp-font-family-mono: 'Vazirmatn', monospace;
+  --vp-c-brand-1: #1bd96a;
+  --vp-c-brand-2: #14b857;
+  --vp-c-brand-3: #0e9645;
+  --vp-c-brand-soft: rgba(27, 217, 106, 0.14);
+}
+
+.dark {
+  --vp-c-bg: #080b12; 
+  --vp-c-bg-alt: #0f1523;
+  --vp-c-bg-elv: #151d30;
+  --vp-c-bg-soft: #0f1523;
+}
+
+/* ===== ۱. تعمیر اساسی هدر و رفع تداخل سرچ و عنوان ===== */
+.VPNavBar {
+  backdrop-filter: blur(16px) !important;
+  background-color: rgba(8, 11, 18, 0.85) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+.VPNavBarTitle .title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  font-weight: 900 !important;
+  font-size: 18px !important;
+}
+
+/* ایجاد فاصله استاندارد بین عنوان سایت و کادر سرچ در حالت راست‌چین */
+.VPNavBarSearch {
+  padding-right: 28px !important;
+  padding-left: 16px !important;
+}
+
+.DocSearch-Button {
+  background: rgba(15, 21, 35, 0.9) !important;
+  border: 1px solid rgba(27, 217, 106, 0.4) !important;
+  border-radius: 10px !important;
+  padding: 0 14px !important;
+  height: 38px !important;
+  min-width: 210px !important;
+  direction: rtl !important;
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+.DocSearch-Button:hover {
+  border-color: #1bd96a !important;
+  box-shadow: 0 0 15px rgba(27, 217, 106, 0.25) !important;
+}
+
+/* ===== ۲. طراحی پورتال اختصاصی صفحه اصلی ===== */
+.mc-portal {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px 24px 80px;
+  direction: rtl;
+  text-align: right;
+}
+
+/* بخش Hero سینمایی */
+.mc-hero {
+  position: relative;
+  text-align: center;
+  padding: 55px 20px 45px;
+  border-radius: 28px;
+  background: radial-gradient(circle at 50% 0%, rgba(27, 217, 106, 0.14), rgba(15, 21, 35, 0.95) 70%);
+  border: 1px solid rgba(27, 217, 106, 0.22);
+  margin-bottom: 50px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+}
+
+.mc-floating-logo {
+  width: 95px;
+  height: 95px;
+  margin: 0 auto 16px;
+  filter: drop-shadow(0 15px 25px rgba(27, 217, 106, 0.35));
+  animation: mcFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes mcFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+.mc-badge {
+  display: inline-block;
+  background: rgba(27, 217, 106, 0.12);
+  color: #1bd96a;
+  border: 1px solid rgba(27, 217, 106, 0.35);
+  padding: 5px 16px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.mc-title {
+  font-size: clamp(28px, 5vw, 48px) !important;
+  font-weight: 900 !important;
+  line-height: 1.3 !important;
+  margin-bottom: 16px !important;
+  color: #fff;
+  border: none !important;
+}
+
+.mc-gradient {
+  background: linear-gradient(135deg, #1bd96a 0%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mc-subtitle {
+  max-width: 650px;
+  margin: 0 auto 30px !important;
+  font-size: 17px;
+  color: #94a3b8;
+  line-height: 1.8;
+}
+
+.mc-hero-btns {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 38px;
+}
+
+.mc-btn {
+  padding: 12px 26px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.mc-btn-primary {
+  background: #1bd96a;
+  color: #080b12 !important;
+  box-shadow: 0 8px 25px rgba(27, 217, 106, 0.35);
+}
+
+.mc-btn-primary:hover {
+  background: #22f078;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(27, 217, 106, 0.5);
+}
+
+.mc-btn-glass {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.mc-btn-glass:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #1bd96a;
+  transform: translateY(-3px);
+}
+
+/* نوار آمار داخل Hero */
+.mc-stats-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  background: rgba(8, 11, 18, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 14px 32px;
+  border-radius: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mc-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mc-stat b {
+  font-size: 22px;
+  color: #1bd96a;
+  font-weight: 900;
+}
+
+.mc-stat span {
+  font-size: 12.5px;
+  color: #94a3b8;
+}
+
+.mc-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* کارت‌های دسته‌بندی */
+.mc-section {
+  margin-bottom: 50px;
+}
+
+.mc-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.mc-section-header h2 {
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  margin: 0 !important;
+  border: none !important;
+  padding: 0 !important;
+  background: none !important;
+}
+
+.mc-more {
+  color: #1bd96a !important;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+.mc-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+}
+
+.mc-cat-card {
+  background: #0f1523;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  padding: 24px;
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.mc-cat-card:hover {
+  transform: translateY(-6px);
+  border-color: #1bd96a;
+  box-shadow: 0 15px 35px -10px rgba(27, 217, 106, 0.2);
+}
+
+.mc-cat-icon {
+  font-size: 28px;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(27, 217, 106, 0.1);
+  border: 1px solid rgba(27, 217, 106, 0.25);
+  border-radius: 14px;
+  margin-bottom: 16px;
+}
+
+.mc-cat-card h3 {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 8px !important;
+  color: #fff;
+}
+
+.mc-cat-card p {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.7;
+  margin: 0 0 16px !important;
+  flex-grow: 1;
+}
+
+.mc-card-link {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1bd96a;
+}
+
+/* بخش دو ستونه (مادها و مقالات اخیر) */
+.mc-dual-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+.mc-box {
+  background: #0f1523;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.mc-item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mc-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(8, 11, 18, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 14px 16px;
+  border-radius: 14px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.mc-list-item:hover {
+  border-color: rgba(27, 217, 106, 0.5);
+  background: rgba(27, 217, 106, 0.05);
+  transform: translateX(-4px);
+}
+
+.mc-item-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mc-item-icon {
+  font-size: 24px;
+}
+
+.mc-item-info h4 {
+  margin: 0 0 4px !important;
+  font-size: 15px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.mc-item-info p {
+  margin: 0 !important;
+  font-size: 12.5px;
+  color: #94a3b8;
+}
+
+.mc-tag {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.mc-tag-green { background: rgba(27, 217, 106, 0.15); color: #1bd96a; }
+.mc-tag-blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+.mc-tag-amber { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+.mc-tag-purple { background: rgba(192, 132, 252, 0.15); color: #c084fc; }
+
+/* استایل داخل صفحات مقاله */
+.vp-doc {
+  direction: rtl;
+  text-align: right;
+  line-height: 2.1;
+  font-size: 16px;
+}
+
+.vp-doc strong {
+  color: #1bd96a;
+}
