@@ -3,25 +3,24 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   lang: 'fa-IR',
   dir: 'rtl',
-  title: "ویکی ماینکرفت ایران",
-  description: "مرجع تخصصی آموزش، دانلود ماد، شیدرپک و سرورهای ماینکرفت",
+  title: "پاتوق گیم و ماینکرفت",
+  description: "مرجع تخصصی سرورها، دانلود ماد، بانک فارم‌ها و رفع ارورهای بازی",
   
   head: [
-    ['link', { rel: 'icon', href: 'https://minecraft.wiki/images/Grass_Block_JE7_BE6.png' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
     ['link', { href: 'https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap', rel: 'stylesheet' }]
   ],
 
   themeConfig: {
-    // لوگوی بالای سایت (کنار عنوان)
-    logo: 'https://minecraft.wiki/images/Grass_Block_JE7_BE6.png',
+    logo: '/logo.svg',
 
     search: {
       provider: 'local',
       options: {
         translations: {
-          button: { buttonText: 'جستجو در ویکی...', buttonAriaLabel: 'جستجو' },
+          button: { buttonText: 'جستجو در سایت...', buttonAriaLabel: 'جستجو' },
           modal: {
             noResultsText: 'نتیجه‌ای یافت نشد',
             resetButtonTitle: 'پاک کردن',
@@ -31,54 +30,71 @@ export default defineConfig({
       }
     },
 
-    // منوی بالای سایت (با قابلیت زیرمنو برای سرورهای رایگان و پولی)
     nav: [
       { text: '🏠 صفحه اصلی', link: '/' },
       {
-        text: '🖥️ سرورهای ماینکرفت',
+        text: '🖥️ سرورها',
         items: [
-          { text: '🟢 سرورهای رایگان (آترنوس و...)', link: '/markdown-examples' },
-          { text: '💎 سرورها و هاست‌های پولی (VPS)', link: '/paid-servers' }
+          { text: '🌐 لیست سرورهای ایرانی و رایگان (هاب اصلی)', link: '/servers-hub' },
+          { text: '🟢 آموزش کامل آترنوس (Aternos)', link: '/aternos' },
+          { text: '💎 راهنمای خرید سرور پولی (VPS)', link: '/paid-servers' }
         ]
       },
-      { text: '📦 دانلود ماد و شیدر', link: '/api-examples' },
-      { text: '🚀 لانچرها و رفع ارور', link: '/launchers-guide' }
+      { text: '📦 مرکز دانلود ماد و شیدر', link: '/mods-hub' },
+      { text: '🌾 بانک فارم‌ها', link: '/farms-hub' },
+      {
+        text: '🛠️ رفع ارور و آموزش',
+        items: [
+          { text: '⚠️ مرجع رفع ارورهای بازی و جاوا', link: '/errors-fix' },
+          { text: '🚀 مقایسه بهترین لانچرها', link: '/launchers-guide' },
+          { text: '💎 راهنمای ماینینگ و بقا ۱.۲۱', link: '/survival-guide' }
+        ]
+      }
     ],
 
-    // منوی دسته‌بندی سمت راست (کتگوری‌های کامل سایت)
     sidebar: [
       {
         text: '🖥️ بخش سرورهای ماینکرفت',
         collapsed: false,
         items: [
-          { text: '🟢 ساخت سرور رایگان (نقد آترنوس)', link: '/markdown-examples' },
+          { text: '🌐 هاب سرورها (ایرانی + رتبه‌بندی رایگان)', link: '/servers-hub' },
+          { text: '🟢 دانشنامه جامع آترنوس (Aternos)', link: '/aternos' },
           { text: '💎 راهنمای خرید سرور و هاست پولی', link: '/paid-servers' }
         ]
       },
       {
-        text: '🚀 لانچر، اکانت و رفع ارور',
+        text: '📦 مرکز دانلود (Fabric & Forge)',
         collapsed: false,
         items: [
-          { text: 'مقایسه بهترین لانچرها (امنیت و FPS)', link: '/launchers-guide' }
+          { text: 'مادهای FPS، شیدرپک و پیش‌نیازها', link: '/mods-hub' }
         ]
       },
       {
-        text: '📦 مرکز دانلود (ماد و شیدر)',
+        text: '🌾 بانک فارم‌ها و آموزش بقا',
         collapsed: false,
         items: [
-          { text: 'بهترین مادهای FPS و شیدرپک‌ها', link: '/api-examples' }
+          { text: 'جستجو و رتبه‌بندی فارم‌ها', link: '/farms-hub' },
+          { text: 'بهترین ارتفاع دایموند و ندرایت', link: '/survival-guide' }
+        ]
+      },
+      {
+        text: '⚡ بهینه‌سازی، لانچر و رفع ارور',
+        collapsed: false,
+        items: [
+          { text: 'مرجع رفع ارورهای ماینکرفت و جاوا', link: '/errors-fix' },
+          { text: 'مقایسه بهترین لانچرها (امنیت و FPS)', link: '/launchers-guide' }
         ]
       }
     ],
 
     outline: {
-      label: 'فهرست مطالب این مقاله',
+      label: 'فهرست مطالب این صفحه',
       level: [2, 3]
     },
 
     docFooter: {
-      prev: 'مقاله قبلی',
-      next: 'مقاله بعدی'
+      prev: 'صفحه قبلی',
+      next: 'صفحه بعدی'
     }
   }
 })
