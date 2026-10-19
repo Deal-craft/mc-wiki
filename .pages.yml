@@ -1,0 +1,19 @@
+media:
+  input: public
+  output: /
+
+content:
+  - name: pages
+    label: مقالات و صفحات سایت
+    type: collection
+    path: ""
+    fields:
+      - name: title
+        label: عنوان صفحه (سئو)
+        type: string
+      - name: description
+        label: توضیحات متا (سئو)
+        type: string
+      - name: body
+        label: متن اصلی مقاله
+        type: rich-text
