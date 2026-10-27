@@ -13,7 +13,7 @@ import { data as posts } from './.vitepress/theme/posts.data.mjs'
 <section class="mc-hero">
 <div class="mc-hero-glow"></div>
 
-<!-- لوگوی اختصاصی PlayPedia (ترکیب گیمر و حرف P) جایگزین فایل گم‌شده logo.svg -->
+<!-- لوگوی اختصاصی PlayPedia -->
 <div class="mc-floating-logo" style="display: inline-flex; justify-content: center; margin-bottom: 12px;">
   <svg width="84" height="84" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -155,4 +155,3 @@ import { data as posts } from './.vitepress/theme/posts.data.mjs'
 </div>
 </section>
 </div>
-
