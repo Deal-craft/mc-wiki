@@ -5,12 +5,27 @@ export default defineConfig({
   dir: 'rtl',
   title: "پاتوق گیم و ماینکرفت",
   description: "مرجع تخصصی سرورها، دانلود ماد، بانک فارم‌ها و رفع ارورهای بازی",
+  appearance: 'force-dark', // قفل کردن روی تم تیره گیمینگ برای ثبات طراحی و سرعت بهتر
+
+  // فعال‌سازی خودکار نقشه سایت برای گوگل سرچ کنسول
+  sitemap: {
+    hostname: 'https://playpedia.ir'
+  },
   
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
-    ['link', { href: 'https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap', rel: 'stylesheet' }]
+    // لود بهینه و غیرمسدودکننده فونت وزیرمتن برای افزایش سرعت بارگذاری موبایل (FCP و LCP)
+    [
+      'link',
+      {
+        rel: 'preload',
+        as: 'style',
+        href: 'https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap',
+        onload: "this.onload=null;this.rel='stylesheet'"
+      }
+    ]
   ],
 
   themeConfig: {
