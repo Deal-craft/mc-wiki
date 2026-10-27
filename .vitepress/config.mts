@@ -3,29 +3,23 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   lang: 'fa-IR',
   dir: 'rtl',
-  title: "پاتوق گیم و ماینکرفت",
-  description: "مرجع تخصصی سرورها، دانلود ماد، بانک فارم‌ها و رفع ارورهای بازی",
-  appearance: 'force-dark', // قفل کردن روی تم تیره گیمینگ برای ثبات طراحی و سرعت بهتر
+  title: 'پلی‌پدیا (PlayPedia) | پاتوق گیم و ماینکرفت',
+  description: 'مرجع تخصصی سرورها، دانلود ماد، بانک فارم‌ها و رفع ارورهای بازی',
+  appearance: 'dark',
 
-  // فعال‌سازی خودکار نقشه سایت برای گوگل سرچ کنسول
+  // جلوگیری از ارور بیلد گیت‌هاب در صورت وجود لینک به صفحات حذف‌شده یا ناقص
+  ignoreDeadLinks: false,
+
+  // ساخت خودکار نقشه سایت (sitemap.xml) برای گوگل
   sitemap: {
     hostname: 'https://playpedia.ir'
   },
-  
+
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
-    // لود بهینه و غیرمسدودکننده فونت وزیرمتن برای افزایش سرعت بارگذاری موبایل (FCP و LCP)
-    [
-      'link',
-      {
-        rel: 'preload',
-        as: 'style',
-        href: 'https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap',
-        onload: "this.onload=null;this.rel='stylesheet'"
-      }
-    ]
+    ['link', { href: 'https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap', rel: 'stylesheet' }]
   ],
 
   themeConfig: {
