@@ -1,19 +1,32 @@
 media:
-  input: public
-  output: /
+  input: public/images
+  output: /images
 
 content:
-  - name: pages
-    label: مقالات و صفحات سایت
+  - name: articles
+    label: مقالات و صفحات پلی‌پدیا
     type: collection
     path: ""
+    filename: "{fields.slug}.md"
+    view:
+      fields: [ title, date ]
     fields:
+      - name: slug
+        label: آدرس صفحه در مرورگر (URL انگلیسی - مثلا best-shaders)
+        type: string
+        description: فقط حروف انگلیسی کوچک و خط تیره بنویسید تا آدرس صفحه ساخته شود
+        required: true
       - name: title
-        label: عنوان صفحه (سئو)
+        label: عنوان سئو (Title - نمایش در نتایج گوگل)
         type: string
+        required: true
       - name: description
-        label: توضیحات متا (سئو)
-        type: string
+        label: توضیحات سئو (Meta Description - خلاصه زیر لینک در گوگل)
+        type: text
+        required: true
+      - name: date
+        label: تاریخ انتشار یا آپدیت
+        type: date
       - name: body
-        label: متن اصلی مقاله
+        label: متن کامل مقاله
         type: rich-text
