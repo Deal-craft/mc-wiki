@@ -30,3 +30,24 @@ content:
       - name: body
         label: متن کامل مقاله
         type: rich-text
+- name: date
+        label: تاریخ انتشار
+        type: date
+        required: true
+      - name: category
+        label: انتخاب هاب (دسته‌بندی مقاله)
+        type: select
+        required: true
+        options:
+          values:
+            - value: servers
+              label: 🌐 هاب سرورها
+            - value: mods
+              label: 📦 هاب ماد و شیدرپک
+            - value: farms
+              label: 🌾 هاب فارم‌ها
+            - value: errors
+              label: ⚡ هاب رفع ارور و لانچر
+      - name: badge
+        label: برچسب کوتاه (مثلاً 1.21 Java)
+        type: string
