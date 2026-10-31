@@ -4,19 +4,6 @@ description: "آی‌پی سرور دونات اس ام پی (DonutSMP) برای
 date: "2026-10-31"
 category: "servers"
 badge: "Java & Bedrock"
-head:
-  - - meta
-    - name: keywords
-      content: "دونات اس ام پی, سرور DonutSMP, آی پی سرور دونات اس ام پی, فروش پول دونات اس ام پی, سرور دونات ماینکرفت, پورت بدراک DonutSMP"
-  - - meta
-    - property: og:title
-      content: "راهنمای جامع سرور DonutSMP + آی‌پی جاوا و موبایل"
-  - - meta
-    - property: og:description
-      content: "کپی سریع IP سرور دونات اس‌ام‌پی، آموزش ساخت فارم‌های پول‌ساز و قوانین خرید و فروش کوین داخل بازی."
-  - - link
-    - rel: canonical
-      href: "https://playpedia.ir/donut-smp"
 ---
 
 <script setup>
@@ -29,13 +16,11 @@ const copyToClipboard = (text, label) => {
   setTimeout(() => { copiedText.value = '' }, 2000)
 }
 </script>
+
 # سرور دونات اس ام پی (DonutSMP)؛ آی‌پی، آموزش کامل و رازهای پولدار شدن
 
-<!-- باکس دسترسی فوری بالای صفحه با لوگوی کدنویسی شده SVG -->
 <div class="mc-box" style="margin: 20px 0 32px; border: 2px solid #1bd96a; background: radial-gradient(circle at 50% 0%, rgba(27, 217, 106, 0.14), rgba(15, 21, 35, 0.98) 75%);">
 <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 18px;">
-
-<!-- کد SVG لوگوی DonutSMP (بدون نیاز به فایل عکس) -->
 <div style="width: 68px; height: 68px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #0f172a; border: 2px solid #f472b6; border-radius: 16px; box-shadow: 0 8px 20px rgba(244, 114, 182, 0.25);">
 <svg width="52" height="52" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="32" cy="34" r="22" fill="#d97706" />
@@ -50,7 +35,6 @@ const copyToClipboard = (text, label) => {
 <rect x="29" y="14" width="5" height="2.5" rx="1.25" fill="#a855f7" />
 </svg>
 </div>
-
 <div>
 <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
 <h2 style="margin: 0 !important; font-size: 22px !important; color: #fff; border: none !important; padding: 0 !important;">اطلاعات اتصال سریع به DonutSMP</h2>
@@ -59,7 +43,6 @@ const copyToClipboard = (text, label) => {
 <p style="margin: 4px 0 0 !important; font-size: 13.5px; color: #94a3b8;">قابل اتصال با کامپیوتر (Java)، موبایل (Bedrock)، ایکس‌باکس و پلی‌استیشن</p>
 </div>
 </div>
-
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 16px;">
 <div style="background: rgba(8, 11, 18, 0.8); border: 1px solid rgba(255,255,255,0.1); padding: 14px; border-radius: 14px; display: flex; justify-content: space-between; align-items: center;">
 <div>
@@ -70,7 +53,6 @@ const copyToClipboard = (text, label) => {
 {{ copiedText === 'ip' ? '✅ کپی شد!' : '📋 کپی IP' }}
 </button>
 </div>
-
 <div style="background: rgba(8, 11, 18, 0.8); border: 1px solid rgba(255,255,255,0.1); padding: 14px; border-radius: 14px; display: flex; justify-content: space-between; align-items: center;">
 <div>
 <div style="font-size: 12px; color: #94a3b8;">📱 پورت بدراک / موبایل (Bedrock Port):</div>
@@ -81,36 +63,6 @@ const copyToClipboard = (text, label) => {
 </button>
 </div>
 </div>
-
-<div style="display: flex; gap: 10px; flex-wrap: wrap; font-size: 13px;">
-<span class="mc-tag mc-tag-blue">🎮 ورژن پیشنهادی: 1.20 تا 1.21.x</span>
-<span class="mc-tag mc-tag-amber">🔒 وضعیت اکانت: فقط پرمیوم (اصلی) و بدراک قانونی</span>
-<span class="mc-tag mc-tag-purple">⚔️ سبک: Hardcore Survival / Economy / PvP</span>
-</div>
-</div>
-
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 16px;">
-<div style="background: rgba(8, 11, 18, 0.8); border: 1px solid rgba(255,255,255,0.1); padding: 14px; border-radius: 14px; display: flex; justify-content: space-between; align-items: center;">
-<div>
-<div style="font-size: 12px; color: #94a3b8;">💻 آی‌پی جاوا و بدراک (IP Address):</div>
-<code style="font-size: 16px; font-weight: 900; color: #1bd96a;">donutsmp.net</code>
-</div>
-<button @click="copyToClipboard('donutsmp.net', 'ip')" class="mc-btn mc-btn-primary" style="padding: 8px 14px; font-size: 12.5px; cursor: pointer; border: none;">
-{{ copiedText === 'ip' ? '✅ کپی شد!' : '📋 کپی IP' }}
-</button>
-</div>
-
-<div style="background: rgba(8, 11, 18, 0.8); border: 1px solid rgba(255,255,255,0.1); padding: 14px; border-radius: 14px; display: flex; justify-content: space-between; align-items: center;">
-<div>
-<div style="font-size: 12px; color: #94a3b8;">📱 پورت بدراک / موبایل (Bedrock Port):</div>
-<code style="font-size: 16px; font-weight: 900; color: #38bdf8;">19132</code>
-</div>
-<button @click="copyToClipboard('19132', 'port')" class="mc-btn mc-btn-glass" style="padding: 8px 14px; font-size: 12.5px; cursor: pointer;">
-{{ copiedText === 'port' ? '✅ کپی شد!' : '📋 کپی پورت' }}
-</button>
-</div>
-</div>
-
 <div style="display: flex; gap: 10px; flex-wrap: wrap; font-size: 13px;">
 <span class="mc-tag mc-tag-blue">🎮 ورژن پیشنهادی: 1.20 تا 1.21.x</span>
 <span class="mc-tag mc-tag-amber">🔒 وضعیت اکانت: فقط پرمیوم (اصلی) و بدراک قانونی</span>
@@ -154,27 +106,4 @@ const copyToClipboard = (text, label) => {
 
 به جای ریسک خرید پول، با این ۴ روش استاندارد در کمتر از یک هفته به میلیاردرهای سرور تبدیل می‌شوید:
 
-1. **استفاده هوشمندانه از `/afk` برای گرفتن شارد (Shards):** وقتی پشت سیستم نیستید، دستور `/afk` را بزنید. به ازای هر دقیقه حضور در منطقه AFK شارد رایگان می‌گیرید. با دستور `/shardshop` از این شاردها برای خرید **اسپاونر (Spawner)** استفاده کنید.
-2. **فروش در بخش سفارش‌ها (`/orders`) به جای شاپ معمولی:** هرگز آیتم‌هایتان را به `/shop` خود سرور نفروشید! دستور `/orders` را بزنید و ببینید پلیرهای ثروتمند برای چه آیتمی (مثلاً استخوان، توتم، ابسیدین یا شالکر باکس) قیمت‌های ۱۰ برابری گذاشته‌اند و مستقیم به آن‌ها بفروشید.
-3. **ساخت فارم خیار دریایی (Sea Pickle) یا بامبو:** این دو فارم در دونات اس‌ام‌پی به شدت پول‌ساز هستند. (برای یادگیری نحوه ساخت پربازده‌ترین فارم‌ها، به **[بانک جامع فارم‌های ماینکرفت](/farms-hub)** در سایت ما سر بزنید).
-4. **واسطه‌گری در حراجی (`/ah` Flipping):** در Auction House سرور بگردید، آیتم‌ها یا اسپاونرهایی که زیر قیمت بازار گذاشته شده‌اند را بخرید و ۲۰٪ گران‌تر دوباره در `/ah` لیست کنید.
-
----
-
-## ۴. مهم‌ترین دستورات (Commands) سرور دونات اس‌ام‌پی
-
-* **`/rtp`**: تلپورت تصادفی به نقطه‌ای امن در نقشه برای شروع ساخت بیس.
-* **`/sethome [name]`** و **`/home [name]`**: ذخیره کردن مختصات بیس و برگشتن سریع به آن.
-* **`/ah`**: باز کردن حراجی سرور برای خرید و فروش آیتم با سایر بازیکنان.
-* **`/orders`**: مشاهده سفارش‌های خرید سایر بازیکنان (بهترین جا برای کسب درآمد سریع).
-* **`/tpa [player]`**: درخواست تلپورت به سمت دوستتان.
-
----
-
-## ❓ سوالات متداول کاربران درباره سرور DonutSMP
-
-### ۱. آیا سرور دونات اس ام پی کرکی است؟ (با تی‌لانچر می‌شود وارد شد؟)
-خیر؛ سرور DonutSMP یک سرور پرمیوم است و برای ورود با کامپیوتر نیاز به **اکانت قانونی ماینکرفت (Java)** دارید. اما روی **موبایل (Bedrock)** کافی است با یک اکانت رایگان مایکروسافت (Xbox Live) در بازی لاگین کنید و بدون مشکل وارد سرور شوید! اگر دنبال سرورهای کرکی هستید، **[لیست سرورهای کرکی و ایرانی ماینکرفت](/servers-hub)** را ببینید.
-
-### ۲. برای لگ نداشتن در بیس‌های بزرگ DonutSMP چه مادی نصب کنیم؟
-به دلیل تعداد بالای اسپاونرها و چست‌ها در این سرور، حتماً روی لانچر خود ماد **Sodium** و **EntityCulling** را نصب کنید که لینک دانلود مستقیم هر دو در **[مرکز دانلود مادهای افزایش FPS](/mods-hub)** قرار دارد.
+1. **استفاده هوشمندانه از `/afk` برای گرفتن شارد (Shards):** وقتی پشت سیستم نیستید، دستور `/afk` را بزنید. به ازای هر دقیقه حضور در منطقه AFK شارد رایگان می‌گیرید. با دستور `/shardshop` از
