@@ -529,3 +529,4 @@ const filteredFarms = computed(() => {
   border-radius: 8px;
 }
 </style>
+<HubArticles category="farms" title="🌾 جدیدترین مقالات و آموزش‌های فارم" placeholder="🔍 جستجو در مقالات فارم (مثلاً: آهن، طلا، XP)..." />
