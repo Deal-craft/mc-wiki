@@ -18,6 +18,19 @@ const copiedIp = ref('')
 
 const servers = ref([
   {
+    name: 'دونات اس‌ام‌پی (DonutSMP - جهانی)',
+    ip: 'donutsmp.net',
+    port: '19132',
+    platform: 'both',
+    region: 'global',
+    cracked: false,
+    modes: 'Hardcore SMP, Economy, Lifesteal, PvP',
+    playerCount: 4500,
+    playersLabel: '+۴,۵۰۰ پلیر آنلاین',
+    popularity: 98,
+    url: '/donut-smp'
+  },
+  {
     name: 'تیرکس ماین (T-RexMine)',
     ip: 'play.trexmine.com',
     port: '19132',
@@ -154,6 +167,9 @@ const serverArticles = computed(() => {
 <button @click="copyIp(srv.ip)" class="mc-btn mc-btn-primary" style="padding: 6px 14px; font-size: 12.5px; cursor: pointer; border: none;">
 {{ copiedIp === srv.ip ? '✅ کپی شد!' : '📋 کپی IP' }}
 </button>
+<a v-if="srv.url" :href="srv.url" class="mc-btn mc-btn-glass" style="padding: 6px 14px; font-size: 12.5px;">
+  📖 راهنما و بررسی سرور
+</a>
 </div>
 </div>
 </div>
