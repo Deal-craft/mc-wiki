@@ -9,7 +9,7 @@ export default defineConfig({
 
   // جلوگیری از ارور بیلد گیت‌هاب در صورت وجود لینک به صفحات حذف‌شده یا ناقص
   ignoreDeadLinks: false,
-
+  cleanUrls: true,
   // ساخت خودکار نقشه سایت (sitemap.xml) برای گوگل
   sitemap: {
     hostname: 'https://playpedia.ir'
