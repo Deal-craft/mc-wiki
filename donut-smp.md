@@ -29,19 +29,63 @@ const copyToClipboard = (text, label) => {
   setTimeout(() => { copiedText.value = '' }, 2000)
 }
 </script>
+# سرور دونات اس ام پی (DonutSMP)؛ آی‌پی، آموزش کامل و رازهای پولدار شدن
 
-# 🍩 سرور دونات اس ام پی (DonutSMP)؛ آی‌پی، آموزش کامل و رازهای پولدار شدن
-
-<!-- باکس دسترسی فوری بالای صفحه برای جلوگیری از خروج کاربر (Zero Bounce Box) -->
+<!-- باکس دسترسی فوری بالای صفحه با لوگوی کدنویسی شده SVG -->
 <div class="mc-box" style="margin: 20px 0 32px; border: 2px solid #1bd96a; background: radial-gradient(circle at 50% 0%, rgba(27, 217, 106, 0.14), rgba(15, 21, 35, 0.98) 75%);">
 <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 18px;">
-<img src="https://minecraft.wiki/images/ Cake_JE4.png" alt="لوگوی سرور دونات اس ام پی DonutSMP" width="64" height="64" style="border-radius: 14px; background: rgba(255,255,255,0.05); padding: 8px;" />
+
+<!-- کد SVG لوگوی DonutSMP (بدون نیاز به فایل عکس) -->
+<div style="width: 68px; height: 68px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #0f172a; border: 2px solid #f472b6; border-radius: 16px; box-shadow: 0 8px 20px rgba(244, 114, 182, 0.25);">
+<svg width="52" height="52" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="32" cy="34" r="22" fill="#d97706" />
+<circle cx="32" cy="31" r="22" fill="#fbbf24" />
+<path d="M12 28C12 17.5 20.5 10 32 10C43.5 10 52 17.5 52 28C52 31 50 34 47 34C44 34 43 31 40 31C37 31 36 35 32 35C28 35 27 31 24 31C21 31 19 34 16 34C13 34 12 31 12 28Z" fill="#ec4899" />
+<circle cx="32" cy="31" r="19" stroke="#f472b6" stroke-width="3" fill="none" />
+<circle cx="32" cy="32" r="8" fill="#0f172a" stroke="#b45309" stroke-width="2" />
+<rect x="22" y="18" width="5" height="2.5" rx="1.25" transform="rotate(-20 22 18)" fill="#38bdf8" />
+<rect x="37" y="17" width="5" height="2.5" rx="1.25" transform="rotate(25 37 17)" fill="#fde047" />
+<rect x="42" y="26" width="5" height="2.5" rx="1.25" transform="rotate(-15 42 26)" fill="#4ade80" />
+<rect x="17" y="27" width="5" height="2.5" rx="1.25" transform="rotate(15 17 27)" fill="#fff" />
+<rect x="29" y="14" width="5" height="2.5" rx="1.25" fill="#a855f7" />
+</svg>
+</div>
+
 <div>
 <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
 <h2 style="margin: 0 !important; font-size: 22px !important; color: #fff; border: none !important; padding: 0 !important;">اطلاعات اتصال سریع به DonutSMP</h2>
 <span class="mc-tag mc-tag-green">🟢 آنلاین (+۴,۰۰۰ پلیر هم‌زمان)</span>
 </div>
 <p style="margin: 4px 0 0 !important; font-size: 13.5px; color: #94a3b8;">قابل اتصال با کامپیوتر (Java)، موبایل (Bedrock)، ایکس‌باکس و پلی‌استیشن</p>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 16px;">
+<div style="background: rgba(8, 11, 18, 0.8); border: 1px solid rgba(255,255,255,0.1); padding: 14px; border-radius: 14px; display: flex; justify-content: space-between; align-items: center;">
+<div>
+<div style="font-size: 12px; color: #94a3b8;">💻 آی‌پی جاوا و بدراک (IP Address):</div>
+<code style="font-size: 16px; font-weight: 900; color: #1bd96a;">donutsmp.net</code>
+</div>
+<button @click="copyToClipboard('donutsmp.net', 'ip')" class="mc-btn mc-btn-primary" style="padding: 8px 14px; font-size: 12.5px; cursor: pointer; border: none;">
+{{ copiedText === 'ip' ? '✅ کپی شد!' : '📋 کپی IP' }}
+</button>
+</div>
+
+<div style="background: rgba(8, 11, 18, 0.8); border: 1px solid rgba(255,255,255,0.1); padding: 14px; border-radius: 14px; display: flex; justify-content: space-between; align-items: center;">
+<div>
+<div style="font-size: 12px; color: #94a3b8;">📱 پورت بدراک / موبایل (Bedrock Port):</div>
+<code style="font-size: 16px; font-weight: 900; color: #38bdf8;">19132</code>
+</div>
+<button @click="copyToClipboard('19132', 'port')" class="mc-btn mc-btn-glass" style="padding: 8px 14px; font-size: 12.5px; cursor: pointer;">
+{{ copiedText === 'port' ? '✅ کپی شد!' : '📋 کپی پورت' }}
+</button>
+</div>
+</div>
+
+<div style="display: flex; gap: 10px; flex-wrap: wrap; font-size: 13px;">
+<span class="mc-tag mc-tag-blue">🎮 ورژن پیشنهادی: 1.20 تا 1.21.x</span>
+<span class="mc-tag mc-tag-amber">🔒 وضعیت اکانت: فقط پرمیوم (اصلی) و بدراک قانونی</span>
+<span class="mc-tag mc-tag-purple">⚔️ سبک: Hardcore Survival / Economy / PvP</span>
 </div>
 </div>
 
