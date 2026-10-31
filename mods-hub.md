@@ -64,3 +64,5 @@ const activeLoader = ref('all')
 * **ماد Xaero's Minimap (مینی‌مپ بالای صفحه):** نمایش نقشه زنده اطراف شما، ماب‌ها و قابلیت ثبت مختصات خانه (Waypoint). 
   * *ماد مکمل پیشنهادی:* حتماً کنارش ماد **Xaero's World Map** را هم نصب کنید تا با زدن کلید `M` نقشه کل جهان بازی باز شود! -> [صفحه دانلود در Modrinth](https://modrinth.com/mod/xaeros-minimap)
 * **ماد Just Enough Items (JEI / REI):** نمایش طرز ساخت (Crafting Recipe) تمام آیتم‌های بازی و مادها در کنار اینونتوری. -> [صفحه دانلود در Modrinth](https://modrinth.com/mod/jei)
+
+<HubArticles category="mods" title="📦 جدیدترین مقالات ماد، شیدرپک و ریسورس‌پک" placeholder="🔍 جستجو در مقالات ماد و شیدر..." />
