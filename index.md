@@ -48,7 +48,7 @@ import { data as posts } from './.vitepress/theme/posts.data.mjs'
 </div>
 
 <div class="mc-badge">🔥 مرجع تخصصی حل مشکلات پلیرها، سرور و ماد</div>
-<h1 class="mc-title">پلی‌پدیا؛ پاتوق <span class="mc-gradient">گیمرهای ایران</span></h1>
+<h1 class="mc-title"><span class="mc-gradient">پلی‌پدیا</span></h1>
 <p class="mc-subtitle">از معرفی بهترین سرورهای ایرانی و رایگان (جاوا و بدراک) تا دانلود مادهای دسته‌بندی‌شده، بانک فارم‌ها و رفع قطعی ارورهای بازی و سیستم.</p>
 <div class="mc-hero-btns">
 <a href="/servers-hub" class="mc-btn mc-btn-primary">🌐 لیست سرورهای ماینکرفت (ایرانی و رایگان)</a>
