@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   lang: 'fa-IR',
   dir: 'rtl',
-  title: 'پلی‌پدیا (PlayPedia) | پاتوق گیم و ماینکرفت',
+  title: 'پلی‌پدیا',
   description: 'مرجع تخصصی سرورها، دانلود ماد، بانک فارم‌ها و رفع ارورهای بازی',
   appearance: 'dark',
 
