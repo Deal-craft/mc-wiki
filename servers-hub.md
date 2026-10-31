@@ -69,6 +69,7 @@ const filteredServers = computed(() => {
 :::
 
 ---
+<HubArticles category="servers" title="🌐 جدیدترین مقالات و آموزش‌های سرور" placeholder="🔍 جستجو در مقالات سرور (مثلاً: آترنوس، VPS، لگ)..." />
 
 ## ۳. ثبت سرور شما در سایت (رایگان برای همه پلیرها!) {#ثبت-سرور}
 
