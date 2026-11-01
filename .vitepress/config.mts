@@ -7,21 +7,25 @@ export default defineConfig({
   description: 'مرجع تخصصی سرورها، دانلود ماد، بانک فارم‌ها و رفع ارورهای بازی',
   appearance: 'dark',
 
-  // جلوگیری از ارور بیلد گیت‌هاب در صورت وجود لینک به صفحات حذف‌شده یا ناقص
+  // فعال‌سازی برای جلوگیری از توقف بیلد در صورت وجود لینک‌های خراب یا صفحاتی که بعداً اضافه می‌شوند
   ignoreDeadLinks: false,
   cleanUrls: true,
-  // ساخت خودکار نقشه سایت (sitemap.xml) برای گوگل
+
+  // ساخت خودکار نقشه سایت برای گوگل
   sitemap: {
     hostname: 'https://playpedia.ir'
   },
 
-head: [
-    ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }],
+  head: [
     ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }],
-    ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' }],
-    ['link', { rel: 'manifest', href: '/site.webmanifest' }],
     ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
+    ['meta', { name: 'theme-color', content: '#1bd96a' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:locale', content: 'fa_IR' }],
+    ['meta', { property: 'og:site_name', content: 'پلی‌پدیا | مرجع ماینکرفت' }],
+    // افزودن استایل فونت وزیرمتن جهت بارگذاری صحیح در همه مرورگرها
+    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css' }]
   ],
 
   themeConfig: {
@@ -46,15 +50,15 @@ head: [
       {
         text: '🖥️ سرورها',
         items: [
-          { text: '🌐 لیست سرورهای ایرانی و رایگان (هاب اصلی)', link: '/servers-hub' },
-          { text: '🟢 آموزش کامل آترنوس (Aternos)', link: '/aternos' },
-          { text: '💎 راهنمای خرید سرور پولی (VPS)', link: '/paid-servers' }
+          { text: '🌐 لیست سرورهای ایرانی و جهانی', link: '/servers-hub' },
+          { text: '💎 راهنمای خرید سرور پولی (VPS)', link: '/paid-servers' },
+          { text: '🍩 سرور DonutSMP', link: '/donut-smp' }
         ]
       },
       { text: '📦 مرکز دانلود ماد و شیدر', link: '/mods-hub' },
       { text: '🌾 بانک فارم‌ها', link: '/farms-hub' },
       {
-        text: '🛠️ رفع ارور و آموزش',
+        text: '🛠️ آموزش و راهنما',
         items: [
           { text: '⚠️ مرجع رفع ارورهای بازی و جاوا', link: '/errors-fix' },
           { text: '🚀 مقایسه بهترین لانچرها', link: '/launchers-guide' },
@@ -68,32 +72,32 @@ head: [
         text: '🖥️ بخش سرورهای ماینکرفت',
         collapsed: false,
         items: [
-          { text: '🌐 هاب سرورها (ایرانی + رتبه‌بندی رایگان)', link: '/servers-hub' },
-          { text: '🟢 دانشنامه جامع آترنوس (Aternos)', link: '/aternos' },
-          { text: '💎 راهنمای خرید سرور و هاست پولی', link: '/paid-servers' }
+          { text: '🌐 هاب سرورها (ایرانی و جهانی)', link: '/servers-hub' },
+          { text: '💎 راهنمای خرید سرور و هاست پولی', link: '/paid-servers' },
+          { text: '🍩 سرور دونات اس‌ام‌پی (DonutSMP)', link: '/donut-smp' }
         ]
       },
       {
-        text: '📦 مرکز دانلود (Fabric & Forge)',
+        text: '📦 ماد، شیدر و لانچر',
         collapsed: false,
         items: [
-          { text: 'مادهای FPS، شیدرپک و پیش‌نیازها', link: '/mods-hub' }
-        ]
-      },
-      {
-        text: '🌾 بانک فارم‌ها و آموزش بقا',
-        collapsed: false,
-        items: [
-          { text: 'جستجو و رتبه‌بندی فارم‌ها', link: '/farms-hub' },
-          { text: 'بهترین ارتفاع دایموند و ندرایت', link: '/survival-guide' }
-        ]
-      },
-      {
-        text: '⚡ بهینه‌سازی، لانچر و رفع ارور',
-        collapsed: false,
-        items: [
-          { text: 'مرجع رفع ارورهای ماینکرفت و جاوا', link: '/errors-fix' },
+          { text: 'مرکز دانلود مادهای Fabric و Forge', link: '/mods-hub' },
           { text: 'مقایسه بهترین لانچرها (امنیت و FPS)', link: '/launchers-guide' }
+        ]
+      },
+      {
+        text: '🌾 فارم‌ها و آموزش بقا',
+        collapsed: false,
+        items: [
+          { text: 'بانک جامع فارم‌ها', link: '/farms-hub' },
+          { text: 'بهترین ارتفاع دایموند و ندرایت ۱.۲۱', link: '/survival-guide' }
+        ]
+      },
+      {
+        text: '⚡ عیب‌یابی و سیستم',
+        collapsed: false,
+        items: [
+          { text: 'مرجع رفع ارورهای ماینکرفت و جاوا', link: '/errors-fix' }
         ]
       }
     ],
