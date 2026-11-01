@@ -151,7 +151,3 @@ import { data as posts } from './.vitepress/theme/posts.data.mjs'
 </div>
 <span class="mc-tag mc-tag-purple">{{ post.frontmatter.date || 'جدید' }}</span>
 </a>
-</div>
-</div>
-</section>
-</div>
