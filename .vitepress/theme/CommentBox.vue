@@ -1,5 +1,5 @@
 <template>
-  <div class="mc-comments-wrapper">
+  <div v-if="frontmatter.layout !== 'page'" class="mc-comments-wrapper">
     <div class="mc-comments-header">
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
         <h3 style="margin: 0 !important;">💬 دیدگاه‌ها، تجربیات و پرسش و پاسخ پلیرها ({{ comments.length }})</h3>
@@ -65,7 +65,7 @@
 
 <script setup>
 import { ref, watch, onMounted } from 'vue'
-import { useRoute } from 'vitepress'
+import { useRoute, useData } from 'vitepress'
 
 // راهنمای اتصال به GitHub Discussions (Giscus):
 // اگر در آینده خواستید نظرات روی سرور گیت‌هاب هم ذخیره شوند، کافی است در ریپازیتوری خود قابلیت Discussions را روشن کنید،
@@ -79,6 +79,7 @@ const GISCUS_CONFIG = {
 }
 
 const route = useRoute()
+const { frontmatter } = useData()
 const name = ref('')
 const type = ref('نظر یا سوال')
 const text = ref('')
@@ -204,9 +205,9 @@ watch(() => route.path, loadComments)
 .mc-comments-wrapper {
   margin-top: 60px;
   padding: 28px;
-  background: #0f1523;
-  border: 1px solid rgba(27, 217, 106, 0.25);
-  border-radius: 20px;
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
   direction: rtl;
   text-align: right;
 }

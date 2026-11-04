@@ -44,75 +44,49 @@ head:
 import { ref, onMounted } from 'vue'
 import { fetchServerLiveStatus } from './.vitepress/theme/liveServerStatus.js'
 
-const copiedText = ref('')
-const livePlayersLabel = ref('+۴۵,۰۰۰ تا ۱۰۰,۰۰۰ پلیر آنلاین')
-const isLiveFetched = ref(false)
+const copied = ref(false)
+const liveStatus = ref('در حال بررسی تعداد پلیرها...')
+const isOnline = ref(true)
 
-const copyToClipboard = (text, label) => {
-  navigator.clipboard.writeText(text)
-  copiedText.value = label
-  setTimeout(() => { copiedText.value = '' }, 2000)
+const copyIp = () => {
+  navigator.clipboard.writeText('mc.hypixel.net')
+  copied.value = true
+  setTimeout(() => { copied.value = false }, 2000)
 }
 
 onMounted(async () => {
   const res = await fetchServerLiveStatus('mc.hypixel.net', false)
-  if (res && res.online) {
-    livePlayersLabel.value = `${res.label} (هم‌اکنون در سرور)`
-    isLiveFetched.value = true
+  if (res) {
+    isOnline.value = res.online
+    liveStatus.value = res.online ? res.label : 'آفلاین'
+  } else {
+    liveStatus.value = 'آنلاین'
   }
 })
 </script>
 
-# ⚡ سرور هایپیکسل (Hypixel)؛ آی‌پی، آموزش کامل ورود، رازهای SkyBlock و کاهش پینگ
+# سرور هایپیکسل (Hypixel)؛ آی‌پی، آموزش ورود، گیم‌مودها و کاهش پینگ
 
-<div class="mc-box" style="margin: 20px 0 32px; border: 2px solid #fbbf24; background: radial-gradient(circle at 50% 0%, rgba(251, 191, 36, 0.16), rgba(15, 21, 35, 0.98) 75%);">
-<div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 18px;">
-<div style="width: 68px; height: 68px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #0f172a; border: 2px solid #fbbf24; border-radius: 16px; box-shadow: 0 8px 20px rgba(251, 191, 36, 0.28);">
-<svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="8" y="8" width="48" height="48" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2.5"/>
-<path d="M18 16H26V28H38V16H46V48H38V36H26V48H18V16Z" fill="url(#hypixelGold)"/>
-<defs>
-<linearGradient id="hypixelGold" x1="18" y1="16" x2="46" y2="48" gradientUnits="userSpaceOnUse">
-<stop offset="0%" stop-color="#fde047"/>
-<stop offset="50%" stop-color="#f59e0b"/>
-<stop offset="100%" stop-color="#d97706"/>
-</linearGradient>
-</defs>
-</svg>
-</div>
-<div>
-<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-<h2 style="margin: 0 !important; font-size: 22px !important; color: #fff; border: none !important; padding: 0 !important;">اطلاعات اتصال سریع به سرور Hypixel</h2>
-<span class="mc-tag mc-tag-green" style="display: inline-flex; align-items: center;"><span class="mc-live-dot"></span> {{ livePlayersLabel }}</span>
-</div>
-<p style="margin: 4px 0 0 !important; font-size: 13.5px; color: #94a3b8;">دارنده ۴ رکورد گینس | بزرگ‌ترین شبکه مینی‌گیم و SkyBlock ماینکرفت در جهان</p>
-</div>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 16px;">
-<div style="background: rgba(8, 11, 18, 0.85); border: 1px solid rgba(251, 191, 36, 0.3); padding: 14px; border-radius: 14px; display: flex; justify-content: space-between; align-items: center;">
-<div>
-<div style="font-size: 12px; color: #94a3b8;">💻 آی‌پی رسمی سرور (Java IP Address):</div>
-<code style="font-size: 16px; font-weight: 900; color: #fbbf24;">mc.hypixel.net</code>
-</div>
-<button @click="copyToClipboard('mc.hypixel.net', 'ip')" class="mc-btn mc-btn-primary" style="padding: 8px 14px; font-size: 12.5px; cursor: pointer; border: none;">
-{{ copiedText === 'ip' ? '✅ کپی شد!' : '📋 کپی IP' }}
-</button>
-</div>
-<div style="background: rgba(8, 11, 18, 0.85); border: 1px solid rgba(255,255,255,0.1); padding: 14px; border-radius: 14px; display: flex; justify-content: space-between; align-items: center;">
-<div>
-<div style="font-size: 12px; color: #94a3b8;">🌐 سایت و انجمن رسمی هایپیکسل:</div>
-<code style="font-size: 15px; font-weight: 800; color: #38bdf8;">hypixel.net</code>
-</div>
-<a href="https://hypixel.net/" target="_blank" rel="noopener" class="mc-btn mc-btn-glass" style="padding: 8px 14px; font-size: 12.5px;">
-🔗 ورود به سایت
-</a>
-</div>
-</div>
-<div style="display: flex; gap: 10px; flex-wrap: wrap; font-size: 13px;">
-<span class="mc-tag mc-tag-blue">🎮 بهترین ورژن: 1.8.9 (PvP) و 1.21.x (SkyBlock)</span>
-<span class="mc-tag mc-tag-amber">🔒 وضعیت اکانت: فقط پرمیوم (Java Original)</span>
-<span class="mc-tag mc-tag-purple">⚔️ گیم‌مودها: SkyBlock / BedWars / SkyWars / Duels</span>
-</div>
+<div class="mc-server-header-card">
+  <div>
+    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px;">
+      <strong style="font-size: 17px; color: #f8fafc;">Hypixel Network</strong>
+      <span :class="['mc-tag', isOnline ? 'mc-tag-green' : 'mc-tag-red']">
+        <span :class="isOnline ? 'mc-live-dot' : 'mc-live-dot-offline'"></span>
+        {{ liveStatus }}
+      </span>
+      <span class="mc-tag mc-tag-gray">Java 1.8.9 - 1.21.x (پرمیوم)</span>
+    </div>
+    <div style="font-size: 13px; color: #94a3b8;">
+      بزرگ‌ترین سرور ماینکرفت جهان · SkyBlock, BedWars, SkyWars, Duels
+    </div>
+  </div>
+  <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+    <code style="background: #0b0f17; padding: 7px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); color: #34d399; font-size: 14.5px; font-weight: 700;">mc.hypixel.net</code>
+    <button @click="copyIp" class="mc-btn mc-btn-primary" style="cursor: pointer;">
+      {{ copied ? 'کپی شد ✓' : 'کپی IP' }}
+    </button>
+  </div>
 </div>
 
 ## ۱. سرور هایپیکسل (Hypixel) چیست و چرا پادشاه سرورهای ماینکرفت است؟

@@ -11,12 +11,10 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
 
-  // ساخت خودکار نقشه سایت برای گوگل
   sitemap: {
     hostname: 'https://playpedia.ir'
   },
 
-  // تزریق خودکار تگ‌های سئو (Canonical، OpenGraph و Twitter Card) برای تمام صفحات
   transformHead({ pageData }) {
     const cleanPath = pageData.relativePath
       .replace(/index\.md$/, '')
@@ -45,7 +43,7 @@ export default defineConfig({
     ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['link', { rel: 'manifest', href: '/site.webmanifest' }],
-    ['meta', { name: 'theme-color', content: '#1bd96a' }],
+    ['meta', { name: 'theme-color', content: '#10b981' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:locale', content: 'fa_IR' }],
     ['meta', { property: 'og:site_name', content: 'پلی‌پدیا | مرجع ماینکرفت' }],
@@ -71,7 +69,7 @@ export default defineConfig({
       provider: 'local',
       options: {
         translations: {
-          button: { buttonText: 'جستجو در سایت...', buttonAriaLabel: 'جستجو' },
+          button: { buttonText: 'جستجو...', buttonAriaLabel: 'جستجو' },
           modal: {
             noResultsText: 'نتیجه‌ای یافت نشد',
             resetButtonTitle: 'پاک کردن',
@@ -82,86 +80,80 @@ export default defineConfig({
     },
 
     nav: [
-      { text: '🏠 صفحه اصلی', link: '/' },
+      { text: 'صفحه اصلی', link: '/' },
       {
-        text: '🖥️ سرورها',
+        text: 'سرورها',
         items: [
-          { text: '🌐 لیست سرورها (آمار زنده پلیرها)', link: '/servers-hub' },
-          { text: '⚡ سرور هایپیکسل (Hypixel)', link: '/hypixel' },
-          { text: '🍩 سرور DonutSMP', link: '/donut-smp' },
-          { text: '🟢 ساخت سرور رایگان (Aternos)', link: '/aternos' },
-          { text: '💎 خرید سرور پولی و VPS', link: '/paid-servers' }
+          { text: 'لیست سرورها (ایرانی و جهانی)', link: '/servers-hub' },
+          { text: 'سرور هایپیکسل (Hypixel)', link: '/hypixel' },
+          { text: 'سرور دونات (DonutSMP)', link: '/donut-smp' },
+          { text: 'ساخت سرور رایگان (Aternos)', link: '/aternos' },
+          { text: 'راهنمای خرید سرور VPS', link: '/paid-servers' }
         ]
       },
-      { text: '📦 مرکز دانلود ماد و شیدر', link: '/mods-hub' },
+      { text: 'دانلود ماد و شیدر', link: '/mods-hub' },
       {
-        text: '🌾 بانک فارم‌ها',
+        text: 'بانک فارم‌ها',
         items: [
-          { text: '🌾 جستجو در بانک جامع فارم‌ها', link: '/farms-hub' },
-          { text: '🔩 آموزش ساخت فارم آهن ۱.۲۱', link: '/iron-farm' },
-          { text: '🪙 مگا فارم طلا و XP سقف ندر', link: '/gold-xp-farm' },
-          { text: '✨ فارم XP اندرمن (۴۵ ثانیه)', link: '/enderman-xp-farm' },
-          { text: '🧨 فارم باروت و کریپر بدون گربه', link: '/creeper-farm' }
+          { text: 'جستجو در بانک فارم‌ها', link: '/farms-hub' },
+          { text: 'فارم آهن ۱.۲۱ (جاوا و بدراک)', link: '/iron-farm' },
+          { text: 'فارم طلا و XP سقف ندر', link: '/gold-xp-farm' },
+          { text: 'فارم XP اندرمن (۴۵ ثانیه)', link: '/enderman-xp-farm' },
+          { text: 'فارم باروت و کریپر', link: '/creeper-farm' }
         ]
       },
       {
-        text: '🛠️ آموزش و راهنما',
+        text: 'آموزش و رفع ارور',
         items: [
-          { text: '⚠️ مرجع رفع ارورهای بازی و جاوا', link: '/errors-fix' },
-          { text: '🚀 مقایسه بهترین لانچرها', link: '/launchers-guide' },
-          { text: '💎 راهنمای ماینینگ و بقا ۱.۲۱', link: '/survival-guide' }
+          { text: 'مرجع رفع ارورهای بازی و جاوا', link: '/errors-fix' },
+          { text: 'مقایسه بهترین لانچرها', link: '/launchers-guide' },
+          { text: 'راهنمای ماینینگ ۱.۲۱', link: '/survival-guide' }
         ]
       }
     ],
 
     sidebar: [
       {
-        text: '🖥️ بخش سرورهای ماینکرفت',
+        text: 'سرورهای ماینکرفت',
         collapsed: false,
         items: [
-          { text: '🌐 هاب سرورها (آمار زنده پلیرها)', link: '/servers-hub' },
-          { text: '⚡ سرور هایپیکسل (Hypixel)', link: '/hypixel' },
-          { text: '🍩 سرور دونات اس‌ام‌پی (DonutSMP)', link: '/donut-smp' },
-          { text: '🟢 ساخت سرور رایگان در آترنوس', link: '/aternos' },
-          { text: '💎 راهنمای خرید سرور و هاست پولی', link: '/paid-servers' }
+          { text: 'لیست سرورها (ایرانی و جهانی)', link: '/servers-hub' },
+          { text: 'سرور هایپیکسل (Hypixel)', link: '/hypixel' },
+          { text: 'سرور دونات (DonutSMP)', link: '/donut-smp' },
+          { text: 'ساخت سرور رایگان آترنوس', link: '/aternos' },
+          { text: 'راهنمای خرید سرور پولی (VPS)', link: '/paid-servers' }
         ]
       },
       {
-        text: '🌾 بانک فارم‌ها و آموزش بقا',
+        text: 'فارم‌ها و آموزش بقا',
         collapsed: false,
         items: [
-          { text: '🌾 بانک جامع فارم‌ها (فیلتر هوشمند)', link: '/farms-hub' },
-          { text: '🔩 آموزش ساخت فارم آهن ۱.۲۱', link: '/iron-farm' },
-          { text: '🪙 مگا فارم طلا و XP سقف ندر', link: '/gold-xp-farm' },
-          { text: '✨ فارم XP اندرمن در End', link: '/enderman-xp-farm' },
-          { text: '🧨 فارم باروت و کریپر بدون گربه', link: '/creeper-farm' },
-          { text: '💎 بهترین ارتفاع دایموند و ندرایت ۱.۲۱', link: '/survival-guide' }
+          { text: 'بانک جامع فارم‌ها', link: '/farms-hub' },
+          { text: 'آموزش ساخت فارم آهن ۱.۲۱', link: '/iron-farm' },
+          { text: 'مگا فارم طلا و XP سقف ندر', link: '/gold-xp-farm' },
+          { text: 'فارم XP اندرمن در End', link: '/enderman-xp-farm' },
+          { text: 'فارم باروت و کریپر', link: '/creeper-farm' },
+          { text: 'بهترین ارتفاع دایموند و ندرایت', link: '/survival-guide' }
         ]
       },
       {
-        text: '📦 ماد، شیدر و لانچر',
+        text: 'ماد، شیدر و لانچر',
         collapsed: false,
         items: [
-          { text: 'مرکز دانلود مادهای Fabric و Forge', link: '/mods-hub' },
-          { text: 'مقایسه بهترین لانچرها (امنیت و FPS)', link: '/launchers-guide' }
-        ]
-      },
-      {
-        text: '⚡ عیب‌یابی و سیستم',
-        collapsed: false,
-        items: [
-          { text: 'مرجع رفع ارورهای ماینکرفت و جاوا', link: '/errors-fix' }
+          { text: 'دانلود مادهای Fabric و Forge', link: '/mods-hub' },
+          { text: 'مقایسه بهترین لانچرها', link: '/launchers-guide' },
+          { text: 'رفع ارورهای ماینکرفت و جاوا', link: '/errors-fix' }
         ]
       }
     ],
 
     outline: {
-      label: 'فهرست مطالب این صفحه',
+      label: 'در این صفحه',
       level: [2, 3]
     },
 
     lastUpdated: {
-      text: 'آخرین بروزرسانی'
+      text: 'بروزرسانی'
     },
 
     docFooter: {

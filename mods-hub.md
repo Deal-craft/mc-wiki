@@ -2,6 +2,8 @@
 title: "مرکز دانلود ماد و شیدرپک ماینکرفت (دسته‌بندی Fabric، Forge و OptiFine)"
 description: "دانلود مستقیم بهترین مادهای ماینکرفت به تفکیک Fabric و Forge: مادهای افزایش FPS (مقایسه Sodium و OptiFine)، شیدرپک‌ها و مادهای پیش‌نیاز ضروری."
 date: "2026-10-18"
+isHub: true
+aside: false
 ---
 
 <script setup>
