@@ -427,3 +427,34 @@ html, body {
     gap: 10px !important;
   }
 }
+
+
+/* ===== ۳. انیمیشن نشانگر زنده (Live Status) و بهینه‌سازی جداول در موبایل ===== */
+.mc-live-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #1bd96a;
+  border-radius: 50%;
+  margin-left: 6px;
+  box-shadow: 0 0 8px #1bd96a;
+  animation: mcPulse 1.8s infinite ease-in-out;
+}
+
+.mc-live-dot-offline {
+  background-color: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+  animation: none;
+}
+
+@keyframes mcPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.35); opacity: 0.55; }
+}
+
+.vp-doc table {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+  border-radius: 12px;
+}

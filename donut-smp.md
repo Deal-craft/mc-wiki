@@ -7,14 +7,24 @@ badge: "Java & Bedrock"
 ---
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { fetchServerLiveStatus } from './.vitepress/theme/liveServerStatus.js'
 
 const copiedText = ref('')
+const livePlayersLabel = ref('+۴,۵۰۰ پلیر هم‌زمان')
+
 const copyToClipboard = (text, label) => {
   navigator.clipboard.writeText(text)
   copiedText.value = label
   setTimeout(() => { copiedText.value = '' }, 2000)
 }
+
+onMounted(async () => {
+  const res = await fetchServerLiveStatus('donutsmp.net', false)
+  if (res && res.online) {
+    livePlayersLabel.value = `${res.label} (هم‌اکنون در سرور)`
+  }
+})
 </script>
 
 # سرور دونات اس ام پی (DonutSMP)؛ آی‌پی، آموزش کامل و رازهای پولدار شدن
@@ -38,7 +48,7 @@ const copyToClipboard = (text, label) => {
 <div>
 <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
 <h2 style="margin: 0 !important; font-size: 22px !important; color: #fff; border: none !important; padding: 0 !important;">اطلاعات اتصال سریع به DonutSMP</h2>
-<span class="mc-tag mc-tag-green">🟢 آنلاین (+۴,۰۰۰ پلیر هم‌زمان)</span>
+<span class="mc-tag mc-tag-green" style="display: inline-flex; align-items: center;"><span class="mc-live-dot"></span> {{ livePlayersLabel }}</span>
 </div>
 <p style="margin: 4px 0 0 !important; font-size: 13.5px; color: #94a3b8;">قابل اتصال با کامپیوتر (Java)، موبایل (Bedrock)، ایکس‌باکس و پلی‌استیشن</p>
 </div>
@@ -106,4 +116,32 @@ const copyToClipboard = (text, label) => {
 
 به جای ریسک خرید پول، با این ۴ روش استاندارد در کمتر از یک هفته به میلیاردرهای سرور تبدیل می‌شوید:
 
-1. **استفاده هوشمندانه از `/afk` برای گرفتن شارد (Shards):** وقتی پشت سیستم نیستید، دستور `/afk` را بزنید. به ازای هر دقیقه حضور در منطقه AFK شارد رایگان می‌گیرید. با دستور `/shardshop` از
+1. **استفاده هوشمندانه از `/afk` برای گرفتن شارد (Shards):** وقتی پشت سیستم نیستید، دستور `/afk` را بزنید. به ازای هر دقیقه حضور در منطقه AFK شارد رایگان می‌گیرید. با دستور `/shardshop` از این شاردها برای خرید **اسپاونر (Spawner)** یا کلید کریت (Crate Key) استفاده کنید و آن‌ها را در `/ah` به قیمت میلیون‌ها دلار بفروشید.
+2. **تجارت در بخش سفارشات (`/orders`):** قبل از ساخت هر فارمی، دستور `/orders` را بزنید و ببینید پلیرهای ثروتمند برای کدام آیتم‌ها بالاترین قیمت خرید فوری را ثبت کرده‌اند (معمولاً آیتم‌هایی مثل **Totem of Undying**، **Gunpowder**، **Sugar Cane** و **Bone Block** تقاضای بسیار بالایی دارند).
+3. **ساخت مگافارم‌های خودکار در عمق زمین:** در فاصله حداقل ۱۰۰ هزار بلاکی از اسپاون (با دستور `/rtp`) و در ارتفاع نزدیک به بدراک، فارم‌های اتوماتیک کاکتوس، بامبو یا ندر وارت بسازید. برای ایده‌گرفتن از طراحی فارم‌ها حتماً به **[بانک جامع فارم‌های ماینکرفت](/farms-hub)** سر بزنید.
+4. **شکار اسپاونر با کلنگ Silk Touch:** در DonutSMP می‌توانید اسپاونرهای طبیعی و اسپاونرهای بیس‌های دیگران را با کلنگ دارای افسون **Silk Touch** بکنید و کنار هم قرار دهید تا سرعت تولید ماب‌ها چند برابر شود.
+
+---
+
+## ۴. مهم‌ترین دستورات کاربردی سرور DonutSMP
+
+| دستور (Command) | کاربرد در بازی |
+| :--- | :--- |
+| **`/rtp`** | تلپورت تصادفی به نقاط دوردست نقشه برای شروع بقا و ساخت بیس |
+| **`/sethome [name]`** | ذخیره مختصات بیس یا فارم (امکان ثبت چند Home بسته به رنک) |
+| **`/ah`** | باز کردن حراجی بازیکنان (Auction House) برای خرید و فروش آیتم |
+| **`/orders`** | مشاهده و ثبت سفارش خرید فوری آیتم‌ها به صورت عمده |
+| **`/shop`** | فروشگاه اصلی سرور برای خرید بلوک‌های پایه، غذا و آیتم‌های رداستونی |
+| **`/afk`** | انتقال به لابی AFK برای دریافت خودکار Shards |
+| **`/tpa [player]`** | ارسال درخواست تلپورت به دوستان (مراقب تله‌های TP-Trap باشید!) |
+
+---
+
+## ❓ سوالات متداول درباره سرور DonutSMP (FAQ)
+
+### ۱. آیا سرور دونات اس‌ام‌پی کرکی است؟
+خیر؛ سرور DonutSMP فقط از اکانت‌های **قانونی جاوا (Premium)** و اکانت‌های **رسمی بدراک (موبایل، ویندوز و کنسول)** پشتیبانی می‌کند. اگر اکانت پرمیوم ندارید، می‌توانید از سرورهای معرفی‌شده در **[هاب سرورهای ایرانی و کرکی](/servers-hub)** استفاده کنید.
+
+### ۲. چرا در DonutSMP دستور `/tpa` خطرناک است؟
+چون در این سرور سیستم محافظت زمین وجود ندارد، اگر درخواست تلپورت فرد غریبه‌ای را به داخل بیس خود قبول کنید (`tpaccept`)، او می‌تواند مختصات بیس شما را ذخیره کرده و با دوستانش تمام آیتم‌ها و اسپاونرهای شما را غارت کند!
+

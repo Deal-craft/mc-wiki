@@ -33,7 +33,7 @@ jobs:
         run: npm ci
       - name: Build with VitePress
         # نکته: اگر در package.json دستور شما "build" خالی است، خط زیر را به npm run build تغییر دهید
-        run: npx vitepress build
+        run: npm run docs:build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -1,1 +1,23 @@
-{"name":"پلی‌پدیا","short_name":"PlayPedia","icons":[{"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},{"src":"/android-chrome-512x512.png","sizes":"512x512","type":"image/png"}],"theme_color":"#ffffff","background_color":"#ffffff","display":"standalone"}
+{
+  "name": "پلی‌پدیا | مرجع تخصصی ماینکرفت",
+  "short_name": "PlayPedia",
+  "description": "مرجع تخصصی سرورها، دانلود ماد، بانک فارم‌ها و رفع ارورهای ماینکرفت",
+  "lang": "fa-IR",
+  "dir": "rtl",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#1bd96a",
+  "background_color": "#080b12",
+  "display": "standalone"
+}

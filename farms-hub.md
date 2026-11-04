@@ -1,7 +1,7 @@
 ---
-title: "بانک جامع فارم‌های ماینکرفت (جستجو، فیلتر و دانلود شماتیک)"
-description: "جستجو و فیلتر بهترین فارم‌های ماینکرفت ۱.۲۱ (آهن، طلا، XP، باروت و ویلجر) از ساده‌ترین فارم‌های روز اول تا خفن‌ترین مگافارم‌ها به همراه ویدیو و دانلود شماتیک."
-date: "2026-10-31"
+title: "بانک جامع فارم‌های ماینکرفت ۱.۲۱ (جستجو، فیلتر و آموزش گام‌به‌گام)"
+description: "جستجو و فیلتر بهترین فارم‌های ماینکرفت ۱.۲۱ (آهن، طلا، XP اندرمن و باروت کریپر) از ساده‌ترین فارم‌های روز اول تا خفن‌ترین مگافارم‌ها به همراه آموزش کامل ساخت."
+date: "2026-11-04"
 isHub: true
 ---
 
@@ -15,14 +15,14 @@ const selectedTier = ref('all')
 const selectedItem = ref('all')
 const searchQuery = ref('')
 
-// فارم‌های پیش‌فرض (اگر هنوز مقاله جداگانه برایشان نساخته‌اید هم نمایش داده می‌شوند)
-const defaultFarms = [
+// لیست فارم‌های تخصصی با لینک مستقیم به مقالات کامل آموزشی
+const curatedFarms = [
   {
-    url: '/farms-hub',
+    url: '/iron-farm#quad',
     frontmatter: {
       title: 'فارم آهن ۴ هسته‌ای با پیلجر (Quad Iron Farm)',
       description: 'استفاده از ترس پیلجر به جای زامبی برای اسپاون هم‌زمان ۴ آیرون گولم؛ مناسب کسانی که آهن بی‌نهایت می‌خواهند.',
-      date: '2026-10-30',
+      date: '2026-11-03',
       category: 'farms',
       edition: 'java',
       mcVersion: '1.21',
@@ -35,11 +35,11 @@ const defaultFarms = [
     }
   },
   {
-    url: '/farms-hub',
+    url: '/iron-farm#day1',
     frontmatter: {
       title: 'فارم آهن ساده روز اول بدون رداستون (Ianxofour)',
-      description: 'ساخت در ۱۰ دقیقه زیر زمین فقط با ۳ ویلجر و ۱ زامبی بدون نیاز به نیم‌تگ یا رداستون.',
-      date: '2026-10-29',
+      description: 'ساخت در ۱۰ دقیقه زیر زمین فقط با ۳ ویلجر و ۱ زامبی داخل قایق بدون نیاز به نیم‌تگ یا رداستون.',
+      date: '2026-11-03',
       category: 'farms',
       edition: 'java',
       mcVersion: '1.21',
@@ -52,11 +52,11 @@ const defaultFarms = [
     }
   },
   {
-    url: '/farms-hub',
+    url: '/iron-farm#bedrock',
     frontmatter: {
       title: 'فارم آهن استاندارد بدراک و موبایل (Bedrock Iron Farm)',
-      description: 'طراحی مخصوص نسخه موبایل، ویندوز و کنسول با ۲۰ تخت و ۲۰ میز کار بدون نیاز به زامبی.',
-      date: '2026-10-28',
+      description: 'طراحی مخصوص نسخه موبایل، ویندوز و کنسول با ۲۰ تخت و ۲۰ میز کار Fletching Table بدون نیاز به زامبی.',
+      date: '2026-11-03',
       category: 'farms',
       edition: 'bedrock',
       mcVersion: '1.21',
@@ -69,28 +69,28 @@ const defaultFarms = [
     }
   },
   {
-    url: '/farms-hub',
+    url: '/gold-xp-farm',
     frontmatter: {
-      title: 'مگا فارم طلا و XP روی سقف ندر (Gold & XP Portal Farm)',
-      description: 'پربازده‌ترین فارم بازی برای گرفتن هم‌زمان شمش طلا و رسیدن به لول ۳۰ در کمتر از ۱ دقیقه.',
-      date: '2026-10-27',
+      title: 'مگا فارم طلا و XP روی سقف ندر (Gold & XP Roof Farm)',
+      description: 'آموزش رفتن به بالای سقف ندر و ساخت پربازده‌ترین فارم بازی برای گرفتن شمش طلا و رسیدن به لول ۳۰ در ۱ دقیقه.',
+      date: '2026-11-02',
       category: 'farms',
       edition: 'java',
       mcVersion: '1.21',
       tier: 'biggest',
       itemType: 'gold',
       output: '+1200 شمش طلا در ساعت',
-      difficultyLabel: '⚡ مگا فارم (سنگین)',
+      difficultyLabel: '⚡ مگا فارم (سقف ندر)',
       hasVideo: true,
       hasSchematic: true
     }
   },
   {
-    url: '/farms-hub',
+    url: '/enderman-xp-farm',
     frontmatter: {
       title: 'فارم XP اندرمن در End (سریع‌ترین فارم تجربه)',
-      description: 'رسیدن از لول ۰ به ۳۰ در ۴۵ ثانیه تنها با یک Endermite و فرش در جزیره اِند.',
-      date: '2026-10-26',
+      description: 'رسیدن از لول ۰ به ۳۰ در ۴۵ ثانیه تنها با یک Endermite، ماین‌کارت و فرش در ارتفاع Y=1 جزیره اِند.',
+      date: '2026-11-01',
       category: 'farms',
       edition: 'java',
       mcVersion: '1.21',
@@ -103,11 +103,11 @@ const defaultFarms = [
     }
   },
   {
-    url: '/farms-hub',
+    url: '/creeper-farm',
     frontmatter: {
       title: 'فارم باروت و کریپر بدون گربه (Creeper Gunpowder Farm)',
-      description: 'تولید انبوه باروت برای ساخت فایروورک الایترا و TNT با سیستم جریان آب و ترپ‌دور.',
-      date: '2026-10-25',
+      description: 'تولید انبوه باروت برای ساخت فایروورک الایترا و TNT با سیستم جریان آب زمان‌بندی‌شده و ترپ‌دور.',
+      date: '2026-10-30',
       category: 'farms',
       edition: 'both',
       mcVersion: '1.21',
@@ -121,10 +121,11 @@ const defaultFarms = [
   }
 ]
 
-// ترکیب مقالات واقعی که شما نوشته‌اید با لیست پیش‌فرض
+// اگر کاربر در آینده مقاله فارم جدیدی اضافه کند، به صورت خودکار بدون تکرار به لیست اضافه می‌شود
+const existingBaseUrls = new Set(['/iron-farm', '/gold-xp-farm', '/enderman-xp-farm', '/creeper-farm', '/survival-guide'])
 const allFarmArticles = computed(() => {
-  const realPosts = posts.filter(p => p.frontmatter.category === 'farms')
-  return [...realPosts, ...defaultFarms]
+  const customNewFarms = posts.filter(p => p.frontmatter.category === 'farms' && !existingBaseUrls.has(p.url.replace(/\.html$/, '')))
+  return [...customNewFarms, ...curatedFarms]
 })
 
 const filteredFarms = computed(() => {
@@ -146,9 +147,9 @@ const filteredFarms = computed(() => {
 })
 </script>
 
-# 🌾 بانک جامع فارم‌های ماینکرفت (آموزش ویدیویی + دانلود شماتیک)
+# 🌾 بانک جامع فارم‌های ماینکرفت ۱.۲۱ (جستجو، فیلتر و آموزش کامل ساخت)
 
-فرقی نمی‌کند دنبال یک **فارم ساده برای روز اول** باشید یا یک **مگافارم خفن با دانلود شماتیک**؛ از فیلترهای زیر نوع فارم را انتخاب کنید و روی هر کارت کلیک کنید تا وارد صفحه آموزش کامل، ویدیو و دانلود فایل شماتیک آن شوید:
+فرقی نمی‌کند دنبال یک **فارم ساده برای روز اول** باشید یا یک **مگافارم خفن روی سقف ندر**؛ از فیلترهای زیر نوع فارم را انتخاب کنید و روی هر کارت کلیک کنید تا وارد صفحه **لیست آیتم‌ها، آموزش گام‌به‌گام ساخت و عیب‌یابی** آن شوید:
 
 <div class="mc-box" style="margin: 24px 0;">
 <div style="margin-bottom: 18px;">
@@ -188,9 +189,8 @@ const filteredFarms = computed(() => {
 <button @click="selectedItem = 'gold'" :class="['mc-btn', selectedItem === 'gold' ? 'mc-btn-primary' : 'mc-btn-glass']" style="padding: 6px 14px; font-size: 13px; cursor: pointer;">🪙 طلا و XP</button>
 <button @click="selectedItem = 'xp'" :class="['mc-btn', selectedItem === 'xp' ? 'mc-btn-primary' : 'mc-btn-glass']" style="padding: 6px 14px; font-size: 13px; cursor: pointer;">✨ تجربه (XP)</button>
 <button @click="selectedItem = 'gunpowder'" :class="['mc-btn', selectedItem === 'gunpowder' ? 'mc-btn-primary' : 'mc-btn-glass']" style="padding: 6px 14px; font-size: 13px; cursor: pointer;">🧨 باروت (Gunpowder)</button>
-<button @click="selectedItem = 'villager'" :class="['mc-btn', selectedItem === 'villager' ? 'mc-btn-primary' : 'mc-btn-glass']" style="padding: 6px 14px; font-size: 13px; cursor: pointer;">👨‍🌾 ویلجر و امرالد</button>
 </div>
-<input v-model="searchQuery" type="text" placeholder="🔍 نام فارم را بنویسید (مثلاً: آهن، Iron، اندرمن، طلا)..." style="width: 100%; padding: 12px 16px; border-radius: 12px; background: #080b12; border: 1.5px solid #1bd96a; color: #fff; font-size: 14.5px; font-family: inherit;" />
+<input v-model="searchQuery" type="text" placeholder="🔍 نام فارم را بنویسید (مثلاً: آهن، Iron، اندرمن، طلا، کریپر)..." style="width: 100%; padding: 12px 16px; border-radius: 12px; background: #080b12; border: 1.5px solid #1bd96a; color: #fff; font-size: 14.5px; font-family: inherit;" />
 </div>
 </div>
 
@@ -199,8 +199,8 @@ const filteredFarms = computed(() => {
 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
 <h4 style="margin: 0; font-size: 17px; color: #1bd96a;">{{ farm.frontmatter.title }}</h4>
 <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-<span v-if="farm.frontmatter.hasVideo" class="mc-tag mc-tag-purple">🎬 دارای ویدیوی آموزشی</span>
-<span v-if="farm.frontmatter.hasSchematic" class="mc-tag mc-tag-green">📐 دانلود شماتیک</span>
+<span class="mc-tag mc-tag-purple">📖 آموزش کامل ساخت</span>
+<span class="mc-tag mc-tag-green">📋 لیست دقیق آیتم‌ها</span>
 <span class="mc-tag mc-tag-blue">{{ farm.frontmatter.edition === 'both' ? 'Java & Bedrock' : (farm.frontmatter.edition === 'java' ? 'Java' : 'Bedrock') }} {{ farm.frontmatter.mcVersion }}</span>
 </div>
 </div>
@@ -210,7 +210,7 @@ const filteredFarms = computed(() => {
 <span v-if="farm.frontmatter.output">⚡ <b>بازدهی:</b> {{ farm.frontmatter.output }}</span>
 <span>🛠️ <b>مدل و سختی:</b> {{ farm.frontmatter.difficultyLabel }}</span>
 </div>
-<span style="color: #1bd96a; font-weight: 700;">مشاهده آموزش، ویدیو و شماتیک ←</span>
+<span style="color: #1bd96a; font-weight: 700;">ورود به صفحه آموزش ساخت فارم ←</span>
 </div>
 </a>
 </div>

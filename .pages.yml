@@ -9,10 +9,10 @@ content:
     path: ""
     filename: "{fields.slug}.md"
     view:
-      fields: [ title, date ]
+      fields: [ title, category, date ]
     fields:
       - name: slug
-        label: آدرس صفحه در مرورگر (URL انگلیسی - مثلا best-shaders)
+        label: آدرس صفحه در مرورگر (URL انگلیسی - مثلا hypixel)
         type: string
         description: فقط حروف انگلیسی کوچک و خط تیره بنویسید تا آدرس صفحه ساخته شود
         required: true
@@ -26,12 +26,6 @@ content:
         required: true
       - name: date
         label: تاریخ انتشار یا آپدیت
-        type: date
-      - name: body
-        label: متن کامل مقاله
-        type: rich-text
-- name: date
-        label: تاریخ انتشار
         type: date
         required: true
       - name: category
@@ -51,3 +45,6 @@ content:
       - name: badge
         label: برچسب کوتاه (مثلاً 1.21 Java)
         type: string
+      - name: body
+        label: متن کامل مقاله
+        type: rich-text

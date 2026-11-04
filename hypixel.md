@@ -1,0 +1,232 @@
+---
+title: "سرور هایپیکسل (Hypixel)؛ آی‌پی، آموزش ورود، گیم‌مودها و کاهش پینگ در ایران"
+description: "راهنمای جامع سرور هایپیکسل (mc.hypixel.net) در ماینکرفت: آموزش ورود، معرفی کامل SkyBlock و BedWars، مقایسه رنک‌ها (VIP و MVP+)، مادهای مجاز و کاهش پینگ در ایران."
+date: "2026-11-04"
+category: "servers"
+badge: "بزرگ‌ترین سرور جهان"
+head:
+  - - script
+    - type: application/ld+json
+    - |
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "آی‌پی سرور هایپیکسل (Hypixel IP) چیست؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "آی‌پی رسمی سرور هایپیکسل mc.hypixel.net است و برای ورود به آن نیاز به نسخه قانونی ماینکرفت جاوا (Java Edition) با ورژن 1.8.9 یا 1.20 تا 1.21 دارید."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "آیا می‌توان با موبایل یا اکانت کرکی وارد سرور هایپیکسل شد؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "خیر، سرور هایپیکسل فقط از نسخه پرمیوم (اورجینال) ماینکرفت جاوا روی کامپیوتر پشتیبانی می‌کند و برای نسخه موبایل (Bedrock) یا اکانت‌های کرکی در دسترس نیست."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "بهترین ورژن ماینکرفت برای بازی در هایپیکسل کدام است؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "برای مینی‌گیم‌های PvP مثل Bed Wars، SkyWars و Duels نسخه 1.8.9 بهترین انتخاب است؛ اما برای بخش‌های جدید SkyBlock و Build Battle استفاده از نسخه 1.21 پیشنهاد می‌شود."
+            }
+          }
+        ]
+      }
+---
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import { fetchServerLiveStatus } from './.vitepress/theme/liveServerStatus.js'
+
+const copiedText = ref('')
+const livePlayersLabel = ref('+۴۵,۰۰۰ تا ۱۰۰,۰۰۰ پلیر آنلاین')
+const isLiveFetched = ref(false)
+
+const copyToClipboard = (text, label) => {
+  navigator.clipboard.writeText(text)
+  copiedText.value = label
+  setTimeout(() => { copiedText.value = '' }, 2000)
+}
+
+onMounted(async () => {
+  const res = await fetchServerLiveStatus('mc.hypixel.net', false)
+  if (res && res.online) {
+    livePlayersLabel.value = `${res.label} (هم‌اکنون در سرور)`
+    isLiveFetched.value = true
+  }
+})
+</script>
+
+# ⚡ سرور هایپیکسل (Hypixel)؛ آی‌پی، آموزش کامل ورود، رازهای SkyBlock و کاهش پینگ
+
+<div class="mc-box" style="margin: 20px 0 32px; border: 2px solid #fbbf24; background: radial-gradient(circle at 50% 0%, rgba(251, 191, 36, 0.16), rgba(15, 21, 35, 0.98) 75%);">
+<div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 18px;">
+<div style="width: 68px; height: 68px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #0f172a; border: 2px solid #fbbf24; border-radius: 16px; box-shadow: 0 8px 20px rgba(251, 191, 36, 0.28);">
+<svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="8" y="8" width="48" height="48" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2.5"/>
+<path d="M18 16H26V28H38V16H46V48H38V36H26V48H18V16Z" fill="url(#hypixelGold)"/>
+<defs>
+<linearGradient id="hypixelGold" x1="18" y1="16" x2="46" y2="48" gradientUnits="userSpaceOnUse">
+<stop offset="0%" stop-color="#fde047"/>
+<stop offset="50%" stop-color="#f59e0b"/>
+<stop offset="100%" stop-color="#d97706"/>
+</linearGradient>
+</defs>
+</svg>
+</div>
+<div>
+<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+<h2 style="margin: 0 !important; font-size: 22px !important; color: #fff; border: none !important; padding: 0 !important;">اطلاعات اتصال سریع به سرور Hypixel</h2>
+<span class="mc-tag mc-tag-green" style="display: inline-flex; align-items: center;"><span class="mc-live-dot"></span> {{ livePlayersLabel }}</span>
+</div>
+<p style="margin: 4px 0 0 !important; font-size: 13.5px; color: #94a3b8;">دارنده ۴ رکورد گینس | بزرگ‌ترین شبکه مینی‌گیم و SkyBlock ماینکرفت در جهان</p>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 16px;">
+<div style="background: rgba(8, 11, 18, 0.85); border: 1px solid rgba(251, 191, 36, 0.3); padding: 14px; border-radius: 14px; display: flex; justify-content: space-between; align-items: center;">
+<div>
+<div style="font-size: 12px; color: #94a3b8;">💻 آی‌پی رسمی سرور (Java IP Address):</div>
+<code style="font-size: 16px; font-weight: 900; color: #fbbf24;">mc.hypixel.net</code>
+</div>
+<button @click="copyToClipboard('mc.hypixel.net', 'ip')" class="mc-btn mc-btn-primary" style="padding: 8px 14px; font-size: 12.5px; cursor: pointer; border: none;">
+{{ copiedText === 'ip' ? '✅ کپی شد!' : '📋 کپی IP' }}
+</button>
+</div>
+<div style="background: rgba(8, 11, 18, 0.85); border: 1px solid rgba(255,255,255,0.1); padding: 14px; border-radius: 14px; display: flex; justify-content: space-between; align-items: center;">
+<div>
+<div style="font-size: 12px; color: #94a3b8;">🌐 سایت و انجمن رسمی هایپیکسل:</div>
+<code style="font-size: 15px; font-weight: 800; color: #38bdf8;">hypixel.net</code>
+</div>
+<a href="https://hypixel.net/" target="_blank" rel="noopener" class="mc-btn mc-btn-glass" style="padding: 8px 14px; font-size: 12.5px;">
+🔗 ورود به سایت
+</a>
+</div>
+</div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap; font-size: 13px;">
+<span class="mc-tag mc-tag-blue">🎮 بهترین ورژن: 1.8.9 (PvP) و 1.21.x (SkyBlock)</span>
+<span class="mc-tag mc-tag-amber">🔒 وضعیت اکانت: فقط پرمیوم (Java Original)</span>
+<span class="mc-tag mc-tag-purple">⚔️ گیم‌مودها: SkyBlock / BedWars / SkyWars / Duels</span>
+</div>
+</div>
+
+## ۱. سرور هایپیکسل (Hypixel) چیست و چرا پادشاه سرورهای ماینکرفت است؟
+
+سرور **[هایپیکسل (Hypixel)](https://hypixel.net/)** بزرگ‌ترین، شلوغ‌ترین و پرافتخارترین سرور تاریخ بازی ماینکرفت است که در آوریل ۲۰۱۳ توسط **Simon Collins-Laflamme** و **Philippe Touchette** راه‌اندازی شد. این سرور که در ابتدا به‌عنوان کانالی برای ساخت مپ‌های ماجراجویی (Adventure Maps) در یوتیوب شروع به کار کرد، امروز دارای **۴ رکورد رسمی در کتاب گینس (Guinness World Records)** از جمله «محبوب‌ترین سرور مستقل یک بازی ویدیویی» است و در ساعات اوج خود میزبان بیش از **۴۵,۰۰۰ تا ۱۰۰,۰۰۰ بازیکن هم‌زمان** است.
+
+برخلاف سرورهای معمولی بقا، هایپیکسل یک **شبکه عظیم مینی‌گیم و نقش‌آفرینی (Network Server)** است که تمام گیم‌مودهای آن با پلاگین‌های اختصاصی سرور کدنویسی شده‌اند؛ یعنی برای تجربه بازی‌های پیچیده‌ای مثل **SkyBlock** یا **Bed Wars** نیازی به نصب هیچ ماد اجباری روی کلاینت خود ندارید و تنها با داشتن اکانت قانونی نسخه جاوا می‌توانید وارد آن شوید.
+
+| مشخصات فنی و پایه سرور | مقدار / وضعیت در هایپیکسل |
+| :--- | :--- |
+| **آدرس آی‌پی اصلی (Server IP)** | `mc.hypixel.net` |
+| **سایت و انجمن رسمی** | [hypixel.net](https://hypixel.net/) و [تالار گفت‌وگوی رسمی](https://hypixel.net/forums/) |
+| **صفحه وضعیت لحظه‌ای سرورها** | [status.hypixel.net](https://status.hypixel.net/) |
+| **نسخه مورد نیاز (Edition)** | فقط **Minecraft: Java Edition** (کامپیوتر / لپ‌تاپ) |
+| **ورژن‌های پشتیبانی‌شده** | نسخه **1.8.9** و نسخه‌های جدید **1.20.x تا 1.21.x** |
+| **وضعیت اکانت (Cracked / Premium)** | **فقط اکانت قانونی (Premium / Microsoft Account)** |
+| **موقعیت دیتاسنتر اصلی** | شیکاگو، آمریکا (با لایه محافظتی جهانی Cloudflare Spectrum) |
+
+## ۲. آموزش گام‌به‌گام ورود به سرور هایپیکسل + انتخاب بهترین ورژن بازی
+
+طبق [راهنمای رسمی اتصال به سرور هایپیکسل](https://support.hypixel.net/hc/en-us/articles/360019495360-How-to-Join-the-Hypixel-Server)، برای ورود به سرور مراحل زیر را دنبال کنید:
+
+1. **اجرای بازی با اکانت قانونی:** ابتدا لانچر خود را باز کرده و با اکانت مایکروسافت (دارای لایسنس رسمی جاوا) وارد شوید. اگر به دنبال لانچرهای سبک و بهینه برای سیستم‌های ضعیف یا PvP هستید، حتماً راهنمای **[مقایسه بهترین لانچرهای ماینکرفت (Prism و Lunar Client)](/launchers-guide)** را مطالعه کنید.
+2. **افزودن آی‌پی سرور:** از منوی اصلی وارد بخش **Multiplayer** شوید، روی دکمه **Add Server** کلیک کنید و در کادر **Server Address** عبارت دقیق `mc.hypixel.net` را قرار دهید.
+3. **تنظیم Server Resource Packs:** گزینه **Server Resource Packs** را روی حالت **Enabled (فعال)** بگذارید تا تکسچرپک‌های اختصاصی گیم‌مودهایی مثل **Turbo Kart Racers**، **Cops and Crims** و **Blocking Dead** به صورت خودکار دانلود شوند.
+
+### با چه ورژنی وارد هایپیکسل شویم؟ (1.8.9 یا 1.21؟)
+
+یکی از مهم‌ترین رازهای موفقیت بازیکنان حرفه‌ای در هایپیکسل، انتخاب ورژن ماینکرفت متناسب با گیم‌مود است:
+
+| هدف و سبک بازی شما | بهترین ورژن پیشنهادی | دلیل فنی و تاثیر در گیم‌پلی |
+| :--- | :--- | :--- |
+| **مینی‌گیم‌های PvP (Bed Wars، SkyWars، Duels، The Pit)** | **نسخه `1.8.9`** (با Lunar یا Badlion) | موتور مبارزات هایپیکسل بر پایه سیستم PvP نسخه ۱.۸ طراحی شده است؛ در نسخه 1.8.9 تاخیر شمشیر (Attack Cooldown) وجود ندارد، دفاع با شمشیر (Sword BlockHitting) دقیق کار می‌کند و باگ گیر کردن در بلوک‌ها (Ghost Blocks هنگام بریج زدن) رخ نمی‌دهد. |
+| **هایپیکسل اسکای‌بلاک (Hypixel SkyBlock)** | **نسخه `1.8.9` یا `1.21.x`** | تا سال‌ها نسخه 1.8.9 به خاطر مادهای فورج محبوب‌ترین نسخه اسکای‌بلاک بود، اما جزایر جدید اسکای‌بلاک (مثل آپدیت Foraging و جزیره Galatea) نیازمند بلوک‌ها و موتور **نسخه `1.21+` به همراه Fabric** هستند. |
+| **مینی‌گیم‌های ساخت‌وساز و بقا (Build Battle، SMP، Housing)** | **نسخه `1.20.x` تا `1.21.x`** | دسترسی کامل به تمام بلوک‌های تزئینی جدید ماینکرفت برای ساخت‌وساز و شرکت در رقابت‌های Build Battle. |
+
+> **نکته مهم درباره اکانت‌های کرکی:** سرور هایپیکسل به دلیل اتصال مستقیم به سرورهای احراز هویت مایکروسافت (Mojang Session Servers)، به هیچ عنوان با اکانت‌های کرکی (Offline) باز نمی‌شود و ارور `Failed to verify username` یا `Not authenticated with Mojang.net` می‌دهد. اگر اکانت پرمیوم ندارید، می‌توانید از سرورهای شلوغ معرفی‌شده در **[هاب جامع سرورهای ماینکرفت (ایرانی و کرکی)](/servers-hub)** استفاده کنید یا در **[سایت رایگان آترنوس (Aternos)](/aternos)** سرور شخصی بسازید.
+
+## ۳. معرفی کامل محبوب‌ترین گیم‌مودهای هایپیکسل (از SkyBlock تا BedWars)
+
+در لابی اصلی هایپیکسل با کلیک راست روی قطب‌نما (**Game Menu**)، به بیش از ۳۰ بازی اصلی و ده‌ها زیرشاخه در [انجمن و بخش بازی‌های هایپیکسل](https://hypixel.net/forums/) دسترسی دارید:
+
+| نام گیم‌مود (Game Mode) | سبک بازی | میانگین محبوبیت | خلاصه مکانیک و هدف بازی |
+| :--- | :--- | :--- | :--- |
+| **Hypixel SkyBlock** | MMORPG / اقتصادی / بقا | ⭐⭐⭐⭐⭐ (شلوغ‌ترین) | دنیای نقش‌آفرینی عظیم با سیستم مهارت‌ها (Skills)، مینیون‌ها، سیاه‌چاله‌ها (Dungeons)، باس‌فایت‌ها و بازار بورس زنده. |
+| **[Bed Wars](https://hypixel.net/bed-wars/)** | PvP استراتژیک تیمی | ⭐⭐⭐⭐⭐ | محافظت از تخت تیمی، جمع‌آوری آهن، طلا، دایموند و امرالد از ژنراتورها و نابود کردن تخت حریفان در حالت‌های ۱ تا ۴ نفره. |
+| **SkyWars** | نبرد سریع روی جزایر معلق | ⭐⭐⭐⭐⭐ | لوت کردن سریع چست‌ها در جزیره خود، حمله به جزیره وسط (Mid) برای آیتم‌های قوی و حذف رقبا در کمتر از ۳ دقیقه. |
+| **Murder Mystery** | معمایی و استنتاج اجتماعی | ⭐⭐⭐⭐ | بازی در سه نقش قاتل (Murderer)، کارآگاه (Detective) و شهروند بی‌گناه (Innocent)؛ جمع کردن ۱۰ طلا برای گرفتن کمان. |
+| **Duels** | دوئل‌های ۱ به ۱ و تمرین PvP | ⭐⭐⭐⭐⭐ | رقابت مستقیم در سبک‌های Classic، UHC، Bridge، Sumo، Boxing و SkyWars Duels برای افزایش مهارت مبارزه. |
+| **Build Battle** | رقابت خلاقانه ساخت‌وساز | ⭐⭐⭐⭐ | ساخت بهترین سازه مرتبط با موضوع انتخاب‌شده در زمان محدود (۵ تا ۷ دقیقه) و امتیازدهی توسط بازیکنان. |
+| **Arcade & Party Games** | مینی‌گیم‌های تفریحی و گروهی | ⭐⭐⭐⭐ | شامل ده‌ها بازی شاد و سریع مثل Zombies، Blocking Dead، Hide and Seek، Pixel Painters و Prop Hunt. |
+| **Hypixel SMP & Housing** | بقا با دوستان / ساخت مپ | ⭐⭐⭐⭐ | ساخت سرور بقای خصوصی رایگان داخل هایپیکسل با دوستان (`SMP`) یا طراحی پارکور و خانه‌های عمومی (`Housing`). |
+
+### کالبدشکافی گیم‌مود Hypixel SkyBlock (چرا میلیون‌ها نفر معتاد آن هستند؟)
+
+برخلاف اسکای‌بلاک سنتی ماینکرفت که فقط روی یک جزیره کوچک با یک درخت و سطل لاوا خلاصه می‌شد، **Hypixel SkyBlock** عملاً یک بازی مستقل در سبک **MMORPG** (شبیه World of Warcraft یا Destiny) داخل ماینکرفت است:
+
+* **سیستم مهارت‌ها (Skills) و کالکشن‌ها (Collections):** شما در ۸ مهارت اصلی شامل **Combat (مبارزه)**، **Mining (معدن‌کاری در Dwarven Mines و Crystal Hollows)**، **Farming (کشاورزی در The Garden)**، **Foraging (چوب‌بری)**، **Fishing (ماهی‌گیری)**، **Enchanting**، **Alchemy** و **Catacombs (دانجن)** لول‌آپ می‌شوید و با باز کردن کالکشن هر آیتم، دستور ساخت سلاح‌ها و زره‌های افسانه‌ای را باز می‌کنید.
+* **مینیون‌ها (Minions)؛ کارگران ۲۴ ساعته شما:** حتی زمانی که کامپیوتر شما خاموش است و در بازی حضور ندارید، مینیون‌ها در جزیره شخصی شما مشغول استخراج منابع و پر کردن صندوق‌ها هستند. (اگر به طراحی فارم‌های اتوماتیک در دنیای بقا علاقه دارید، حتماً به **[بانک جامع فارم‌های ماینکرفت](/farms-hub)** هم سر بزنید).
+* **اقتصاد پویا؛ Bazaar و Auction House (`/ah`):** در اسکای‌بلاک دو بازار مالی واقعی وجود دارد؛ **Bazaar** که مثل بورس کالا برای خرید و فروش آنی مواد اولیه بر اساس عرضه و تقاضا کار می‌کند، و **Auction House** که حراجی آیتم‌های کمیاب، پت‌ها (Pets) و شمشیرهای قدرتمندی مثل **Hyperion** و **Terminator** است.
+* **سیاه‌چاله‌ها (Catacombs Dungeons) و باس‌های Slayer:** در بخش Dungeons با تیم ۵ نفره در ۵ کلاس (**Mage، Archer، Berserk، Tank و Healer**) وارد طبقات ۱ تا ۷ (و Master Mode) می‌شوید، پازل‌ها را حل می‌کنید و با باس نهایی مثل **Necron** می‌جنگید.
+
+### نکات طلایی برای پیروزی در Bed Wars و SkyWars
+
+1. **مدیریت ژنراتور و محافظت اولیه از تخت (Bed Defense):** در شروع بازی [Bed Wars](https://hypixel.net/bed-wars/) در نقشه‌های سریع (Fast Iron)، تنها با **۴ یا ۸ شمش آهن**، ۱۶ یا ۳۲ پشم بخرید، یک لایه ساده پشم یا چوب+پشم دور تخت بکشید و بلافاصله به سمت جزیره دایموند یا تیم کناری راش (Rush) بدهید؛ ساختن قلعه‌های چندلایه در دقیقه اول وقت شما را تلف می‌کند!
+2. **یادگیری تکنیک Speedbridge (Ninja Bridging):** به جای نگه داشتن دائمی دکمه Shift هنگام پل زدن، در لبه هر بلاک دکمه Shift را رها کرده و دوباره بگیرید تا سرعت پل زدن شما ۲.۵ برابر شود.
+3. **اولویت ارتقای تیمی با دایموند (Diamond Upgrades):** همیشه اولین دایموندها را در Bed Wars صرف خرید **Protection I**، **Sharpness** و تله **Miner Fatigue Trap** کنید تا در صورت حمله دشمن به بیس شما، سرعت کندن تخت به شدت کاهش یابد.
+
+## ۴. راهنمای کاهش پینگ، رفع لگ و حل مشکل اتصال به هایپیکسل در ایران
+
+از آنجا که دیتاسنتر اصلی هایپیکسل در آمریکای شمالی قرار دارد و ترافیک آن از شبکه محافظتی **Cloudflare Spectrum** عبور می‌کند، پینگ بازیکنان ایرانی در حالت عادی بین **۱۵۰ تا ۲۲۰ میلی‌ثانیه** است و گاهی هنگام ورود با خطای `Internal Exception: java.net.SocketException: Connection reset` یا `Disconnected` مواجه می‌شوند. برای حل قطعی این مشکلات:
+
+* **استفاده از DNS و سرویس‌های کاهش پینگ گیمینگ:** برای رفع خطای `Connection reset` که ناشی از اختلال روی آی‌پی‌های کلودفلر است، ابتدا دی‌ان‌اس‌های گیمینگ را تست کنید و در صورت ادامه اختلال، از سرویس‌های مسیریابی گیمینگ (تغییر روت شبکه به اروپا/آمریکا) استفاده کنید. برای مشاهده جدول کامل کدهای خطا، به صفحه **[مرجع رفع ارورهای ماینکرفت و جاوا](/errors-fix)** مراجعه کنید.
+* **افزایش ۳ برابری FPS در لابی‌های شلوغ و SkyBlock:** لابی‌های هایپیکسل و جزیره Hub در اسکای‌بلاک به دلیل حضور صدها بازیکن و آرموراستندهای متحرک، فشار زیادی به پردازنده وارد می‌کنند. حتماً از پکیج بهینه‌ساز **Fabric + Sodium + Lithium + FerriteCore** که لینک دانلود مستقیم آن‌ها را در **[مرکز دانلود ماد و شیدرپک](/mods-hub)** قرار داده‌ایم استفاده کنید.
+* **غیرفعال کردن نمایش پلیرها در لابی:** در لابی‌های هایپیکسل روی آیتم **Player Visibility (رنگ سبز/خاکستری در اسلات نهم هات‌بار)** کلیک راست کنید تا بازیکنان لابی مخفی شوند و فریم‌ریت شما فوراً دو برابر شود.
+
+## ۵. بررسی و مقایسه رنک‌های هایپیکسل (VIP، MVP+ و MVP++)
+
+خرید رنک در هایپیکسل هیچ مزیت ناعادلانه‌ای در قدرت شمشیر یا زره در بازی‌های PvP ایجاد نمی‌کند (مطابق قانون EULA ماینکرفت، سرور Pay-to-Win نیست)، اما امکانات فوق‌العاده‌ای برای راحتی بازیکن، شخصی‌سازی و قابلیت‌های SkyBlock باز می‌کند:
+
+| نام رنک | نوع پرداخت | رنگ نام در چت | مهم‌ترین قابلیت‌ها و مزایا در سرور و SkyBlock |
+| :--- | :--- | :--- | :--- |
+| **Default (بدون رنک)** | رایگان | خاکستری | دسترسی به تمام مینی‌گیم‌ها (با تاخیر ۳ ثانیه‌ای چت و صف ورود در ساعات شلوغی SkyBlock). |
+| **VIP** | دائمی (Lifetime) | سبز روشن (`[VIP]`) | حذف تاخیر ۳ ثانیه‌ای چت، پرواز (`/fly`) در لابی‌ها، ورود بدون نوبت به سرور، باز شدن **Quick Crafting** و اسلات بیشتر در **Wardrobe** اسکای‌بلاک. |
+| **VIP+** | دائمی (Lifetime) | سبز با `+` نارنجی | تمام مزایای VIP + امکان ساخت گیلد (**Create Guild**)، پت اختصاصی Ocelot و اسلات‌های بیشتر در کمد زره اسکای‌بلاک. |
+| **MVP** | دائمی (Lifetime) | آبی آسمانی (`[MVP]`) | تمام مزایای VIP+ + باز کردن جعبه‌های ۵ ستاره Mystery Box و باز شدن کامل ۱۸ اسلات کمد زره (**Wardrobe**) در اسکای‌بلاک. |
+| **MVP+** | دائمی (Lifetime) | آبی با `+` قابل تغییر | **محبوب‌ترین و به‌صرفه‌ترین رنک:** قابلیت انتخاب نقشه دلخواه (**Map Selector**) به صورت نامحدود در Bed Wars و SkyWars، استفاده از **Epic Travel Scrolls** در اسکای‌بلاک (تلپورت مستقیم به نقاط مهم) و تغییر رنگ علامت `+` با بالا رفتن لول. |
+| **MVP++** | اشتراک ماهانه / سالانه | طلایی (`[MVP++]`) | نیازمند داشتن رنک MVP+؛ قابلیت ساخت بازی خصوصی (**`/p private`** برای بازی بدون ثبت آمار با دوستان)، تغییر نام و اسکین ناشناس در بازی (**`/nick`**) و استریم عمومی (`/stream`). |
+
+## ۶. قوانین آنتی‌چیت Watchdog و لیست مادهای مجاز و ممنوع
+
+سیستم امنیتی هایپیکسل ترکیبی از آنتی‌چیت هوشمند **Watchdog**، سیستم بازبینی ویدیویی بازیکنان (**Atlas**) و بررسی ادمین‌هاست. طبق [قوانین رسمی سرور هایپیکسل](https://support.hypixel.net/hc/en-us/articles/4427624493330-Hypixel-Server-Rules) و [راهنمای مادهای مجاز هایپیکسل (Allowed Modifications)](https://support.hypixel.net/hc/en-us/articles/6472550754962-Hypixel-Allowed-Modifications)، قوانین زیر خط قرمز سرور هستند:
+
+* **مادها و کلاینت‌های ۱۰۰٪ مجاز و امن:**
+  * کلاینت‌های استاندارد PvP مثل **Lunar Client** و **Badlion Client** (که مادهای غیرمجاز را به صورت خودکار روی هایپیکسل قفل می‌کنند).
+  * مادهای بهینه‌سازی فریم‌ریت و گرافیک (**Sodium**، **OptiFine**، **Iris**، **Lithium**، **FerriteCore**).
+  * مادهای نمایش وضعیت زره و افکت‌ها (**ArmorStatus**، **StatusEffect**، **Keystrokes**، **ToggleSprint** ساده).
+  * مادهای راهنمای SkyBlock مثل **SkyblockAddons (SBA)**، **NotEnoughUpdates (NEU)**، **SkyHanni** و **Skyblocker** (به شرطی که هیچ کلیک خودکاری انجام ندهند).
+* **موارد اکیداً ممنوع (خطر بن ۳۰ روزه تا دائمی Watchdog):**
+  * هرگونه **Auto-Clicker**، ماکروی موس/کیبورد، یا گذاشتن وزنه روی دکمه موس برای فارم کردن در SkyBlock.
+  * ماد **Freelook (چرخاندن ۳۶۰ درجه دوربین بدون چرخش سر کاراکتر)** که در هایپیکسل ممنوع شده است.
+  * قابلیت **Printer** در مادهای شماتیک (Schematica / Litematica Printer) که به صورت خودکار بلوک می‌گذارد.
+  * خرید و فروش کوین SkyBlock با پول واقعی (**IRL Trading**) یا انتقال منابع بین پروفایل‌ها صرفاً برای پولدار کردن یک پروفایل (**Profile Boosting**) — مشابه قوانینی که در مقاله **[بررسی سرور DonutSMP و قوانین خرید و فروش پول بازی](/donut-smp)** توضیح دادیم.
+
+## ۷. سوالات متداول درباره سرور هایپیکسل (FAQ)
+
+### ۱. آیا می‌توان با موبایل (ماینکرفت بدراک / پاکت ادیشن) وارد هایپیکسل شد؟
+خیر؛ سرور هایپیکسل در حال حاضر **فقط از نسخه جاوا (Java Edition)** روی کامپیوتر پشتیبانی می‌کند و نسخه رسمی موبایل یا کنسول ندارد (تیم هایپیکسل بین سال‌های ۲۰۱۵ تا ۲۰۱۷ سرور Pocket Edition داشت اما آن را تعطیل کرد). مراقب سرورهای جعلی یا ابزارهای تبدیل پروتکل مثل Geyser برای ورود به هایپیکسل باشید، زیرا تفاوت پکت‌های حرکتی بدراک با جاوا باعث می‌شود آنتی‌چیت Watchdog فوراً اکانت شما را به اتهام تقلب (Cheat) بن کند!
+
+### ۲. چرا هنگام ورود به هایپیکسل ارور Security Alert (بن امنیتی) می‌گیرم؟
+وقتی آی‌پی شما در مدت کوتاه بین چند کشور مختلف جابه‌جا شود یا از VPNهای عمومیِ رایگان استفاده کنید که قبلاً هکرها با همان آی‌پی در هایپیکسل بن شده‌اند، سیستم امنیتی حساب شما را با پیام **Account Security Alert** قفل می‌کند تا از هک شدن اکانت جلوگیری کند. برای رفع آن، وارد [بخش پشتیبانی و Ban Appeal در سایت هایپیکسل](https://hypixel.net/forums/) شوید، رمز اکانت مایکروسافت خود را عوض کنید و درخواست رفع مسدودیت ثبت کنید (پس از تایید، بن دائمی شما به یک دوره انتظار ۷ یا ۱۴ روزه تبدیل و سپس باز می‌شود).
+
+### ۳. چطور در هایپیکسل اسکای‌بلاک (SkyBlock) سریع پولدار شویم؟
+در روزهای اول بازی، سریع‌ترین روش کسب درآمد **باز کردن بخش Bazaar (رسیدن به لول ۷ در SkyBlock Level)** و انجام **Bazaar Flipping** (خرید آیتم‌ها با Buy Order و فروش با Sell Offer)، استخراج Ender Nodes در جزیره **The End**، و راه‌اندازی مزرعه در بخش **The Garden** است. پس از رسیدن به لول ۱۲ ماینینگ، استخراج در **Dwarven Mines** و **Crystal Hollows** به یکی از پایدارترین منابع درآمد ساعتی تبدیل می‌شود.
+
+### ۴. اگر اکانت قانونی (پرمیوم) نداریم، بهترین جایگزین کرکی هایپیکسل چیست؟
+اگر می‌خواهید مینی‌گیم‌هایی مثل **Bed Wars**، **SkyBlock** و **Survival** را با اکانت کرکی و پینگ زیر ۳۰ میلی‌ثانیه تجربه کنید، می‌توانید وارد سرورهای ایرانی و جهانی معرفی‌شده در **[هاب جامع سرورهای ماینکرفت](/servers-hub)** شوید یا اگر گروهی از دوستان هستید، با مطالعه **[راهنمای خرید سرور پولی و VPS ماینکرفت](/paid-servers)** سرور اختصاصی خودتان را راه‌اندازی کنید.
