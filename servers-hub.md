@@ -3,7 +3,6 @@ title: "لیست سرورهای ماینکرفت (ایرانی و جهانی ب�
 description: "لیست شلوغ‌ترین سرورهای ماینکرفت ایرانی و جهانی با بررسی لحظه‌ای تعداد دقیق پلیرهای آنلاین هر سرور، فیلتر کرکی، جاوا و بدراک و آموزش ساخت سرور."
 date: "2026-11-04"
 isHub: true
-aside: false
 ---
 
 <script setup>
@@ -176,79 +175,78 @@ const serverArticles = computed(() => {
 
 <!-- نوار فیلتر تک‌ردیفه و منظم -->
 <div class="mc-filter-bar" id="سرورهای-ایرانی">
-  <input
-    v-model="searchQuery"
-    type="text"
-    class="mc-search-input"
-    placeholder="جستجوی نام سرور، IP یا گیم‌مود (مثلاً BedWars)..."
-  />
-  <select v-model="regionFilter" class="mc-filter-select">
-    <option value="all">همه منطقه‌ها (ایران و جهان)</option>
-    <option value="iran">فقط سرورهای ایرانی</option>
-    <option value="global">فقط سرورهای جهانی</option>
-  </select>
-  <select v-model="platformFilter" class="mc-filter-select">
-    <option value="all">همه پلتفرم‌ها (Java & Bedrock)</option>
-    <option value="java">کامپیوتر (Java)</option>
-    <option value="bedrock">موبایل (Bedrock)</option>
-  </select>
-  <select v-model="accessFilter" class="mc-filter-select">
-    <option value="all">همه اکانت‌ها (کرکی و پرمیوم)</option>
-    <option value="cracked">فقط کرکی (Cracked)</option>
-    <option value="premium">فقط پرمیوم (Original)</option>
-  </select>
-  <select v-model="sortBy" class="mc-filter-select">
-    <option value="players">مرتب‌سازی: بیشترین پلیر آنلاین</option>
-    <option value="popularity">مرتب‌سازی: محبوب‌ترین</option>
-  </select>
+<input
+v-model="searchQuery"
+type="text"
+class="mc-search-input"
+placeholder="جستجوی نام سرور، IP یا گیم‌مود (مثلاً BedWars)..."
+/>
+<select v-model="regionFilter" class="mc-filter-select">
+<option value="all">همه منطقه‌ها (ایران و جهان)</option>
+<option value="iran">فقط سرورهای ایرانی</option>
+<option value="global">فقط سرورهای جهانی</option>
+</select>
+<select v-model="platformFilter" class="mc-filter-select">
+<option value="all">همه پلتفرم‌ها (Java & Bedrock)</option>
+<option value="java">کامپیوتر (Java)</option>
+<option value="bedrock">موبایل (Bedrock)</option>
+</select>
+<select v-model="accessFilter" class="mc-filter-select">
+<option value="all">همه اکانت‌ها (کرکی و پرمیوم)</option>
+<option value="cracked">فقط کرکی (Cracked)</option>
+<option value="premium">فقط پرمیوم (Original)</option>
+</select>
+<select v-model="sortBy" class="mc-filter-select">
+<option value="players">مرتب‌سازی: بیشترین پلیر آنلاین</option>
+<option value="popularity">مرتب‌سازی: محبوب‌ترین</option>
+</select>
 </div>
 
 <!-- لیست تمیز و خلوت سرورها -->
 <div class="mc-item-list">
-  <div v-for="srv in filteredServers" :key="srv.ip" class="mc-list-item">
-    <div class="mc-item-info">
-      <div>
-        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px;">
-          <h4 style="margin: 0 !important;">{{ srv.name }}</h4>
-          <span :class="['mc-tag', srv.online ? 'mc-tag-green' : 'mc-tag-red']">
-            <span :class="srv.online ? 'mc-live-dot' : 'mc-live-dot-offline'"></span>
-            {{ srv.statusText }}
-          </span>
-          <span class="mc-tag mc-tag-gray">
-            {{ srv.cracked ? 'کرکی' : 'پرمیوم' }} · {{ srv.platform === 'both' ? 'Java & Bedrock' : (srv.platform === 'java' ? 'Java' : 'Bedrock') }}
-          </span>
-        </div>
-        <p>
-          <span>گیم‌مودها: {{ srv.modes }}</span>
-          <template v-if="srv.platform !== 'java'"> · پورت موبایل: <code>{{ srv.port }}</code></template>
-        </p>
-      </div>
-    </div>
-
-    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-      <code style="background: #0b0f17; padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); color: #34d399; font-size: 13.5px; font-weight: 700;">{{ srv.ip }}</code>
-      <button @click="copyIp(srv.ip)" class="mc-btn mc-btn-primary" style="cursor: pointer;">
-        {{ copiedIp === srv.ip ? 'کپی شد ✓' : 'کپی IP' }}
-      </button>
-      <a v-if="srv.url" :href="srv.url" class="mc-btn mc-btn-glass">
-        بررسی و آموزش
-      </a>
-    </div>
-  </div>
+<div v-for="srv in filteredServers" :key="srv.ip" class="mc-list-item">
+<div class="mc-item-info">
+<div>
+<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px;">
+<h4 style="margin: 0 !important;">{{ srv.name }}</h4>
+<span :class="['mc-tag', srv.online ? 'mc-tag-green' : 'mc-tag-red']">
+<span :class="srv.online ? 'mc-live-dot' : 'mc-live-dot-offline'"></span>
+{{ srv.statusText }}
+</span>
+<span class="mc-tag mc-tag-gray">
+{{ srv.cracked ? 'کرکی' : 'پرمیوم' }} · {{ srv.platform === 'both' ? 'Java & Bedrock' : (srv.platform === 'java' ? 'Java' : 'Bedrock') }}
+</span>
+</div>
+<p>
+<span>گیم‌مودها: {{ srv.modes }}</span>
+<template v-if="srv.platform !== 'java'"> · پورت موبایل: <code>{{ srv.port }}</code></template>
+</p>
+</div>
+</div>
+<div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+<code style="background: #0b0f17; padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); color: #34d399; font-size: 13.5px; font-weight: 700;">{{ srv.ip }}</code>
+<button @click="copyIp(srv.ip)" class="mc-btn mc-btn-primary" style="cursor: pointer;">
+{{ copiedIp === srv.ip ? 'کپی شد ✓' : 'کپی IP' }}
+</button>
+<a v-if="srv.url" :href="srv.url" class="mc-btn mc-btn-glass">
+بررسی و آموزش
+</a>
+</div>
+</div>
 </div>
 
 ## راهنماهای سرور و ساخت سرور اختصاصی
 
 <div class="mc-item-list" style="margin-top: 14px;">
-  <a v-for="post in serverArticles" :key="post.url" :href="post.url" class="mc-list-item">
-    <div class="mc-item-info">
-      <div>
-        <h4>{{ post.frontmatter.title }}</h4>
-        <p>{{ post.frontmatter.description }}</p>
-      </div>
-    </div>
-    <span v-if="post.frontmatter.badge" class="mc-tag mc-tag-blue">{{ post.frontmatter.badge }}</span>
-  </a>
+<a v-for="post in serverArticles" :key="post.url" :href="post.url" class="mc-list-item">
+<div class="mc-item-info">
+<div>
+<h4>{{ post.frontmatter.title }}</h4>
+<p>{{ post.frontmatter.description }}</p>
+</div>
+</div>
+<span v-if="post.frontmatter.badge" class="mc-tag mc-tag-blue">{{ post.frontmatter.badge }}</span>
+</a>
 </div>
 
 <h2 id="ثبت-سرور">ثبت رایگان سرور در پلی‌پدیا</h2>

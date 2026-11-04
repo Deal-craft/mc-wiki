@@ -68,25 +68,25 @@ onMounted(async () => {
 # سرور هایپیکسل (Hypixel)؛ آی‌پی، آموزش ورود، گیم‌مودها و کاهش پینگ
 
 <div class="mc-server-header-card">
-  <div>
-    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px;">
-      <strong style="font-size: 17px; color: #f8fafc;">Hypixel Network</strong>
-      <span :class="['mc-tag', isOnline ? 'mc-tag-green' : 'mc-tag-red']">
-        <span :class="isOnline ? 'mc-live-dot' : 'mc-live-dot-offline'"></span>
-        {{ liveStatus }}
-      </span>
-      <span class="mc-tag mc-tag-gray">Java 1.8.9 - 1.21.x (پرمیوم)</span>
-    </div>
-    <div style="font-size: 13px; color: #94a3b8;">
-      بزرگ‌ترین سرور ماینکرفت جهان · SkyBlock, BedWars, SkyWars, Duels
-    </div>
-  </div>
-  <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-    <code style="background: #0b0f17; padding: 7px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); color: #34d399; font-size: 14.5px; font-weight: 700;">mc.hypixel.net</code>
-    <button @click="copyIp" class="mc-btn mc-btn-primary" style="cursor: pointer;">
-      {{ copied ? 'کپی شد ✓' : 'کپی IP' }}
-    </button>
-  </div>
+<div>
+<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px;">
+<strong style="font-size: 17px; color: #f8fafc;">Hypixel Network</strong>
+<span :class="['mc-tag', isOnline ? 'mc-tag-green' : 'mc-tag-red']">
+<span :class="isOnline ? 'mc-live-dot' : 'mc-live-dot-offline'"></span>
+{{ liveStatus }}
+</span>
+<span class="mc-tag mc-tag-gray">Java 1.8.9 - 1.21.x (پرمیوم)</span>
+</div>
+<div style="font-size: 13px; color: #94a3b8;">
+بزرگ‌ترین سرور ماینکرفت جهان · SkyBlock, BedWars, SkyWars, Duels
+</div>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+<code style="background: #0b0f17; padding: 7px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); color: #34d399; font-size: 14.5px; font-weight: 700;">mc.hypixel.net</code>
+<button @click="copyIp" class="mc-btn mc-btn-primary" style="cursor: pointer;">
+{{ copied ? 'کپی شد ✓' : 'کپی IP' }}
+</button>
+</div>
 </div>
 
 ## ۱. سرور هایپیکسل (Hypixel) چیست و چرا پادشاه سرورهای ماینکرفت است؟
@@ -181,15 +181,15 @@ onMounted(async () => {
 سیستم امنیتی هایپیکسل ترکیبی از آنتی‌چیت هوشمند **Watchdog**، سیستم بازبینی ویدیویی بازیکنان (**Atlas**) و بررسی ادمین‌هاست. طبق [قوانین رسمی سرور هایپیکسل](https://support.hypixel.net/hc/en-us/articles/4427624493330-Hypixel-Server-Rules) و [راهنمای مادهای مجاز هایپیکسل (Allowed Modifications)](https://support.hypixel.net/hc/en-us/articles/6472550754962-Hypixel-Allowed-Modifications)، قوانین زیر خط قرمز سرور هستند:
 
 * **مادها و کلاینت‌های ۱۰۰٪ مجاز و امن:**
-  * کلاینت‌های استاندارد PvP مثل **Lunar Client** و **Badlion Client** (که مادهای غیرمجاز را به صورت خودکار روی هایپیکسل قفل می‌کنند).
-  * مادهای بهینه‌سازی فریم‌ریت و گرافیک (**Sodium**، **OptiFine**، **Iris**، **Lithium**، **FerriteCore**).
-  * مادهای نمایش وضعیت زره و افکت‌ها (**ArmorStatus**، **StatusEffect**، **Keystrokes**، **ToggleSprint** ساده).
-  * مادهای راهنمای SkyBlock مثل **SkyblockAddons (SBA)**، **NotEnoughUpdates (NEU)**، **SkyHanni** و **Skyblocker** (به شرطی که هیچ کلیک خودکاری انجام ندهند).
+* کلاینت‌های استاندارد PvP مثل **Lunar Client** و **Badlion Client** (که مادهای غیرمجاز را به صورت خودکار روی هایپیکسل قفل می‌کنند).
+* مادهای بهینه‌سازی فریم‌ریت و گرافیک (**Sodium**، **OptiFine**، **Iris**، **Lithium**، **FerriteCore**).
+* مادهای نمایش وضعیت زره و افکت‌ها (**ArmorStatus**، **StatusEffect**، **Keystrokes**، **ToggleSprint** ساده).
+* مادهای راهنمای SkyBlock مثل **SkyblockAddons (SBA)**، **NotEnoughUpdates (NEU)**، **SkyHanni** و **Skyblocker** (به شرطی که هیچ کلیک خودکاری انجام ندهند).
 * **موارد اکیداً ممنوع (خطر بن ۳۰ روزه تا دائمی Watchdog):**
-  * هرگونه **Auto-Clicker**، ماکروی موس/کیبورد، یا گذاشتن وزنه روی دکمه موس برای فارم کردن در SkyBlock.
-  * ماد **Freelook (چرخاندن ۳۶۰ درجه دوربین بدون چرخش سر کاراکتر)** که در هایپیکسل ممنوع شده است.
-  * قابلیت **Printer** در مادهای شماتیک (Schematica / Litematica Printer) که به صورت خودکار بلوک می‌گذارد.
-  * خرید و فروش کوین SkyBlock با پول واقعی (**IRL Trading**) یا انتقال منابع بین پروفایل‌ها صرفاً برای پولدار کردن یک پروفایل (**Profile Boosting**) — مشابه قوانینی که در مقاله **[بررسی سرور DonutSMP و قوانین خرید و فروش پول بازی](/donut-smp)** توضیح دادیم.
+* هرگونه **Auto-Clicker**، ماکروی موس/کیبورد، یا گذاشتن وزنه روی دکمه موس برای فارم کردن در SkyBlock.
+* ماد **Freelook (چرخاندن ۳۶۰ درجه دوربین بدون چرخش سر کاراکتر)** که در هایپیکسل ممنوع شده است.
+* قابلیت **Printer** در مادهای شماتیک (Schematica / Litematica Printer) که به صورت خودکار بلوک می‌گذارد.
+* خرید و فروش کوین SkyBlock با پول واقعی (**IRL Trading**) یا انتقال منابع بین پروفایل‌ها صرفاً برای پولدار کردن یک پروفایل (**Profile Boosting**) — مشابه قوانینی که در مقاله **[بررسی سرور DonutSMP و قوانین خرید و فروش پول بازی](/donut-smp)** توضیح دادیم.
 
 ## ۷. سوالات متداول درباره سرور هایپیکسل (FAQ)
 

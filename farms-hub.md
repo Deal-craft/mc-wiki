@@ -3,7 +3,6 @@ title: "بانک جامع فارم‌های ماینکرفت ۱.۲۱ (آموزش
 description: "جستجو و فیلتر بهترین فارم‌های ماینکرفت ۱.۲۱ (آهن، طلا، XP اندرمن و باروت کریپر) از ساده‌ترین فارم‌های روز اول تا مگافارم‌ها به همراه لیست آیتم‌ها."
 date: "2026-11-04"
 isHub: true
-aside: false
 ---
 
 <script setup>
@@ -126,47 +125,47 @@ const filteredFarms = computed(() => {
 
 <!-- نوار فیلتر تک‌ردیفه و خلوت -->
 <div class="mc-filter-bar">
-  <input
-    v-model="searchQuery"
-    type="text"
-    class="mc-search-input"
-    placeholder="جستجوی نام فارم (مثلاً آهن، طلا، اندرمن، باروت)..."
-  />
-  <select v-model="selectedItem" class="mc-filter-select">
-    <option value="all">همه آیتم‌ها</option>
-    <option value="iron">آهن (Iron)</option>
-    <option value="gold">طلا (Gold)</option>
-    <option value="xp">تجربه (XP)</option>
-    <option value="gunpowder">باروت (Gunpowder)</option>
-  </select>
-  <select v-model="selectedEdition" class="mc-filter-select">
-    <option value="all">همه نسخه‌ها (Java & Bedrock)</option>
-    <option value="java">مخصوص جاوا (PC)</option>
-    <option value="bedrock">مخصوص بدراک (موبایل/کنسول)</option>
-  </select>
-  <select v-model="selectedTier" class="mc-filter-select">
-    <option value="all">همه سطوح سختی</option>
-    <option value="easiest">آسان و سریع (روز اول)</option>
-    <option value="best">پربازده و استاندارد</option>
-    <option value="biggest">مگافارم حرفه‌ای</option>
-  </select>
+<input
+v-model="searchQuery"
+type="text"
+class="mc-search-input"
+placeholder="جستجوی نام فارم (مثلاً آهن، طلا، اندرمن، باروت)..."
+/>
+<select v-model="selectedItem" class="mc-filter-select">
+<option value="all">همه آیتم‌ها</option>
+<option value="iron">آهن (Iron)</option>
+<option value="gold">طلا (Gold)</option>
+<option value="xp">تجربه (XP)</option>
+<option value="gunpowder">باروت (Gunpowder)</option>
+</select>
+<select v-model="selectedEdition" class="mc-filter-select">
+<option value="all">همه نسخه‌ها (Java & Bedrock)</option>
+<option value="java">مخصوص جاوا (PC)</option>
+<option value="bedrock">مخصوص بدراک (موبایل/کنسول)</option>
+</select>
+<select v-model="selectedTier" class="mc-filter-select">
+<option value="all">همه سطوح سختی</option>
+<option value="easiest">آسان و سریع (روز اول)</option>
+<option value="best">پربازده و استاندارد</option>
+<option value="biggest">مگافارم حرفه‌ای</option>
+</select>
 </div>
 
 <!-- لیست خلوت و منظم فارم‌ها -->
 <div class="mc-item-list">
-  <a v-for="(farm, idx) in filteredFarms" :key="idx" :href="farm.url" class="mc-list-item">
-    <div class="mc-item-info">
-      <div>
-        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px;">
-          <h4 style="margin: 0 !important;">{{ farm.frontmatter.title }}</h4>
-          <span v-if="farm.frontmatter.output" class="mc-tag mc-tag-green">{{ farm.frontmatter.output }}</span>
-          <span class="mc-tag mc-tag-gray">
-            {{ farm.frontmatter.edition === 'both' ? 'Java & Bedrock' : (farm.frontmatter.edition === 'java' ? 'Java' : 'Bedrock') }} {{ farm.frontmatter.mcVersion }}
-          </span>
-        </div>
-        <p>{{ farm.frontmatter.description }}</p>
-      </div>
-    </div>
-    <span class="mc-btn mc-btn-glass" style="white-space: nowrap;">آموزش ساخت ←</span>
-  </a>
+<a v-for="(farm, idx) in filteredFarms" :key="idx" :href="farm.url" class="mc-list-item">
+<div class="mc-item-info">
+<div>
+<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px;">
+<h4 style="margin: 0 !important;">{{ farm.frontmatter.title }}</h4>
+<span v-if="farm.frontmatter.output" class="mc-tag mc-tag-green">{{ farm.frontmatter.output }}</span>
+<span class="mc-tag mc-tag-gray">
+{{ farm.frontmatter.edition === 'both' ? 'Java & Bedrock' : (farm.frontmatter.edition === 'java' ? 'Java' : 'Bedrock') }} {{ farm.frontmatter.mcVersion }}
+</span>
+</div>
+<p>{{ farm.frontmatter.description }}</p>
+</div>
+</div>
+<span class="mc-btn mc-btn-glass" style="white-space: nowrap;">آموزش ساخت ←</span>
+</a>
 </div>

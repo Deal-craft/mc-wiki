@@ -528,3 +528,16 @@ html, body {
     overflow-x: auto;
   }
 }
+
+
+.VPDoc .content {
+  min-width: 0 !important;
+}
+
+.mc-list-item,
+.mc-filter-bar,
+.mc-box,
+.mc-server-header-card {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}

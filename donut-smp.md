@@ -34,28 +34,28 @@ onMounted(async () => {
 # سرور دونات اس ام پی (DonutSMP)؛ آی‌پی، آموزش کامل و کسب درآمد
 
 <div class="mc-server-header-card">
-  <div>
-    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px;">
-      <strong style="font-size: 17px; color: #f8fafc;">DonutSMP Server</strong>
-      <span :class="['mc-tag', isOnline ? 'mc-tag-green' : 'mc-tag-red']">
-        <span :class="isOnline ? 'mc-live-dot' : 'mc-live-dot-offline'"></span>
-        {{ liveStatus }}
-      </span>
-      <span class="mc-tag mc-tag-gray">Java & Bedrock (پورت موبایل: 19132)</span>
-    </div>
-    <div style="font-size: 13px; color: #94a3b8;">
-      محبوب‌ترین سرور بقا و اقتصادی جهان · Hardcore SMP, Economy, Crystal PvP
-    </div>
-  </div>
-  <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-    <code style="background: #0b0f17; padding: 7px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); color: #34d399; font-size: 14.5px; font-weight: 700;">donutsmp.net</code>
-    <button @click="copyText('donutsmp.net', 'ip')" class="mc-btn mc-btn-primary" style="cursor: pointer;">
-      {{ copied === 'ip' ? 'کپی شد ✓' : 'کپی IP' }}
-    </button>
-    <button @click="copyText('19132', 'port')" class="mc-btn mc-btn-glass" style="cursor: pointer;">
-      {{ copied === 'port' ? 'پورت کپی شد ✓' : 'کپی پورت موبایل' }}
-    </button>
-  </div>
+<div>
+<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px;">
+<strong style="font-size: 17px; color: #f8fafc;">DonutSMP Server</strong>
+<span :class="['mc-tag', isOnline ? 'mc-tag-green' : 'mc-tag-red']">
+<span :class="isOnline ? 'mc-live-dot' : 'mc-live-dot-offline'"></span>
+{{ liveStatus }}
+</span>
+<span class="mc-tag mc-tag-gray">Java & Bedrock (پورت موبایل: 19132)</span>
+</div>
+<div style="font-size: 13px; color: #94a3b8;">
+محبوب‌ترین سرور بقا و اقتصادی جهان · Hardcore SMP, Economy, Crystal PvP
+</div>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+<code style="background: #0b0f17; padding: 7px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); color: #34d399; font-size: 14.5px; font-weight: 700;">donutsmp.net</code>
+<button @click="copyText('donutsmp.net', 'ip')" class="mc-btn mc-btn-primary" style="cursor: pointer;">
+{{ copied === 'ip' ? 'کپی شد ✓' : 'کپی IP' }}
+</button>
+<button @click="copyText('19132', 'port')" class="mc-btn mc-btn-glass" style="cursor: pointer;">
+{{ copied === 'port' ? 'پورت کپی شد ✓' : 'کپی پورت موبایل' }}
+</button>
+</div>
 </div>
 
 سرور **دونات اس‌ام‌پی (DonutSMP)** یکی از شلوغ‌ترین و هیجان‌انگیزترین سرورهای بقا (Survival) و اقتصادی ماینکرفت در جهان است که توسط یوتیوبر معروف **DrDonutt** راه‌اندازی شده است. بر خلاف سرورهای معمولی، در این سرور همه چیز حول محور **ساخت بیس‌های مخفی، غارت (Raid) بیس دیگران، سیستم اقتصادی سنگین و نبردهای PvP با کریستال** می‌چرخد.
