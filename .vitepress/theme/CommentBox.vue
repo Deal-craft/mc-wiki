@@ -8,6 +8,7 @@
       <p style="margin-top: 8px !important;">سوال، تجربه، آی‌پی سرور یا ترفند جدیدی برای این بخش دارید؟ اینجا بنویسید تا سایر پلیرها استفاده کنند.</p>
     </div>
 
+    <!-- فرم ارسال سریع نظر / لینک فایل -->
     <div class="mc-comment-form">
       <div class="mc-form-row">
         <input v-model="name" type="text" placeholder="نام یا آیدی ماینکرفت شما (مثلاً Amir_MC)..." class="mc-input" />
@@ -22,22 +23,32 @@
       <textarea v-model="text" rows="3" placeholder="متن نظر، سوال، مشخصات سرور یا ترفند خود را اینجا بنویسید..." class="mc-input mc-textarea"></textarea>
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
         <button @click="addComment" class="mc-btn mc-btn-primary" style="border:none; cursor:pointer;">ارسال دیدگاه در ویکی 🚀</button>
-        <span v-if="submittedMsg" style="color: var(--mc-accent); font-size: 13.5px; font-weight: 700;">{{ submittedMsg }}</span>
+        <span v-if="submittedMsg" style="color: #1bd96a; font-size: 13.5px; font-weight: 700;">{{ submittedMsg }}</span>
       </div>
     </div>
 
+    <!-- لیست نظرات ثبت‌شده -->
     <div class="mc-comments-list">
       <div v-for="(c, idx) in comments" :key="c.id || idx" class="mc-comment-item">
         <div class="mc-comment-top">
           <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
             <b>👤 {{ c.name }}</b>
-            <span v-if="c.date" class="mc-comment-date">{{ c.date }}</span>
+            <span v-if="c.date" style="font-size: 11.5px; color: #64748b;">{{ c.date }}</span>
           </div>
           <div style="display: flex; align-items: center; gap: 8px;">
             <span class="mc-tag mc-tag-green">{{ c.type }}</span>
             <button
               @click="toggleLike(idx)"
-              :class="['mc-like-btn', { 'is-liked': c.liked }]"
+              :style="{
+                background: c.liked ? 'rgba(27, 217, 106, 0.2)' : 'var(--mc-btn-glass-bg)',
+                border: c.liked ? '1px solid #1bd96a' : '1px solid var(--mc-border-strong)',
+                color: c.liked ? 'var(--mc-accent)' : 'var(--mc-text-muted)',
+                padding: '3px 10px',
+                borderRadius: '8px',
+                fontSize: '12px',
+                cursor: 'pointer',
+                fontFamily: 'inherit'
+              }"
             >
               👍 {{ c.likes || 0 }}
             </button>
@@ -47,6 +58,7 @@
       </div>
     </div>
 
+    <!-- بخش اختیاری Giscus (در صورت فعال‌سازی در تنظیمات پایین فایل) -->
     <div v-if="GISCUS_CONFIG.enabled" ref="giscusContainer" style="margin-top: 28px;"></div>
   </div>
 </template>
@@ -55,6 +67,9 @@
 import { ref, watch, onMounted } from 'vue'
 import { useRoute, useData } from 'vitepress'
 
+// راهنمای اتصال به GitHub Discussions (Giscus):
+// اگر در آینده خواستید نظرات روی سرور گیت‌هاب هم ذخیره شوند، کافی است در ریپازیتوری خود قابلیت Discussions را روشن کنید،
+// از سایت giscus.app مقادیر repo و repoId را بگیرید و enabled را روی true بگذارید:
 const GISCUS_CONFIG = {
   enabled: false,
   repo: 'USERNAME/REPO_NAME',
@@ -175,7 +190,7 @@ onMounted(() => {
     script.setAttribute('data-reactions-enabled', '1')
     script.setAttribute('data-emit-metadata', '0')
     script.setAttribute('data-input-position', 'top')
-    script.setAttribute('data-theme', 'preferred_color_scheme')
+    script.setAttribute('data-theme', 'dark_dimmed')
     script.setAttribute('data-lang', 'fa')
     script.crossOrigin = 'anonymous'
     script.async = true
@@ -183,7 +198,92 @@ onMounted(() => {
   }
 })
 
-watch(() => route.path, () => {
-  loadComments()
-})
+watch(() => route.path, loadComments)
 </script>
+
+<style scoped>
+.mc-comments-wrapper {
+  margin-top: 48px;
+  padding: 24px;
+  background: var(--mc-bg-card);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--mc-border-strong);
+  box-shadow: var(--mc-shadow);
+  border-radius: 16px;
+  direction: rtl;
+  text-align: right;
+}
+.mc-comments-header {
+  margin-bottom: 18px;
+}
+.mc-comments-header h3 {
+  color: var(--mc-text-strong) !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+}
+.mc-comments-header p {
+  color: var(--mc-text-muted) !important;
+  font-size: 13.5px;
+}
+.mc-comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.mc-form-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.mc-input {
+  background: var(--mc-bg-input);
+  border: 1px solid var(--mc-border-strong);
+  color: var(--mc-text-strong);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  flex: 1;
+}
+.mc-input::placeholder {
+  color: var(--mc-text-muted);
+}
+.mc-input:focus {
+  outline: none;
+  border-color: #1bd96a;
+}
+.mc-textarea {
+  width: 100%;
+  resize: vertical;
+}
+.mc-comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.mc-comment-item {
+  background: var(--mc-bg-subtle);
+  border: 1px solid var(--mc-border);
+  padding: 14px 18px;
+  border-radius: 14px;
+}
+.mc-comment-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.mc-comment-top b {
+  color: var(--mc-accent);
+  font-size: 14.5px;
+}
+.mc-comment-item p {
+  margin: 0 !important;
+  font-size: 14px;
+  color: var(--mc-text-body);
+  line-height: 1.8;
+}
+</style>

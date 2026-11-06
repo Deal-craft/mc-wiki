@@ -1,6 +1,5 @@
 /* ==========================================================================
    پلی‌پدیا (PlayPedia) — طراحی اختصاصی پورتال گیمینگ ماینکرفت (Dark & Light)
-   بدون ظاهر کلیشه‌ای هوش مصنوعی + لایه شفاف برای دیده شدن کامل انیمیشن پس‌زمینه
    ========================================================================== */
 
 :root {
@@ -11,7 +10,6 @@
   --vp-c-brand-3: #047857;
   --vp-c-brand-soft: rgba(16, 185, 129, 0.14);
 
-  /* متغیرهای لایت مود (تم روشن کوارتز و کاغذی با کنتراست بسیار بالا و خوانا) */
   --vp-c-bg: #f1f5f9;
   --vp-c-bg-alt: #e2e8f0;
   --vp-c-bg-elv: rgba(255, 255, 255, 0.94);
@@ -54,7 +52,6 @@
   --vp-c-brand-3: #059669;
   --vp-c-brand-soft: rgba(27, 217, 106, 0.14);
 
-  /* متغیرهای دارک مود (تم ابسیدین و دیپ‌استون به سبک Modrinth) */
   --vp-c-bg: #080a0f;
   --vp-c-bg-alt: #0e1118;
   --vp-c-bg-elv: #141822;
@@ -91,7 +88,6 @@
   --mc-btn-glass-border: rgba(255, 255, 255, 0.14);
 }
 
-/* مهم: قرار دادن رنگ پایه روی html و شفاف کردن لایه‌های VitePress تا انیمیشن پس‌زمینه صددرصد دیده شود */
 html {
   overflow-x: hidden !important;
   max-width: 100vw !important;
@@ -116,7 +112,6 @@ body {
   color: var(--mc-text-body);
 }
 
-/* ===== ۰. لایه انیمیشن پس‌زمینه (ذرات نورانی، شبکه ووکسل و هاله‌های نوری) ===== */
 .mc-bg-wrapper {
   position: fixed !important;
   inset: 0 !important;
@@ -189,7 +184,6 @@ html:not(.dark) .mc-bg-glow-3 {
   background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, rgba(124, 58, 237, 0) 70%);
 }
 
-/* قرار گرفتن محتوای سایت روی لایه انیمیشن پس‌زمینه */
 .VPNav,
 .VPLocalNav,
 .VPSidebar,
@@ -211,7 +205,6 @@ html:not(.dark) .mc-bg-glow-3 {
   border-bottom: 1px solid var(--mc-border) !important;
 }
 
-/* ===== ۱. هدر و نوار منوی گیمینگ (سازگار با لایت و دارک مود) ===== */
 .VPNavBar {
   backdrop-filter: blur(16px) !important;
   background-color: var(--mc-bg-nav) !important;
@@ -249,7 +242,6 @@ html:not(.dark) .mc-bg-glow-3 {
   border-color: var(--mc-accent-bright) !important;
 }
 
-/* ===== ۲. تایپوگرافی و خوانایی صفحات مقاله ===== */
 .vp-doc {
   direction: rtl;
   text-align: right;
@@ -330,7 +322,6 @@ html:not(.dark) .mc-bg-glow-3 {
   border-bottom: none !important;
 }
 
-/* ===== ۳. پورتال جدید گیمینگ صفحه اصلی (Command-Center Layout) ===== */
 .mc-portal {
   max-width: 1140px;
   margin: 0 auto;
@@ -446,7 +437,6 @@ html:not(.dark) .mc-bg-glow-3 {
   margin-bottom: 22px;
 }
 
-/* دکمه‌های برجسته گیمینگ به سبک Modrinth / Minecraft UI */
 .mc-btn-3d {
   display: inline-flex;
   align-items: center;
@@ -517,7 +507,6 @@ html:not(.dark) .mc-bg-glow-3 {
   background: var(--mc-border-strong);
 }
 
-/* پنل چپ هدر: رادار زنده سرورها */
 .mc-hero-radar {
   background: var(--mc-bg-card);
   backdrop-filter: blur(16px);
@@ -630,7 +619,6 @@ html:not(.dark) .mc-bg-glow-3 {
   filter: brightness(1.08);
 }
 
-/* ===== ۴. کارت‌های ۴گانه با رنگ‌بندی کمیابی ماینکرفت (Rarity Tiers) ===== */
 .mc-section {
   margin-bottom: 36px;
 }
@@ -670,12 +658,14 @@ html:not(.dark) .mc-bg-glow-3 {
 }
 
 .mc-cat-svg-icon {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 20px;
+  font-weight: 900;
 }
 
 .mc-tier-badge {
@@ -686,14 +676,12 @@ html:not(.dark) .mc-bg-glow-3 {
   border-radius: 5px;
 }
 
-/* Tier 1: Emerald (Servers) */
 .mc-tier-emerald { border-top: 3px solid #1bd96a; }
 .mc-tier-emerald:hover { border-color: #1bd96a; }
 .mc-tier-emerald .mc-cat-svg-icon { background: rgba(27, 217, 106, 0.14); color: var(--mc-accent); }
 .mc-tier-emerald .mc-tier-badge { background: rgba(27, 217, 106, 0.12); color: var(--mc-accent); }
 .mc-tier-emerald .mc-card-footer { color: var(--mc-accent); }
 
-/* Tier 2: Amethyst (Mods & Shaders) */
 .mc-tier-amethyst { border-top: 3px solid #a855f7; }
 .mc-tier-amethyst:hover { border-color: #a855f7; }
 .mc-tier-amethyst .mc-cat-svg-icon { background: rgba(168, 85, 247, 0.14); color: #9333ea; }
@@ -703,7 +691,6 @@ html:not(.dark) .mc-bg-glow-3 {
 .mc-tier-amethyst .mc-card-footer { color: #9333ea; }
 .dark .mc-tier-amethyst .mc-card-footer { color: #c084fc; }
 
-/* Tier 3: Gold (Farms 1.21) */
 .mc-tier-gold { border-top: 3px solid #f59e0b; }
 .mc-tier-gold:hover { border-color: #f59e0b; }
 .mc-tier-gold .mc-cat-svg-icon { background: rgba(245, 158, 11, 0.15); color: #d97706; }
@@ -713,7 +700,6 @@ html:not(.dark) .mc-bg-glow-3 {
 .mc-tier-gold .mc-card-footer { color: #d97706; }
 .dark .mc-tier-gold .mc-card-footer { color: #fbbf24; }
 
-/* Tier 4: Diamond (Errors & FPS) */
 .mc-tier-diamond { border-top: 3px solid #38bdf8; }
 .mc-tier-diamond:hover { border-color: #38bdf8; }
 .mc-tier-diamond .mc-cat-svg-icon { background: rgba(56, 189, 248, 0.15); color: #0284c7; }
@@ -756,7 +742,6 @@ html:not(.dark) .mc-bg-glow-3 {
   transform: translateX(-4px);
 }
 
-/* ===== ۵. بخش دوگانه پایین صفحه اصلی (مقالات + تقلب‌نامه سریع ۱.۲۱) ===== */
 .mc-dual-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -849,7 +834,6 @@ html:not(.dark) .mc-bg-glow-3 {
   color: var(--mc-text-muted);
 }
 
-/* ===== ۶. دکمه‌ها، فیلترها و آیتم‌های صفحات هاب ===== */
 .mc-btn {
   padding: 9px 18px;
   border-radius: 8px;
@@ -1017,7 +1001,6 @@ html:not(.dark) .mc-bg-glow-3 {
   direction: ltr;
 }
 
-/* تگ‌ها و نشانگر زنده */
 .mc-tag {
   font-size: 11.5px;
   font-weight: 700;
@@ -1064,137 +1047,6 @@ html:not(.dark) .mc-bg-glow-3 {
 @keyframes mcPulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.35; }
-}
-
-/* ===== ۷. استایل کامل بخش دیدگاه‌ها (CommentBox.vue) ===== */
-.mc-comments-wrapper {
-  margin-top: 48px;
-  padding: 24px;
-  background: var(--mc-bg-card);
-  backdrop-filter: blur(14px);
-  border: 1px solid var(--mc-border-strong);
-  box-shadow: var(--mc-shadow);
-  border-radius: 14px;
-  direction: rtl;
-  text-align: right;
-}
-
-.mc-comments-header h3 {
-  font-size: 18px !important;
-  font-weight: 800 !important;
-  color: var(--mc-text-strong) !important;
-}
-
-.mc-comments-header p {
-  font-size: 13.5px;
-  color: var(--mc-text-muted);
-  margin-bottom: 16px !important;
-}
-
-.mc-comment-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 14px;
-  margin-bottom: 24px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--mc-border);
-}
-
-.mc-form-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.mc-input {
-  flex: 1;
-  min-width: 200px;
-  padding: 10px 14px;
-  border-radius: 8px;
-  background: var(--mc-bg-input);
-  border: 1px solid var(--mc-border-strong);
-  color: var(--mc-text-strong);
-  font-family: inherit;
-  font-size: 13.5px;
-}
-
-.mc-input::placeholder {
-  color: var(--mc-text-muted);
-}
-
-.mc-input:focus {
-  outline: none;
-  border-color: var(--mc-accent-bright);
-}
-
-.mc-select {
-  flex: 0 0 auto;
-  min-width: 190px;
-  cursor: pointer;
-}
-
-.mc-textarea {
-  width: 100%;
-  resize: vertical;
-  min-height: 84px;
-}
-
-.mc-comments-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.mc-comment-item {
-  background: var(--mc-bg-subtle);
-  border: 1px solid var(--mc-border);
-  border-radius: 10px;
-  padding: 14px 16px;
-}
-
-.mc-comment-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.mc-comment-top b {
-  color: var(--mc-text-strong);
-  font-size: 14px;
-}
-
-.mc-comment-date {
-  font-size: 11.5px;
-  color: var(--mc-text-muted);
-}
-
-.mc-comment-item p {
-  margin: 0 !important;
-  font-size: 14px;
-  color: var(--mc-text-body);
-  line-height: 1.75;
-}
-
-.mc-like-btn {
-  background: var(--mc-btn-glass-bg);
-  border: 1px solid var(--mc-btn-glass-border);
-  color: var(--mc-text-muted);
-  padding: 3px 10px;
-  border-radius: 6px;
-  font-size: 12px;
-  cursor: pointer;
-  font-family: inherit;
-}
-
-.mc-like-btn.is-liked {
-  background: rgba(27, 217, 106, 0.16);
-  border-color: #1bd96a;
-  color: var(--mc-accent);
-  font-weight: 700;
 }
 
 .mc-empty-state {

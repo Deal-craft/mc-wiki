@@ -5,10 +5,7 @@ const HUB_PAGES = [
   '/servers-hub',
   '/mods-hub',
   '/farms-hub',
-  '/errors-fix',
-  '/markdown-examples',
-  '/api-examples',
-  '/404'
+  '/errors-fix'
 ]
 
 export default createContentLoader('*.md', {
@@ -19,7 +16,6 @@ export default createContentLoader('*.md', {
         return (
           !HUB_PAGES.includes(cleanUrl) &&
           !page.frontmatter.isHub &&
-          !page.frontmatter.isRedirect &&
           page.frontmatter.title
         )
       })
@@ -30,15 +26,16 @@ export default createContentLoader('*.md', {
           description: page.frontmatter.description || '',
           date: page.frontmatter.date || '2026-10-20',
           category: page.frontmatter.category || 'general',
-          edition: page.frontmatter.edition || 'both',
-          mcVersion: page.frontmatter.mcVersion || '1.21',
-          tier: page.frontmatter.tier || 'easiest',
-          itemType: page.frontmatter.itemType || 'other',
-          output: page.frontmatter.output || '',
+          // فیلدهای اختصاصی برای فیلتر هاب فارم و ماد
+          edition: page.frontmatter.edition || 'both',       // java | bedrock | both
+          mcVersion: page.frontmatter.mcVersion || '1.21',   // 1.21 | 1.20 | 1.19
+          tier: page.frontmatter.tier || 'easiest',          // best | easiest | biggest
+          itemType: page.frontmatter.itemType || 'other',    // iron | gold | xp | gunpowder | villager
+          output: page.frontmatter.output || '',             // مثلاً: +1500 آهن در ساعت
           difficultyLabel: page.frontmatter.difficultyLabel || 'متوسط',
           hasVideo: Boolean(page.frontmatter.videoUrl),
           hasSchematic: Boolean(page.frontmatter.schematicUrl),
-          loader: page.frontmatter.loader || 'fabric',
+          loader: page.frontmatter.loader || 'fabric',       // fabric | forge | both
           badge: page.frontmatter.badge || ''
         }
       }))

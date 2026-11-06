@@ -48,24 +48,28 @@ const categoryPosts = computed(() => {
     <div class="mc-section-header" style="flex-wrap: wrap; gap: 12px;">
       <h2 style="margin: 0 !important;">{{ title }}</h2>
       <div style="display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 13px; color: var(--mc-text-muted);">مرتب‌سازی:</span>
-        <select v-model="sortBy" class="mc-filter-select">
+        <span style="font-size: 13px; color: #94a3b8;">مرتب‌سازی:</span>
+        <select
+          v-model="sortBy"
+          class="mc-filter-select"
+        >
           <option value="newest">جدیدترین</option>
           <option value="oldest">قدیمی‌ترین</option>
         </select>
       </div>
     </div>
 
+    <!-- کادر جستجوی زنده مقالات هاب -->
     <div style="margin: 16px 0 20px;">
       <input
         v-model="searchQuery"
         type="text"
         :placeholder="placeholder"
-        class="mc-search-input"
-        style="width: 100%;"
+        class="mc-search-input" style="width: 100%;"
       />
     </div>
 
+    <!-- لیست مقالات -->
     <div v-if="categoryPosts.length > 0" class="mc-item-list">
       <a
         v-for="post in categoryPosts"
@@ -91,7 +95,11 @@ const categoryPosts = computed(() => {
       </a>
     </div>
 
-    <div v-else class="mc-empty-state">
+    <!-- پیام در صورت نبود مقاله -->
+    <div
+      v-else
+      class="mc-empty-state"
+    >
       مقاله‌ای با این عبارت در این هاب پیدا نشد.
     </div>
   </div>

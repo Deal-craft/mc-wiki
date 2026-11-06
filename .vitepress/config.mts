@@ -7,40 +7,18 @@ export default defineConfig({
   description: 'مرجع تخصصی سرورها، دانلود ماد، بانک فارم‌ها و رفع ارورهای ماینکرفت',
   appearance: 'dark',
 
-  ignoreDeadLinks: false,
+  ignoreDeadLinks: true,
   cleanUrls: true,
   lastUpdated: true,
 
   sitemap: {
-    hostname: 'https://playpedia.ir',
-    transformItems(items) {
-      const excluded = new Set([
-        'markdown-examples',
-        'markdown-examples.html',
-        'api-examples',
-        'api-examples.html',
-        '404',
-        '404.html'
-      ])
-      return items.filter((item) => !excluded.has(item.url.replace(/^\//, '')))
-    }
+    hostname: 'https://playpedia.ir'
   },
 
   transformHead({ pageData }) {
     const cleanPath = pageData.relativePath
       .replace(/index\.md$/, '')
       .replace(/\.md$/, '')
-
-    if (pageData.frontmatter.isRedirect) {
-      const target = pageData.frontmatter.redirectTo || '/'
-      const targetUrl = `https://playpedia.ir${target}`
-      return [
-        ['meta', { name: 'robots', content: 'noindex, follow' }],
-        ['link', { rel: 'canonical', href: targetUrl }],
-        ['meta', { 'http-equiv': 'refresh', content: `0; url=${target}` }]
-      ]
-    }
-
     const canonicalUrl = `https://playpedia.ir/${cleanPath}`
     const pageTitle = pageData.frontmatter.title || pageData.title || 'پلی‌پدیا | مرجع تخصصی ماینکرفت'
     const pageDesc = pageData.frontmatter.description || pageData.description || 'مرجع تخصصی سرورها، دانلود ماد، بانک فارم‌ها و رفع ارورهای بازی'

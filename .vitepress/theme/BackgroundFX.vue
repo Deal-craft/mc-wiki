@@ -32,17 +32,17 @@ onMounted(() => {
   let particles = []
 
   const DARK_PALETTE = [
-    { r: 27, g: 217, b: 106 },  // Modrinth/XP Emerald (#1bd96a)
-    { r: 56, g: 189, b: 248 },  // Diamond Cyan (#38bdf8)
-    { r: 168, g: 85, b: 247 },  // Enchanting Purple (#a855f7)
-    { r: 245, g: 158, b: 11 }   // Torch/Gold Amber (#f59e0b)
+    { r: 27, g: 217, b: 106 },
+    { r: 56, g: 189, b: 248 },
+    { r: 168, g: 85, b: 247 },
+    { r: 245, g: 158, b: 11 }
   ]
 
   const LIGHT_PALETTE = [
-    { r: 5, g: 150, b: 105 },   // Emerald (#059669)
-    { r: 2, g: 132, b: 199 },   // Diamond Blue (#0284c7)
-    { r: 124, g: 58, b: 237 },  // Amethyst (#7c3aed)
-    { r: 217, g: 119, b: 6 }    // Gold (#d97706)
+    { r: 5, g: 150, b: 105 },
+    { r: 2, g: 132, b: 199 },
+    { r: 124, g: 58, b: 237 },
+    { r: 217, g: 119, b: 6 }
   ]
 
   const isDarkMode = () => document.documentElement.classList.contains('dark')
@@ -60,7 +60,7 @@ onMounted(() => {
         baseRadius: Math.random() * 2.4 + 1.5,
         pulseSpeed: Math.random() * 0.035 + 0.015,
         pulsePhase: Math.random() * Math.PI * 2,
-        isVoxel: i % 3 === 0, // برخی ذرات به شکل پیکسل/مربع ماینکرفتی هستند
+        isVoxel: i % 3 === 0,
         colorIdx
       })
     }
@@ -106,7 +106,6 @@ onMounted(() => {
       const col = palette[p.colorIdx]
       const alpha = dark ? 0.55 + pulse * 0.4 : 0.35 + pulse * 0.35
 
-      // هاله درخشان دور هر ذره
       const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius * 5.2)
       grad.addColorStop(0, `rgba(${col.r}, ${col.g}, ${col.b}, ${alpha})`)
       grad.addColorStop(0.4, `rgba(${col.r}, ${col.g}, ${col.b}, ${alpha * 0.42})`)
@@ -117,7 +116,6 @@ onMounted(() => {
       ctx.arc(p.x, p.y, radius * 5.2, 0, Math.PI * 2)
       ctx.fill()
 
-      // هسته مرکزی ذره (مربع پیکسلی ماینکرفتی یا گوی نورانی)
       ctx.fillStyle = dark
         ? `rgba(240, 253, 250, ${Math.min(1, alpha + 0.25)})`
         : `rgba(${col.r}, ${col.g}, ${col.b}, ${Math.min(0.95, alpha + 0.3)})`
@@ -131,7 +129,6 @@ onMounted(() => {
         ctx.fill()
       }
 
-      // رسم خطوط شبکه نورانی بین نقاط نزدیک
       for (let j = i + 1; j < particles.length; j++) {
         const p2 = particles[j]
         const dx = p.x - p2.x
@@ -149,7 +146,6 @@ onMounted(() => {
         }
       }
 
-      // اتصال خطوط انرژی به موس
       if (mouse.x !== null && mouse.y !== null) {
         const dxm = p.x - mouse.x
         const dym = p.y - mouse.y
