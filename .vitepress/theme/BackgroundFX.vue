@@ -1,7 +1,9 @@
 <template>
   <div class="mc-bg-wrapper" aria-hidden="true">
+    <div class="mc-bg-grid"></div>
     <div class="mc-bg-glow mc-bg-glow-1"></div>
     <div class="mc-bg-glow mc-bg-glow-2"></div>
+    <div class="mc-bg-glow mc-bg-glow-3"></div>
     <canvas ref="canvasRef" class="mc-bg-canvas"></canvas>
   </div>
 </template>
@@ -14,6 +16,7 @@ let animId = null
 let resizeHandler = null
 let mouseMoveHandler = null
 let mouseLeaveHandler = null
+let clickHandler = null
 
 onMounted(() => {
   if (typeof window === 'undefined') return
@@ -25,38 +28,39 @@ onMounted(() => {
   let width = (canvas.width = window.innerWidth)
   let height = (canvas.height = window.innerHeight)
 
-  const mouse = { x: null, y: null, radius: 150 }
+  const mouse = { x: null, y: null, radius: 190 }
   let particles = []
 
   const DARK_PALETTE = [
-    { r: 52, g: 211, b: 153 },  // Emerald (#34d399)
-    { r: 16, g: 185, b: 129 },  // Green (#10b981)
+    { r: 27, g: 217, b: 106 },  // Modrinth/XP Emerald (#1bd96a)
     { r: 56, g: 189, b: 248 },  // Diamond Cyan (#38bdf8)
-    { r: 168, g: 85, b: 247 }   // Ender Purple (#a855f7)
+    { r: 168, g: 85, b: 247 },  // Enchanting Purple (#a855f7)
+    { r: 245, g: 158, b: 11 }   // Torch/Gold Amber (#f59e0b)
   ]
 
   const LIGHT_PALETTE = [
-    { r: 5, g: 150, b: 105 },   // Deep Emerald (#059669)
-    { r: 16, g: 185, b: 129 },  // Emerald (#10b981)
-    { r: 2, g: 132, b: 199 },   // Sky Blue (#0284c7)
-    { r: 124, g: 58, b: 237 }   // Violet (#7c3aed)
+    { r: 5, g: 150, b: 105 },   // Emerald (#059669)
+    { r: 2, g: 132, b: 199 },   // Diamond Blue (#0284c7)
+    { r: 124, g: 58, b: 237 },  // Amethyst (#7c3aed)
+    { r: 217, g: 119, b: 6 }    // Gold (#d97706)
   ]
 
   const isDarkMode = () => document.documentElement.classList.contains('dark')
 
   const createParticles = () => {
-    const count = Math.min(85, Math.max(28, Math.floor((width * height) / 18000)))
+    const count = Math.min(95, Math.max(38, Math.floor((width * height) / 14500)))
     particles = []
     for (let i = 0; i < count; i++) {
-      const colorIdx = i % 4 === 3 ? 3 : i % 3
+      const colorIdx = i % 10 === 0 ? 3 : (i % 4 === 3 ? 2 : i % 2)
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.55,
-        vy: (Math.random() - 0.5) * 0.55,
-        baseRadius: Math.random() * 1.9 + 1.1,
-        pulseSpeed: Math.random() * 0.03 + 0.012,
+        vx: (Math.random() - 0.5) * 0.65,
+        vy: (Math.random() - 0.5) * 0.65,
+        baseRadius: Math.random() * 2.4 + 1.5,
+        pulseSpeed: Math.random() * 0.035 + 0.015,
         pulsePhase: Math.random() * Math.PI * 2,
+        isVoxel: i % 3 === 0, // برخی ذرات به شکل پیکسل/مربع ماینکرفتی هستند
         colorIdx
       })
     }
@@ -73,7 +77,7 @@ onMounted(() => {
     ctx.clearRect(0, 0, width, height)
     const dark = isDarkMode()
     const palette = dark ? DARK_PALETTE : LIGHT_PALETTE
-    const maxDist = width < 768 ? 110 : 145
+    const maxDist = width < 768 ? 125 : 165
 
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i]
@@ -92,33 +96,42 @@ onMounted(() => {
         const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse)
         if (distMouse < mouse.radius && distMouse > 0) {
           const force = (mouse.radius - distMouse) / mouse.radius
-          p.x += (dxMouse / distMouse) * force * 0.7
-          p.y += (dyMouse / distMouse) * force * 0.7
+          p.x += (dxMouse / distMouse) * force * 0.85
+          p.y += (dyMouse / distMouse) * force * 0.85
         }
       }
 
-      const pulse = 0.65 + 0.35 * Math.sin(p.pulsePhase)
-      const radius = p.baseRadius * (0.85 + 0.25 * pulse)
+      const pulse = 0.6 + 0.4 * Math.sin(p.pulsePhase)
+      const radius = p.baseRadius * (0.85 + 0.3 * pulse)
       const col = palette[p.colorIdx]
-      const alpha = dark ? 0.45 + pulse * 0.45 : 0.3 + pulse * 0.35
+      const alpha = dark ? 0.55 + pulse * 0.4 : 0.35 + pulse * 0.35
 
-      const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius * 4.2)
+      // هاله درخشان دور هر ذره
+      const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius * 5.2)
       grad.addColorStop(0, `rgba(${col.r}, ${col.g}, ${col.b}, ${alpha})`)
-      grad.addColorStop(0.45, `rgba(${col.r}, ${col.g}, ${col.b}, ${alpha * 0.35})`)
+      grad.addColorStop(0.4, `rgba(${col.r}, ${col.g}, ${col.b}, ${alpha * 0.42})`)
       grad.addColorStop(1, `rgba(${col.r}, ${col.g}, ${col.b}, 0)`)
 
       ctx.beginPath()
       ctx.fillStyle = grad
-      ctx.arc(p.x, p.y, radius * 4.2, 0, Math.PI * 2)
+      ctx.arc(p.x, p.y, radius * 5.2, 0, Math.PI * 2)
       ctx.fill()
 
-      ctx.beginPath()
+      // هسته مرکزی ذره (مربع پیکسلی ماینکرفتی یا گوی نورانی)
       ctx.fillStyle = dark
-        ? `rgba(240, 253, 250, ${Math.min(1, alpha + 0.2)})`
-        : `rgba(${col.r}, ${col.g}, ${col.b}, ${Math.min(0.9, alpha + 0.25)})`
-      ctx.arc(p.x, p.y, radius * 0.75, 0, Math.PI * 2)
-      ctx.fill()
+        ? `rgba(240, 253, 250, ${Math.min(1, alpha + 0.25)})`
+        : `rgba(${col.r}, ${col.g}, ${col.b}, ${Math.min(0.95, alpha + 0.3)})`
 
+      if (p.isVoxel) {
+        const s = radius * 1.45
+        ctx.fillRect(p.x - s / 2, p.y - s / 2, s, s)
+      } else {
+        ctx.beginPath()
+        ctx.arc(p.x, p.y, radius * 0.85, 0, Math.PI * 2)
+        ctx.fill()
+      }
+
+      // رسم خطوط شبکه نورانی بین نقاط نزدیک
       for (let j = i + 1; j < particles.length; j++) {
         const p2 = particles[j]
         const dx = p.x - p2.x
@@ -126,27 +139,28 @@ onMounted(() => {
         const dist = Math.sqrt(dx * dx + dy * dy)
 
         if (dist < maxDist) {
-          const lineAlpha = (1 - dist / maxDist) * (dark ? 0.22 : 0.14)
+          const lineAlpha = (1 - dist / maxDist) * (dark ? 0.36 : 0.22)
           ctx.beginPath()
           ctx.strokeStyle = `rgba(${col.r}, ${col.g}, ${col.b}, ${lineAlpha})`
-          ctx.lineWidth = 1
+          ctx.lineWidth = 1.15
           ctx.moveTo(p.x, p.y)
           ctx.lineTo(p2.x, p2.y)
           ctx.stroke()
         }
       }
 
+      // اتصال خطوط انرژی به موس
       if (mouse.x !== null && mouse.y !== null) {
         const dxm = p.x - mouse.x
         const dym = p.y - mouse.y
         const distM = Math.sqrt(dxm * dxm + dym * dym)
         if (distM < mouse.radius) {
-          const mAlpha = (1 - distM / mouse.radius) * (dark ? 0.42 : 0.26)
+          const mAlpha = (1 - distM / mouse.radius) * (dark ? 0.62 : 0.38)
           ctx.beginPath()
           ctx.strokeStyle = dark
-            ? `rgba(52, 211, 153, ${mAlpha})`
+            ? `rgba(27, 217, 106, ${mAlpha})`
             : `rgba(5, 150, 105, ${mAlpha})`
-          ctx.lineWidth = 1.2
+          ctx.lineWidth = 1.4
           ctx.moveTo(p.x, p.y)
           ctx.lineTo(mouse.x, mouse.y)
           ctx.stroke()
@@ -173,9 +187,27 @@ onMounted(() => {
     mouse.y = null
   }
 
+  clickHandler = (e) => {
+    for (let k = 0; k < 4; k++) {
+      if (particles.length > 120) particles.shift()
+      particles.push({
+        x: e.clientX + (Math.random() - 0.5) * 20,
+        y: e.clientY + (Math.random() - 0.5) * 20,
+        vx: (Math.random() - 0.5) * 1.4,
+        vy: (Math.random() - 0.5) * 1.4,
+        baseRadius: Math.random() * 2.5 + 1.6,
+        pulseSpeed: 0.03,
+        pulsePhase: Math.random() * Math.PI * 2,
+        isVoxel: k % 2 === 0,
+        colorIdx: k % 4
+      })
+    }
+  }
+
   window.addEventListener('resize', resizeHandler, { passive: true })
   window.addEventListener('mousemove', mouseMoveHandler, { passive: true })
   window.addEventListener('mouseleave', mouseLeaveHandler, { passive: true })
+  window.addEventListener('click', clickHandler, { passive: true })
 
   animId = requestAnimationFrame(render)
 })
@@ -186,6 +218,7 @@ onUnmounted(() => {
     if (resizeHandler) window.removeEventListener('resize', resizeHandler)
     if (mouseMoveHandler) window.removeEventListener('mousemove', mouseMoveHandler)
     if (mouseLeaveHandler) window.removeEventListener('mouseleave', mouseLeaveHandler)
+    if (clickHandler) window.removeEventListener('click', clickHandler)
   }
 })
 </script>
