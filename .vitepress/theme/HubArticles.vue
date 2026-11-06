@@ -48,28 +48,24 @@ const categoryPosts = computed(() => {
     <div class="mc-section-header" style="flex-wrap: wrap; gap: 12px;">
       <h2 style="margin: 0 !important;">{{ title }}</h2>
       <div style="display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 13px; color: #94a3b8;">مرتب‌سازی:</span>
-        <select
-          v-model="sortBy"
-          style="background: #080b12; color: #1bd96a; border: 1px solid rgba(27, 217, 106, 0.4); border-radius: 8px; padding: 4px 10px; font-family: inherit; font-size: 13px; cursor: pointer;"
-        >
+        <span style="font-size: 13px; color: var(--mc-text-muted);">مرتب‌سازی:</span>
+        <select v-model="sortBy" class="mc-filter-select">
           <option value="newest">جدیدترین</option>
           <option value="oldest">قدیمی‌ترین</option>
         </select>
       </div>
     </div>
 
-    <!-- کادر جستجوی زنده مقالات هاب -->
     <div style="margin: 16px 0 20px;">
       <input
         v-model="searchQuery"
         type="text"
         :placeholder="placeholder"
-        style="width: 100%; padding: 12px 16px; border-radius: 12px; background: #080b12; border: 1.5px solid rgba(27, 217, 106, 0.4); color: #fff; font-size: 14.5px; font-family: inherit;"
+        class="mc-search-input"
+        style="width: 100%;"
       />
     </div>
 
-    <!-- لیست مقالات -->
     <div v-if="categoryPosts.length > 0" class="mc-item-list">
       <a
         v-for="post in categoryPosts"
@@ -95,11 +91,7 @@ const categoryPosts = computed(() => {
       </a>
     </div>
 
-    <!-- پیام در صورت نبود مقاله -->
-    <div
-      v-else
-      style="text-align: center; padding: 28px; color: #94a3b8; background: rgba(8, 11, 18, 0.5); border-radius: 12px;"
-    >
+    <div v-else class="mc-empty-state">
       مقاله‌ای با این عبارت در این هاب پیدا نشد.
     </div>
   </div>

@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /markdown-examples
+Disallow: /markdown-examples.html
+Disallow: /api-examples
+Disallow: /api-examples.html
 
 Sitemap: https://playpedia.ir/sitemap.xml

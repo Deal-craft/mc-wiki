@@ -224,7 +224,7 @@ placeholder="جستجوی نام سرور، IP یا گیم‌مود (مثلاً 
 </div>
 </div>
 <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-<code style="background: #0b0f17; padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); color: #34d399; font-size: 13.5px; font-weight: 700;">{{ srv.ip }}</code>
+<code class="mc-ip-code">{{ srv.ip }}</code>
 <button @click="copyIp(srv.ip)" class="mc-btn mc-btn-primary" style="cursor: pointer;">
 {{ copiedIp === srv.ip ? 'کپی شد ✓' : 'کپی IP' }}
 </button>

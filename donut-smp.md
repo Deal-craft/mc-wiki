@@ -36,19 +36,19 @@ onMounted(async () => {
 <div class="mc-server-header-card">
 <div>
 <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px;">
-<strong style="font-size: 17px; color: #f8fafc;">DonutSMP Server</strong>
+<strong class="mc-server-title">DonutSMP Server</strong>
 <span :class="['mc-tag', isOnline ? 'mc-tag-green' : 'mc-tag-red']">
 <span :class="isOnline ? 'mc-live-dot' : 'mc-live-dot-offline'"></span>
 {{ liveStatus }}
 </span>
 <span class="mc-tag mc-tag-gray">Java & Bedrock (پورت موبایل: 19132)</span>
 </div>
-<div style="font-size: 13px; color: #94a3b8;">
+<div class="mc-server-sub">
 محبوب‌ترین سرور بقا و اقتصادی جهان · Hardcore SMP, Economy, Crystal PvP
 </div>
 </div>
 <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-<code style="background: #0b0f17; padding: 7px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); color: #34d399; font-size: 14.5px; font-weight: 700;">donutsmp.net</code>
+<code class="mc-ip-code">donutsmp.net</code>
 <button @click="copyText('donutsmp.net', 'ip')" class="mc-btn mc-btn-primary" style="cursor: pointer;">
 {{ copied === 'ip' ? 'کپی شد ✓' : 'کپی IP' }}
 </button>
