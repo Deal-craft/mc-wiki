@@ -104,7 +104,7 @@ onMounted(() => {
       const pulse = 0.6 + 0.4 * Math.sin(p.pulsePhase)
       const radius = p.baseRadius * (0.85 + 0.3 * pulse)
       const col = palette[p.colorIdx]
-      const alpha = dark ? 0.55 + pulse * 0.4 : 0.35 + pulse * 0.35
+      const alpha = dark ? 0.38 + pulse * 0.32 : 0.28 + pulse * 0.28
 
       const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius * 5.2)
       grad.addColorStop(0, `rgba(${col.r}, ${col.g}, ${col.b}, ${alpha})`)
@@ -117,7 +117,7 @@ onMounted(() => {
       ctx.fill()
 
       ctx.fillStyle = dark
-        ? `rgba(240, 253, 250, ${Math.min(1, alpha + 0.25)})`
+        ? `rgba(${col.r}, ${col.g}, ${col.b}, ${Math.min(0.9, alpha + 0.2)})`
         : `rgba(${col.r}, ${col.g}, ${col.b}, ${Math.min(0.95, alpha + 0.3)})`
 
       if (p.isVoxel) {

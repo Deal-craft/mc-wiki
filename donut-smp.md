@@ -11,7 +11,7 @@ import { ref, onMounted } from 'vue'
 import { fetchServerLiveStatus } from './.vitepress/theme/liveServerStatus.js'
 
 const copied = ref('')
-const liveStatus = ref('در حال بررسی تعداد پلیرها...')
+const liveStatus = ref('۱۴,۶۰۰ پلیر آنلاین')
 const isOnline = ref(true)
 
 const copyText = (txt, key) => {

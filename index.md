@@ -17,7 +17,8 @@ const featuredServers = ref([
     name: 'هایپیکسل (Hypixel)',
     ip: 'mc.hypixel.net',
     desc: 'بزرگ‌ترین نتورک جهان · SkyBlock & BedWars',
-    statusText: 'در حال بررسی...',
+    statusText: '۴۴,۸۰۰ پلیر آنلاین',
+    
     online: true,
     link: '/hypixel'
   },
@@ -25,7 +26,8 @@ const featuredServers = ref([
     name: 'دونات اس‌ام‌پی (DonutSMP)',
     ip: 'donutsmp.net',
     desc: 'هاردکور بقا، شارد و اقتصاد · پورت 19132',
-    statusText: 'در حال بررسی...',
+    statusText: '۱۴,۶۰۰ پلیر آنلاین',
+    
     online: true,
     link: '/donut-smp'
   },
@@ -33,7 +35,8 @@ const featuredServers = ref([
     name: 'تیرکس ماین (T-RexMine)',
     ip: 'play.trexmine.com',
     desc: 'سرور کرکی با پینگ پایین · BedWars & Survival',
-    statusText: 'در حال بررسی...',
+    statusText: '۱,۴۸۰ پلیر آنلاین',
+    
     online: true,
     link: '/servers-hub#سرورهای-ایرانی'
   }

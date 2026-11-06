@@ -1122,3 +1122,123 @@ html:not(.dark) .mc-bg-glow-3 {
   max-width: 100% !important;
   box-sizing: border-box !important;
 }
+
+
+/* ===== ۸. ارتقای ویژه خوانایی متون مقالات و فهرست کناری در حالت تاریک و روشن ===== */
+.dark {
+  --mc-text-strong: #ffffff;
+  --mc-text-heading: #f8fafc;
+  --mc-text-body: #f1f5f9;
+  --mc-text-muted: #cbd5e1;
+  --vp-c-text-1: #ffffff;
+  --vp-c-text-2: #e2e8f0;
+  --vp-c-text-3: #cbd5e1;
+}
+
+:root:not(.dark) {
+  --vp-c-text-1: #0f172a;
+  --vp-c-text-2: #334155;
+  --vp-c-text-3: #475569;
+}
+
+/* قرار دادن کادر شیشه‌ای مات زیر متن اصلی تمام صفحات مقاله تا ذرات نورانی هرگز مزاحم خواندن متن نشوند */
+.VPDoc:not(.has-sidebar) .container > .content,
+.VPDoc .content-container {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--mc-border-strong);
+  border-radius: 16px;
+  padding: 28px 32px !important;
+  box-shadow: var(--mc-shadow);
+}
+
+.dark .VPDoc:not(.has-sidebar) .container > .content,
+.dark .VPDoc .content-container {
+  background: rgba(10, 14, 22, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55);
+}
+
+/* کادر شیشه‌ای مات برای فهرست «در این صفحه» (Table of Contents) در سمت چپ */
+.VPDocAsideOutline {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--mc-border-strong) !important;
+  border-radius: 14px;
+  padding: 16px 18px !important;
+  box-shadow: var(--mc-shadow);
+}
+
+.dark .VPDocAsideOutline {
+  background: rgba(10, 14, 22, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.VPDocAsideOutline .outline-title {
+  color: var(--mc-text-strong) !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+}
+
+.VPDocAsideOutline .outline-link {
+  color: var(--mc-text-muted) !important;
+  font-weight: 500 !important;
+  font-size: 13.5px !important;
+  transition: color 0.15s ease !important;
+}
+
+.VPDocAsideOutline .outline-link:hover,
+.VPDocAsideOutline .outline-link.active {
+  color: var(--mc-accent) !important;
+  font-weight: 700 !important;
+}
+
+/* وضوح حداکثری پاراگراف‌ها، بولت‌پوینت‌ها و اعداد در مقالات */
+.vp-doc p,
+.vp-doc li,
+.vp-doc ol,
+.vp-doc ul {
+  color: var(--mc-text-body) !important;
+  font-size: 15.8px !important;
+  line-height: 2.05 !important;
+}
+
+.dark .vp-doc p,
+.dark .vp-doc li {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65);
+}
+
+.vp-doc a {
+  color: var(--mc-accent) !important;
+  font-weight: 700 !important;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* منوی سمت راست (Sidebar) با پس‌زمینه مات‌تر و متون کاملاً روشن */
+.VPSidebar {
+  background-color: rgba(255, 255, 255, 0.94) !important;
+}
+
+.dark .VPSidebar {
+  background-color: rgba(10, 13, 20, 0.94) !important;
+}
+
+.VPSidebarItem .text {
+  color: var(--mc-text-body) !important;
+  font-weight: 500 !important;
+}
+
+.VPSidebarItem.is-active > .item .text {
+  color: var(--mc-accent) !important;
+  font-weight: 800 !important;
+}
+
+@media (max-width: 768px) {
+  .VPDoc .content-container {
+    padding: 18px 16px !important;
+    border-radius: 12px;
+  }
+}
