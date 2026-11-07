@@ -9,7 +9,6 @@ tier: "biggest"
 itemType: "gold"
 output: "+۱۲۰۰ شمش طلا در ساعت + لول ۳۰ در ۱ دقیقه"
 difficultyLabel: "⚡ مگا فارم (سقف ندر)"
-videoUrl: "https://www.youtube.com/watch?v=goldfarm121"
 schematicUrl: "/farms-hub"
 badge: "طلا و XP بی‌نهایت"
 ---

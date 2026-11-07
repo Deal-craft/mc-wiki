@@ -4,6 +4,11 @@ description: "آی‌پی سرور دونات اس ام پی (DonutSMP) برای
 date: "2026-10-31"
 category: "servers"
 badge: "Java & Bedrock"
+head:
+  - - script
+    - type: application/ld+json
+    - |
+      {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "آیا سرور دونات اس‌ام‌پی کرکی است؟", "acceptedAnswer": {"@type": "Answer", "text": "خیر؛ سرور DonutSMP فقط از اکانت‌های قانونی جاوا (Premium) و اکانت‌های رسمی بدراک (موبایل، ویندوز و کنسول با پورت 19132) پشتیبانی می‌کند."}}, {"@type": "Question", "name": "چرا در DonutSMP دستور /tpa خطرناک است؟", "acceptedAnswer": {"@type": "Answer", "text": "به دلیل نبود سیستم محافظت زمین (Claim)، قبول کردن درخواست تلپورت افراد غریبه به داخل بیس باعث می‌شود مختصات بیس شما لو برود و آیتم‌ها و اسپاونرهایتان غارت شوند."}}]}
 ---
 
 <script setup>

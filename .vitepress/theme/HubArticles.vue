@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { data as posts } from './posts.data.mjs'
+import { formatPersianDate, matchesPersianQuery } from './dateUtils.js'
 
 const props = defineProps({
   category: {
@@ -28,11 +29,10 @@ const categoryPosts = computed(() => {
   })
 
   if (searchQuery.value.trim()) {
-    const q = searchQuery.value.toLowerCase()
-    list = list.filter(post =>
-      (post.frontmatter.title && post.frontmatter.title.toLowerCase().includes(q)) ||
-      (post.frontmatter.description && post.frontmatter.description.toLowerCase().includes(q))
-    )
+    list = list.filter(post => {
+      const haystack = `${post.frontmatter.title} ${post.frontmatter.description} ${post.frontmatter.badge} ${post.frontmatter.keywords || ''}`
+      return matchesPersianQuery(haystack, searchQuery.value)
+    })
   }
 
   return [...list].sort((a, b) => {
@@ -44,32 +44,32 @@ const categoryPosts = computed(() => {
 </script>
 
 <template>
-  <div class="mc-box" style="margin-top: 32px;">
+  <section class="mc-box" style="margin-top: 32px;" aria-label="لیست مقالات بخش">
     <div class="mc-section-header" style="flex-wrap: wrap; gap: 12px;">
       <h2 style="margin: 0 !important;">{{ title }}</h2>
       <div style="display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 13px; color: #94a3b8;">مرتب‌سازی:</span>
+        <label style="font-size: 13px; color: #94a3b8;">مرتب‌سازی بر اساس تاریخ:</label>
         <select
           v-model="sortBy"
           class="mc-filter-select"
+          aria-label="مرتب‌سازی مقالات بر اساس تاریخ"
         >
-          <option value="newest">جدیدترین</option>
+          <option value="newest">جدیدترین (بروزرسانی)</option>
           <option value="oldest">قدیمی‌ترین</option>
         </select>
       </div>
     </div>
 
-    <!-- کادر جستجوی زنده مقالات هاب -->
     <div style="margin: 16px 0 20px;">
       <input
         v-model="searchQuery"
-        type="text"
+        type="search"
         :placeholder="placeholder"
-        class="mc-search-input" style="width: 100%;"
+        class="mc-search-input"
+        style="width: 100%;"
       />
     </div>
 
-    <!-- لیست مقالات -->
     <div v-if="categoryPosts.length > 0" class="mc-item-list">
       <a
         v-for="post in categoryPosts"
@@ -78,29 +78,28 @@ const categoryPosts = computed(() => {
         class="mc-list-item"
       >
         <div class="mc-item-info">
-          <span class="mc-item-icon">📄</span>
+          <span class="mc-item-icon" aria-hidden="true">📄</span>
           <div>
-            <h4>{{ post.frontmatter.title }}</h4>
+            <h3>{{ post.frontmatter.title }}</h3>
             <p>{{ post.frontmatter.description }}</p>
           </div>
         </div>
-        <div style="display: flex; gap: 8px; align-items: center;">
+        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap; flex-shrink: 0;">
           <span v-if="post.frontmatter.badge" class="mc-tag mc-tag-blue">
             {{ post.frontmatter.badge }}
           </span>
-          <span class="mc-tag mc-tag-purple">
-            {{ post.frontmatter.date }}
-          </span>
+          <time :datetime="post.frontmatter.date" class="mc-tag mc-tag-purple" title="تاریخ انتشار و بروزرسانی">
+            📅 {{ post.frontmatter.persianDate || formatPersianDate(post.frontmatter.date) }}
+          </time>
         </div>
       </a>
     </div>
 
-    <!-- پیام در صورت نبود مقاله -->
-    <div
-      v-else
-      class="mc-empty-state"
-    >
-      مقاله‌ای با این عبارت در این هاب پیدا نشد.
+    <div v-else class="mc-empty-state">
+      <p style="margin: 0 0 10px !important;">مقاله‌ای با عبارت «{{ searchQuery }}» در این بخش پیدا نشد.</p>
+      <button v-if="searchQuery" @click="searchQuery = ''" type="button" class="mc-btn mc-btn-glass" style="cursor: pointer;">
+        پاک کردن فیلتر جستجو
+      </button>
     </div>
-  </div>
+  </section>
 </template>

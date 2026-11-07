@@ -4,6 +4,11 @@ description: "کدام لانچر ماینکرفت برای سیستم ضعیف 
 date: "2026-10-15"
 category: "mods"
 badge: "امنیت و FPS"
+head:
+  - - script
+    - type: application/ld+json
+    - |
+      {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "اگر تی‌لانچر را پاک کنم، دنیاها (Worlds) و مپ‌های من پاک می‌شوند؟", "acceptedAnswer": {"@type": "Answer", "text": "خیر؛ کافی است قبل از حذف برنامه از پوشه saves و resourcepacks در مسیر %appdata%/.minecraft نسخه پشتیبان تهیه کنید تا در لانچر جدید مثل Prism یا Legacy استفاده شوند."}}, {"@type": "Question", "name": "کدام لانچر برای بازی کردن با دوستان بدون سرور بهتر است؟", "acceptedAnswer": {"@type": "Answer", "text": "در هر لانچری که از Fabric یا Forge پشتیبانی کند (مثل Prism Launcher)، با نصب ماد رایگان Essential می‌توانید بدون نیاز به سرور، دوستان خود را مستقیم به دنیای تک‌نفره دعوت کنید."}}]}
 ---
 
 # 🚀 مقایسه بهترین لانچرهای ماینکرفت (رایگان، کرکی و پرمیوم)

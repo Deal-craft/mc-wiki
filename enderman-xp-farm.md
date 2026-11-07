@@ -9,7 +9,6 @@ tier: "easiest"
 itemType: "xp"
 output: "لول ۰ تا ۳۰ در ۴۵ ثانیه"
 difficultyLabel: "🌱 آسان و فوق‌العاده پربازده"
-videoUrl: "https://www.youtube.com/watch?v=endermanxp121"
 schematicUrl: "/farms-hub"
 badge: "سریع‌ترین XP بازی"
 ---

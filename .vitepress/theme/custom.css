@@ -1242,3 +1242,328 @@ html:not(.dark) .mc-bg-glow-3 {
     border-radius: 12px;
   }
 }
+
+
+/* ==========================================================================
+   ۹. استایل‌های تکمیلی سئو، نوار تاریخ شمسی، Breadcrumb، سرچ هوشمند و منوی دوکلیکی
+   ========================================================================== */
+
+.mc-cat-card h2,
+.mc-cat-card h3 {
+  font-size: 16.5px !important;
+  font-weight: 800 !important;
+  margin: 0 0 8px !important;
+  padding: 0 !important;
+  border: none !important;
+  color: var(--mc-text-strong) !important;
+}
+
+.mc-item-info h3,
+.mc-item-info h4 {
+  margin: 0 0 4px !important;
+  padding: 0 !important;
+  border: none !important;
+  font-size: 14.5px !important;
+  font-weight: 700 !important;
+  color: var(--mc-text-strong) !important;
+}
+
+.mc-list-item,
+.mc-cat-card,
+.mc-cheat-card,
+.mc-radar-info {
+  text-decoration: none !important;
+}
+
+/* نوار Breadcrumb و تاریخ شمسی بالای مقالات */
+.mc-article-top-bar {
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed var(--mc-border-strong);
+  direction: rtl;
+  text-align: right;
+}
+
+.mc-breadcrumb {
+  margin-bottom: 10px;
+}
+
+.mc-breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 12.5px !important;
+}
+
+.mc-breadcrumb-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 !important;
+  font-size: 12.5px !important;
+  line-height: 1.5 !important;
+}
+
+.mc-breadcrumb-list a {
+  color: var(--mc-text-muted) !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  transition: color 0.15s ease;
+}
+
+.mc-breadcrumb-list a:hover {
+  color: var(--mc-accent) !important;
+}
+
+.mc-breadcrumb-sep {
+  color: var(--mc-text-muted);
+  opacity: 0.55;
+}
+
+.mc-breadcrumb-current span:last-child {
+  color: var(--mc-accent);
+  font-weight: 700;
+}
+
+.mc-article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+/* باکس مقالات مرتبط در انتهای صفحات */
+.mc-related-box {
+  margin-top: 36px;
+  direction: rtl;
+  text-align: right;
+}
+
+/* منوی آبشاری دوکلیکی هدر (کلیک اول باز شدن، کلیک دوم ورود به هاب) */
+.VPNavBarMenuGroup.mc-dropdown-pinned > .menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
+}
+
+.VPNavBarMenuGroup.mc-dropdown-pinned > .button {
+  color: var(--mc-accent) !important;
+}
+
+.VPNavBarMenuGroup .VPMenuLink:first-child a {
+  border-bottom: 1px dashed var(--mc-border-strong);
+  margin-bottom: 4px;
+  padding-bottom: 8px;
+  font-weight: 800 !important;
+  color: var(--mc-accent) !important;
+}
+
+/* کادر جستجوی زنده صفحه اصلی و مودال جستجوی سراسری */
+.mc-inline-search-box {
+  margin-bottom: 26px;
+  position: relative;
+  z-index: 20;
+}
+
+.mc-inline-search-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: var(--mc-bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--mc-border-strong);
+  box-shadow: var(--mc-shadow);
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.mc-hero-search-input {
+  font-size: 14px !important;
+  padding: 10px 14px !important;
+}
+
+.mc-inline-search-results {
+  margin-top: 10px;
+  background: var(--mc-bg-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--mc-accent-bright);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--mc-shadow);
+}
+
+.mc-inline-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--mc-text-muted);
+}
+
+.mc-reset-btn {
+  background: transparent;
+  border: 1px solid var(--mc-border-strong);
+  color: var(--mc-text-muted);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.mc-reset-btn:hover {
+  border-color: var(--mc-accent);
+  color: var(--mc-accent);
+}
+
+.mc-search-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 7, 13, 0.76);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 64px 16px 24px;
+  direction: rtl;
+  text-align: right;
+}
+
+.mc-search-modal {
+  width: 100%;
+  max-width: 720px;
+  background: var(--mc-bg-card);
+  border: 1px solid var(--mc-border-strong);
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 82vh;
+}
+
+.dark .mc-search-modal {
+  background: #101520;
+}
+
+:root:not(.dark) .mc-search-modal {
+  background: #ffffff;
+}
+
+.mc-search-modal-top {
+  display: flex;
+  gap: 10px;
+  padding: 16px;
+  border-bottom: 1px solid var(--mc-border);
+  align-items: center;
+}
+
+.mc-search-modal-filters {
+  display: flex;
+  gap: 8px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--mc-border);
+  flex-wrap: wrap;
+}
+
+.mc-search-modal-body {
+  padding: 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.mc-search-modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--mc-bg-subtle);
+  border-top: 1px solid var(--mc-border);
+  font-size: 12px;
+  color: var(--mc-text-muted);
+}
+
+/* فوتر سراسری سایت */
+.mc-site-footer {
+  position: relative;
+  z-index: 1;
+  margin-top: 56px;
+  background: var(--mc-bg-nav);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--mc-border-strong);
+  padding: 36px 20px 24px;
+  direction: rtl;
+  text-align: right;
+}
+
+.mc-footer-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 2fr;
+  gap: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--mc-border);
+}
+
+.mc-footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.mc-footer-links h4 {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--mc-text-strong);
+  margin: 0 0 10px !important;
+}
+
+.mc-footer-links ul {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mc-footer-links a {
+  color: var(--mc-text-muted) !important;
+  text-decoration: none !important;
+  font-size: 13px;
+  transition: color 0.15s ease;
+}
+
+.mc-footer-links a:hover {
+  color: var(--mc-accent) !important;
+}
+
+.mc-footer-bottom {
+  max-width: 1140px;
+  margin: 18px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--mc-text-muted);
+}
+
+@media (max-width: 768px) {
+  .mc-footer-inner,
+  .mc-footer-links {
+    grid-template-columns: 1fr !important;
+  }
+}

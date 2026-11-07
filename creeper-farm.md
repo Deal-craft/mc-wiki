@@ -9,7 +9,6 @@ tier: "best"
 itemType: "gunpowder"
 output: "+۱۰۰۰ باروت در ساعت"
 difficultyLabel: "🔥 متوسط و ضروری برای الایترا"
-videoUrl: "https://www.youtube.com/watch?v=creeperfarm121"
 schematicUrl: "/farms-hub"
 badge: "فایروورک و TNT بی‌نهایت"
 ---

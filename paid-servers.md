@@ -4,6 +4,11 @@ description: "بهترین روش ساخت سرور ۲۴ ساعته ماینکر
 date: "2026-10-16"
 category: "servers"
 badge: "VPS و هاست"
+head:
+  - - script
+    - type: application/ld+json
+    - |
+      {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "برای پینگ بهتر در ایران، سرور ایران بخریم یا اروپا؟", "acceptedAnswer": {"@type": "Answer", "text": "اگر تمام بازیکنان داخل ایران هستند سرور دیتاسنتر ایران پینگ زیر ۳۰ میلی‌ثانیه می‌دهد؛ سرورهای آلمان (Hetzner) و فنلاند نیز با پینگ ۶۰ تا ۸۰ میلی‌ثانیه پایداری بین‌المللی عالی دارند."}}, {"@type": "Question", "name": "چگونه سرور پولی خود را برای بازیکنان کرکی و موبایل باز کنیم؟", "acceptedAnswer": {"@type": "Answer", "text": "در فایل server.properties مقدار online-mode=false قرار دهید و پلاگین امنیتی AuthMe را نصب کنید؛ برای اتصال بازیکنان موبایل (Bedrock) نیز پلاگین GeyserMC را روی هسته Paper نصب نمایید."}}]}
 ---
 
 # 💎 راهنمای جامع سرورهای پولی ماینکرفت (ساخت سرور ۲۴ ساعته بدون لگ)

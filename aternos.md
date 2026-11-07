@@ -4,6 +4,11 @@ description: "راهنمای صفر تا صد سایت آترنوس (Aternos.org
 date: "2026-10-20"
 category: "servers"
 badge: "آموزش سرور"
+head:
+  - - script
+    - type: application/ld+json
+    - |
+      {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "چطور در سرور آترنوس خودم را ادمین (OP) کنم؟", "acceptedAnswer": {"@type": "Answer", "text": "پس از روشن شدن سرور، وارد بخش Players و سپس OPs شوید و نام کاربری خود را اضافه کنید، یا در بخش Console دستور op YourName را بدون اسلش وارد کنید."}}, {"@type": "Question", "name": "چطور مختصات (Coordinates) و KeepInventory را در آترنوس فعال کنیم؟", "acceptedAnswer": {"@type": "Answer", "text": "برای حفظ آیتم‌ها پس از مرگ، وارد بخش Console در پنل آترنوس شوید و دستور gamerule keepInventory true را وارد کنید."}}, {"@type": "Question", "name": "آیا مپ سرور آترنوس بعد از مدتی پاک می‌شود؟", "acceptedAnswer": {"@type": "Answer", "text": "اگر سرور بیش از ۳ تا ۶ ماه روشن نشود داده‌ها حذف می‌شوند؛ برای جلوگیری از حذف مپ، از منوی Backups حساب Google Drive خود را متصل و پشتیبان‌گیری خودکار را فعال کنید."}}]}
 ---
 
 # 🟢 دانشنامه جامع آترنوس (Aternos)؛ صفر تا صد ساخت، تنظیمات و رفع لگ سرور

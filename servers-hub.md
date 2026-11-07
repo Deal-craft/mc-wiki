@@ -7,8 +7,8 @@ isHub: true
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { data as posts } from './.vitepress/theme/posts.data.mjs'
 import { fetchServerLiveStatus } from './.vitepress/theme/liveServerStatus.js'
+import { matchesPersianQuery } from './.vitepress/theme/dateUtils.js'
 
 const platformFilter = ref('all')
 const regionFilter = ref('all')
@@ -26,6 +26,7 @@ const servers = ref([
     region: 'global',
     cracked: false,
     modes: 'SkyBlock, BedWars, SkyWars, Duels',
+    keywords: 'هایپیکسل اسکای بلاک بدوارز اسکای وارز پرمیوم جهانی',
     playerCount: 44800,
     statusText: '۴۴,۸۰۰ پلیر آنلاین',
     online: true,
@@ -41,6 +42,7 @@ const servers = ref([
     region: 'global',
     cracked: false,
     modes: 'Hardcore SMP, Economy, PvP',
+    keywords: 'دونات اس ام پی هاردکور شارد اقتصاد موبایل بدراک جاوا',
     playerCount: 14600,
     statusText: '۱۴,۶۰۰ پلیر آنلاین',
     online: true,
@@ -56,6 +58,7 @@ const servers = ref([
     region: 'iran',
     cracked: true,
     modes: 'BedWars, Survival, SkyBlock, BoxPvP',
+    keywords: 'تیرکس ماین تی رکس ماین سرور ایرانی کرکی بدوارز باکس پی وی پی',
     playerCount: 1480,
     statusText: '۱,۴۸۰ پلیر آنلاین',
     online: true,
@@ -70,6 +73,7 @@ const servers = ref([
     region: 'iran',
     cracked: true,
     modes: 'Survival, Factions, PvP, BedWars',
+    keywords: 'مدکرفت مد کرفت سرور ایرانی کرکی فکشن بقا بدوارز',
     playerCount: 640,
     statusText: '۶۴۰ پلیر آنلاین',
     online: true,
@@ -84,6 +88,7 @@ const servers = ref([
     region: 'iran',
     cracked: true,
     modes: 'LifeSteal, BoxPvP, BedWars',
+    keywords: 'آرین کرفت ارین کرفت لایف استیل سرور ایرانی کرکی موبایل',
     playerCount: 440,
     statusText: '۴۴۰ پلیر آنلاین',
     online: true,
@@ -98,6 +103,7 @@ const servers = ref([
     region: 'iran',
     cracked: true,
     modes: 'SMP, Survival, MiniGames',
+    keywords: 'پرشین کرفت سرور موبایل پاکت ادیشن بدراک ایرانی کرکی',
     playerCount: 315,
     statusText: '۳۱۵ پلیر آنلاین',
     online: true,
@@ -128,19 +134,41 @@ const checkEachServerPlayers = async () => {
   )
 }
 
+const syncHashFilter = () => {
+  if (typeof window === 'undefined') return
+  const hash = decodeURIComponent(window.location.hash || '')
+  if (hash === '#سرورهای-ایرانی') {
+    regionFilter.value = 'iran'
+  }
+}
+
 let timer = null
 onMounted(() => {
+  syncHashFilter()
+  window.addEventListener('hashchange', syncHashFilter)
   checkEachServerPlayers()
   timer = setInterval(checkEachServerPlayers, 45000)
 })
 onUnmounted(() => {
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('hashchange', syncHashFilter)
+  }
   if (timer) clearInterval(timer)
 })
 
 const copyIp = (ip) => {
-  navigator.clipboard.writeText(ip)
-  copiedIp.value = ip
-  setTimeout(() => { copiedIp.value = '' }, 2000)
+  if (typeof navigator !== 'undefined' && navigator.clipboard) {
+    navigator.clipboard.writeText(ip)
+    copiedIp.value = ip
+    setTimeout(() => { copiedIp.value = '' }, 2000)
+  }
+}
+
+const resetFilters = () => {
+  platformFilter.value = 'all'
+  regionFilter.value = 'all'
+  accessFilter.value = 'all'
+  searchQuery.value = ''
 }
 
 const filteredServers = computed(() => {
@@ -149,11 +177,8 @@ const filteredServers = computed(() => {
     const matchRegion = regionFilter.value === 'all' || s.region === regionFilter.value
     const matchAccess = accessFilter.value === 'all' || (accessFilter.value === 'cracked' ? s.cracked : !s.cracked)
 
-    const q = searchQuery.value.trim().toLowerCase()
-    const matchSearch = !q ||
-      s.name.toLowerCase().includes(q) ||
-      s.ip.toLowerCase().includes(q) ||
-      s.modes.toLowerCase().includes(q)
+    const haystack = `${s.name} ${s.ip} ${s.modes} ${s.keywords || ''}`
+    const matchSearch = matchesPersianQuery(haystack, searchQuery.value)
 
     return matchPlatform && matchRegion && matchAccess && matchSearch
   })
@@ -163,52 +188,51 @@ const filteredServers = computed(() => {
     return b.popularity - a.popularity
   })
 })
-
-const serverArticles = computed(() => {
-  return posts.filter(p => p.frontmatter.category === 'servers')
-})
 </script>
 
 # لیست سرورهای ماینکرفت (ایرانی و جهانی)
 
-در لیست زیر، تعداد دقیق پلیرهای آنلاین هر سرور به صورت لحظه‌ای استعلام می‌شود. با استفاده از فیلترهای زیر می‌توانید سرور مناسب نسخه بازی خود را پیدا کنید:
+در جدول رادار زیر، تعداد دقیق پلیرهای آنلاین هر سرور به صورت لحظه‌ای استعلام می‌شود. با استفاده از فیلترها و کادر جستجوی زیر می‌توانید سرور مناسب نسخه بازی خود (جاوا یا بدراک، کرکی یا پرمیوم) را پیدا کنید:
+
+<h2 id="سرورهای-ایرانی">رادار زنده سرورهای فعال ماینکرفت</h2>
 
 <!-- نوار فیلتر تک‌ردیفه و منظم -->
-<div class="mc-filter-bar" id="سرورهای-ایرانی">
+<div class="mc-filter-bar">
 <input
 v-model="searchQuery"
-type="text"
+type="search"
 class="mc-search-input"
-placeholder="جستجوی نام سرور، IP یا گیم‌مود (مثلاً BedWars)..."
+placeholder="🔍 جستجوی نام سرور، IP یا گیم‌مود (مثلاً تیرکس، هایپیکسل، BedWars)..."
+aria-label="جستجوی نام سرور یا گیم‌مود"
 />
-<select v-model="regionFilter" class="mc-filter-select">
+<select v-model="regionFilter" class="mc-filter-select" aria-label="فیلتر منطقه سرور">
 <option value="all">همه منطقه‌ها (ایران و جهان)</option>
-<option value="iran">فقط سرورهای ایرانی</option>
-<option value="global">فقط سرورهای جهانی</option>
+<option value="iran">🇮🇷 فقط سرورهای ایرانی</option>
+<option value="global">🌍 فقط سرورهای جهانی</option>
 </select>
-<select v-model="platformFilter" class="mc-filter-select">
-<option value="all">همه پلتفرم‌ها (Java & Bedrock)</option>
-<option value="java">کامپیوتر (Java)</option>
-<option value="bedrock">موبایل (Bedrock)</option>
+<select v-model="platformFilter" class="mc-filter-select" aria-label="فیلتر پلتفرم بازی">
+<option value="all">همه پلتفرم‌ها (Java &amp; Bedrock)</option>
+<option value="java">💻 کامپیوتر (Java)</option>
+<option value="bedrock">📱 موبایل (Bedrock)</option>
 </select>
-<select v-model="accessFilter" class="mc-filter-select">
+<select v-model="accessFilter" class="mc-filter-select" aria-label="فیلتر وضعیت اکانت">
 <option value="all">همه اکانت‌ها (کرکی و پرمیوم)</option>
-<option value="cracked">فقط کرکی (Cracked)</option>
-<option value="premium">فقط پرمیوم (Original)</option>
+<option value="cracked">🔓 فقط کرکی (Cracked)</option>
+<option value="premium">💎 فقط پرمیوم (Original)</option>
 </select>
-<select v-model="sortBy" class="mc-filter-select">
+<select v-model="sortBy" class="mc-filter-select" aria-label="مرتب‌سازی سرورها">
 <option value="players">مرتب‌سازی: بیشترین پلیر آنلاین</option>
 <option value="popularity">مرتب‌سازی: محبوب‌ترین</option>
 </select>
 </div>
 
 <!-- لیست تمیز و خلوت سرورها -->
-<div class="mc-item-list">
+<div v-if="filteredServers.length > 0" class="mc-item-list">
 <div v-for="srv in filteredServers" :key="srv.ip" class="mc-list-item">
 <div class="mc-item-info">
 <div>
 <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px;">
-<h4 style="margin: 0 !important;">{{ srv.name }}</h4>
+<h3 style="margin: 0 !important;">{{ srv.name }}</h3>
 <span :class="['mc-tag', srv.online ? 'mc-tag-green' : 'mc-tag-red']">
 <span :class="srv.online ? 'mc-live-dot' : 'mc-live-dot-offline'"></span>
 {{ srv.statusText }}
@@ -225,7 +249,7 @@ placeholder="جستجوی نام سرور، IP یا گیم‌مود (مثلاً 
 </div>
 <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
 <code class="mc-ip-code">{{ srv.ip }}</code>
-<button @click="copyIp(srv.ip)" class="mc-btn mc-btn-primary" style="cursor: pointer;">
+<button @click="copyIp(srv.ip)" type="button" class="mc-btn mc-btn-primary" style="cursor: pointer;">
 {{ copiedIp === srv.ip ? 'کپی شد ✓' : 'کپی IP' }}
 </button>
 <a v-if="srv.url" :href="srv.url" class="mc-btn mc-btn-glass">
@@ -235,19 +259,16 @@ placeholder="جستجوی نام سرور، IP یا گیم‌مود (مثلاً 
 </div>
 </div>
 
-## راهنماهای سرور و ساخت سرور اختصاصی
+<div v-else class="mc-empty-state">
+<p style="margin: 0 0 12px !important;">سروری با فیلترهای انتخابی یا عبارت «{{ searchQuery }}» پیدا نشد.</p>
+<button @click="resetFilters" type="button" class="mc-btn mc-btn-primary" style="cursor: pointer;">نمایش همه سرورها</button>
+</div>
 
-<div class="mc-item-list" style="margin-top: 14px;">
-<a v-for="post in serverArticles" :key="post.url" :href="post.url" class="mc-list-item">
-<div class="mc-item-info">
-<div>
-<h4>{{ post.frontmatter.title }}</h4>
-<p>{{ post.frontmatter.description }}</p>
-</div>
-</div>
-<span v-if="post.frontmatter.badge" class="mc-tag mc-tag-blue">{{ post.frontmatter.badge }}</span>
-</a>
-</div>
+<HubArticles
+  category="servers"
+  title="📚 راهنماهای جامع سرورها و ساخت سرور اختصاصی"
+  placeholder="🔍 جستجو در مقالات سرور (هایپیکسل، دونات، آترنوس، سرور پولی VPS)..."
+/>
 
 <h2 id="ثبت-سرور">ثبت رایگان سرور در پلی‌پدیا</h2>
 

@@ -9,7 +9,6 @@ tier: "easiest"
 itemType: "iron"
 output: "۳۵۰ تا ۱۶۰۰ شمش آهن در ساعت"
 difficultyLabel: "🌱 آسان تا پیشرفته (۳ مدل)"
-videoUrl: "https://www.youtube.com/watch?v=52ad1123"
 schematicUrl: "/farms-hub"
 badge: "Java & Bedrock 1.21"
 ---
