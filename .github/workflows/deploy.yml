@@ -29,40 +29,11 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Prepare SEO, Fonts & Server Config (.htaccess) Automatically
+      - name: Prepare SEO, Fonts & Server Config
         run: |
-          # ۱. حذف خودکار صفحات آزمایشی تکراری برای رفع خطای سرچ کنسول
           rm -f api-examples.md markdown-examples.md public/api-examples.html public/markdown-examples.html
-
-          # ۲. ساخت خودکار robots.txt استاندارد
-          cat << 'EOF' > public/robots.txt
-          User-agent: *
-          Allow: /
-
-          Sitemap: https://playpedia.ir/sitemap.xml
-          EOF
-
-          # ۳. ساخت خودکار فایل .htaccess برای پشتیبانی از لینک‌های بدون .html در هاست ایران
-          cat << 'EOF' > public/.htaccess
-          <IfModule mod_rewrite.c>
-            RewriteEngine On
-            RewriteBase /
-
-            RewriteRule ^(api-examples|markdown-examples)(\.html)?$ / [R=301,L]
-
-            RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
-            RewriteRule ^ /%1 [R=301,L,NE]
-
-            RewriteCond %{REQUEST_FILENAME} !-d
-            RewriteCond %{REQUEST_FILENAME} !-f
-            RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-            RewriteRule ^(.+?)/?$ /$1.html [L]
-          </IfModule>
-
-          ErrorDocument 404 /404.html
-          EOF
-
-          # ۴. دانلود خودکار فونت وزیرمتن داخل هاست برای لود بدون اختلال در ایران
+          printf "User-agent: *\nAllow: /\n\nSitemap: https://playpedia.ir/sitemap.xml\n" > public/robots.txt
+          printf "RewriteEngine On\nRewriteBase /\nRewriteRule ^(api-examples|markdown-examples)(\\.html)?$ / [R=301,L]\nRewriteCond %%{REQUEST_FILENAME} !-d\nRewriteCond %%{REQUEST_FILENAME} !-f\nRewriteCond %%{DOCUMENT_ROOT}/\$1.html -f\nRewriteRule ^(.+?)/?$ /\$1.html [L]\nErrorDocument 404 /404.html\n" > public/.htaccess
           mkdir -p public/fonts
           curl -sL "https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2" -o public/fonts/Vazirmatn-Regular.woff2 || true
           curl -sL "https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Bold.woff2" -o public/fonts/Vazirmatn-Bold.woff2 || true
@@ -76,7 +47,7 @@ jobs:
       - name: Build with VitePress
         run: npm run docs:build
 
-      - name: Ensure .htaccess is in dist
+      - name: Copy htaccess to dist
         run: cp -f public/.htaccess .vitepress/dist/.htaccess
 
       - name: Upload artifact for GitHub Pages
@@ -103,7 +74,5 @@ jobs:
     name: Deploy
     steps:
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
         id: deployment
         uses: actions/deploy-pages@v4
