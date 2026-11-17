@@ -1,0 +1,116 @@
+name: Deploy VitePress site to Pages & Host
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Clean Test Files
+        run: |
+          rm -f api-examples.md markdown-examples.md
+          rm -f public/api-examples.html public/markdown-examples.html
+          printf "User-agent: *\nAllow: /\n\nSitemap: https://playpedia.ir/sitemap.xml\n" > public/robots.txt
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build with VitePress
+        run: npm run docs:build
+
+      - name: Create htaccess for cPanel Clean URLs, Caching & Compression
+        run: |
+          cat << 'HTEOF' > .vitepress/dist/.htaccess
+          RewriteEngine On
+          RewriteBase /
+
+          # ریدایرکت ۳۰۱ صفحات آزمایشی قدیمی به صفحه اصلی جهت رفع خطای سرچ کنسول
+          RewriteRule ^(api-examples|markdown-examples)(\.html)?$ / [R=301,L]
+
+          # پشتیبانی از آدرس‌های تمیز (Clean URLs) بدون پسوند html
+          RewriteCond %{REQUEST_FILENAME} !-d
+          RewriteCond %{REQUEST_FILENAME} !-f
+          RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+          RewriteRule ^(.+?)/?$ /$1.html [L]
+
+          ErrorDocument 404 /404.html
+
+          # فعال‌سازی کش مرورگر (رفع خطای Use efficient cache lifetimes در PageSpeed)
+          <IfModule mod_expires.c>
+            ExpiresActive On
+            ExpiresDefault "access plus 1 hour"
+            ExpiresByType text/css "access plus 1 year"
+            ExpiresByType application/javascript "access plus 1 year"
+            ExpiresByType image/svg+xml "access plus 1 month"
+            ExpiresByType image/png "access plus 1 month"
+            ExpiresByType image/x-icon "access plus 1 month"
+            ExpiresByType font/woff2 "access plus 1 year"
+          </IfModule>
+
+          <IfModule mod_headers.c>
+            <FilesMatch "\.(js|css|woff2)$">
+              Header set Cache-Control "public, max-age=31536000, immutable"
+            </FilesMatch>
+            <FilesMatch "\.(svg|png|ico|webp)$">
+              Header set Cache-Control "public, max-age=2592000"
+            </FilesMatch>
+          </IfModule>
+
+          # فشرده‌سازی Gzip برای افزایش سرعت لود
+          <IfModule mod_deflate.c>
+            AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json image/svg+xml
+          </IfModule>
+          HTEOF
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .vitepress/dist
+
+      - name: Auto-Deploy to Iranian Host via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./.vitepress/dist/
+          server-dir: ./
+          security: loose
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
